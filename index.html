@@ -112,16 +112,46 @@
   .dn i .hh svg { width: 22px; height: 20px; display: block; overflow: visible; shape-rendering: crispEdges; }
   .dn.sm i .hh svg { width: 17px; height: 15px; }
   .hh .ghost { fill: none; stroke: #b3202e; stroke-width: .8; stroke-dasharray: 1.4 1; }
-  .hh .solid { fill: var(--heart); transform-box: fill-box; transform-origin: 50% 80%; animation: hbreak 6s ease-in infinite; }
-  .hh:nth-child(5) .solid { animation-delay: 0s; } .hh:nth-child(4) .solid { animation-delay: .7s; } .hh:nth-child(3) .solid { animation-delay: 1.4s; }
-  .hh:nth-child(2) .solid { animation-delay: 2.1s; } .hh:nth-child(1) .solid { animation-delay: 2.8s; }
-  @keyframes hbreak {
-    0%, 8% { transform: none; opacity: 1; fill: var(--heart); }
-    10% { transform: translateX(-.4px) rotate(-12deg); } 12% { transform: translateX(.4px) rotate(12deg); } 14% { transform: translateX(-.4px) rotate(-12deg); }
-    18% { transform: none; opacity: 1; fill: var(--heart); }
-    26% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    88% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; }
-    96%, 100% { transform: none; opacity: 1; fill: var(--heart); }
+  .hh .solid { fill: var(--heart); transform-box: fill-box; transform-origin: 50% 80%; animation-duration: 10s; animation-timing-function: ease-in; animation-iteration-count: infinite; }
+  .hh:nth-child(1) .solid { animation-name: hb1; }
+  .hh:nth-child(2) .solid { animation-name: hb2; }
+  .hh:nth-child(3) .solid { animation-name: hb3; }
+  .hh:nth-child(4) .solid { animation-name: hb4; }
+  .hh:nth-child(5) .solid { animation-name: hb5; }
+  @keyframes hb5 {
+    0%, 10.00% { transform: none; opacity: 1; fill: var(--heart); }
+    11.20% { transform: translateX(-.4px) rotate(-12deg); } 12.40% { transform: translateX(.4px) rotate(12deg); } 13.60% { transform: translateX(-.4px) rotate(-12deg); }
+    15.00% { transform: none; opacity: 1; fill: var(--heart); }
+    20.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
+    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
+  }
+  @keyframes hb4 {
+    0%, 21.00% { transform: none; opacity: 1; fill: var(--heart); }
+    22.20% { transform: translateX(-.4px) rotate(-12deg); } 23.40% { transform: translateX(.4px) rotate(12deg); } 24.60% { transform: translateX(-.4px) rotate(-12deg); }
+    26.00% { transform: none; opacity: 1; fill: var(--heart); }
+    31.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
+    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
+  }
+  @keyframes hb3 {
+    0%, 32.00% { transform: none; opacity: 1; fill: var(--heart); }
+    33.20% { transform: translateX(-.4px) rotate(-12deg); } 34.40% { transform: translateX(.4px) rotate(12deg); } 35.60% { transform: translateX(-.4px) rotate(-12deg); }
+    37.00% { transform: none; opacity: 1; fill: var(--heart); }
+    42.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
+    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
+  }
+  @keyframes hb2 {
+    0%, 43.00% { transform: none; opacity: 1; fill: var(--heart); }
+    44.20% { transform: translateX(-.4px) rotate(-12deg); } 45.40% { transform: translateX(.4px) rotate(12deg); } 46.60% { transform: translateX(-.4px) rotate(-12deg); }
+    48.00% { transform: none; opacity: 1; fill: var(--heart); }
+    53.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
+    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
+  }
+  @keyframes hb1 {
+    0%, 54.00% { transform: none; opacity: 1; fill: var(--heart); }
+    55.20% { transform: translateX(-.4px) rotate(-12deg); } 56.40% { transform: translateX(.4px) rotate(12deg); } 57.60% { transform: translateX(-.4px) rotate(-12deg); }
+    59.00% { transform: none; opacity: 1; fill: var(--heart); }
+    64.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
+    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
   }
   .dn.q b { font-size: 16px; }
   .dn.sm { font-size: 14px; padding: 6px 8px; gap: 6px; } .dn.sm b { font-size: 11px; } .dn.sm i { font-size: 16px; letter-spacing: 1px; }
