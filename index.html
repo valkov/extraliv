@@ -232,6 +232,63 @@
     .il [class^="i"] { opacity: 1 !important; transform: none !important; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
   }
+
+  /* ================= friendly theme: between calm and the game ================= */
+  :root { --bg: #fff9ee; --soft: #e8f5ff; --line: #243b5a; --navy: #243b5a; --coin: #ffc400; --coin-dark: #d19a00; --sky: #a9dcff; --grass: #5fc46a; }
+  body { background: var(--bg); }
+  .panel { border: 2px solid var(--navy); box-shadow: 0 5px 0 var(--navy); border-radius: 20px; }
+  .btn { background: var(--coin); color: #1f2a37; border: 2px solid var(--navy); box-shadow: 0 4px 0 var(--navy); border-radius: 14px; }
+  .btn:hover { background: #ffd23d; transform: translateY(2px); box-shadow: 0 2px 0 var(--navy); }
+  .btn.wa { background: #3fd17f; color: #08301b; }
+  .btn.wa:hover { background: #55dc92; }
+  .logo { color: var(--navy); }
+  .eyebrow { background: #fff; border: 2px solid var(--navy); color: var(--navy); }
+  .offer-line { background: var(--coin); border: 2px solid var(--navy); box-shadow: 0 3px 0 var(--navy); font-size: 17px; }
+  .lang button[aria-pressed="true"] { background: #fff; box-shadow: inset 0 0 0 2px var(--navy); }
+
+  /* hero: sky, sun, clouds, hills */
+  .hero { position: relative; overflow: hidden; padding: 24px 0 150px; background: linear-gradient(#8fd0ff 0%, #c8e9ff 55%, #eaf7ff 100%); }
+  .hero .wrap { position: relative; z-index: 2; }
+  header.top { position: relative; z-index: 3; background: #8fd0ff; }
+  .sun { position: absolute; top: 18px; right: 8%; width: 110px; height: 110px; border-radius: 50%; background: #ffd84d; box-shadow: 0 0 0 14px rgba(255,216,77,.35), 0 0 0 30px rgba(255,216,77,.18); z-index: 0; animation: glow 4s ease-in-out infinite; }
+  @keyframes glow { 50% { box-shadow: 0 0 0 20px rgba(255,216,77,.35), 0 0 0 40px rgba(255,216,77,.16); } }
+  .cloud { position: absolute; z-index: 1; width: 150px; height: auto; left: var(--x, 0); filter: drop-shadow(0 6px 0 rgba(36,59,90,.12)); pointer-events: none; animation: fly 60s linear infinite; }
+  .cloud.c1 { top: 60px; --x: 6%; width: 130px; animation-duration: 70s; animation-delay: -18s; }
+  .cloud.c2 { top: 150px; --x: 62%; width: 190px; animation-duration: 95s; animation-delay: -60s; }
+  .cloud.c3 { top: 24px; --x: 40%; width: 100px; animation-duration: 55s; animation-delay: -7s; }
+  @keyframes fly { from { left: -25%; } to { left: 105%; } }
+  .hills { position: absolute; left: 0; right: 0; bottom: -1px; width: 100%; height: 130px; z-index: 1; }
+  .hero h1, .hero .lead { text-shadow: 0 1px 0 rgba(255,255,255,.4); }
+  .hero p.lead { color: #263a55; }
+  .il circle:first-child { fill: rgba(255,255,255,.55); }
+
+  /* section moods instead of flat grey */
+  section.block.alt { background: var(--soft); }
+  section.block.warm { background: linear-gradient(#fff4d1, #fffaf0); }
+  section.block.sky { position: relative; overflow: hidden; background: linear-gradient(#d4edff, #eef8ff); }
+  section.block.sky > .wrap { position: relative; z-index: 2; }
+  .cloud.d1 { top: 28px; --x: 8%; width: 120px; opacity: .95; animation-duration: 90s; animation-delay: -30s; }
+  .cloud.d2 { bottom: 24px; top: auto; --x: 70%; width: 150px; animation-duration: 110s; animation-delay: -70s; }
+  .cloud.d3 { bottom: 20px; top: auto; --x: 20%; width: 130px; animation-duration: 100s; animation-delay: -10s; }
+  section.block.contact { background: linear-gradient(#cfeaff, #e8f5ff); }
+  section.block + section.block { border-top: 0; }
+
+  /* accents that bring the playful feeling back */
+  .num { background: var(--coin); color: #1f2a37; border: 2px solid var(--navy); box-shadow: 0 2px 0 var(--navy); }
+  .ico { background: #fff3c4; border: 2px solid var(--navy); box-shadow: 0 3px 0 var(--navy); }
+  .card .tag { background: #fff; border: 2px solid var(--navy); color: var(--navy); }
+  .card .tag.hot { background: #ff6b7a; border-color: var(--navy); color: #fff; }
+  .card.featured { border: 2px solid var(--navy); box-shadow: 0 6px 0 var(--coin-dark), 0 0 0 5px var(--coin); }
+  .costs { background: var(--coin); border: 2px solid var(--navy); box-shadow: 0 5px 0 var(--navy); }
+  .photo { border: 3px solid var(--navy); box-shadow: 0 5px 0 var(--navy); }
+  .about a.li { border: 2px solid var(--navy); color: var(--navy); box-shadow: 0 3px 0 var(--navy); background: #fff; }
+  .about a.li:hover { background: var(--coin); }
+  details { border: 2px solid var(--navy); box-shadow: 0 3px 0 var(--navy); }
+  .video { border: 2px solid var(--navy); box-shadow: 0 6px 0 var(--navy); background: #243b5a; }
+  .wa-float { border: 2px solid var(--navy); background: #3fd17f; box-shadow: 0 4px 0 var(--navy); }
+  footer { background: var(--navy); }
+  @media (max-width: 760px) { .cloud { width: 90px !important; } .cloud.c2 { top: 120px; } .sun { width: 70px; height: 70px; right: 6%; } .hero { padding-bottom: 120px; } .hills { height: 90px; } }
+  @media (prefers-reduced-motion: reduce) { .cloud, .sun { animation: none !important; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -250,6 +307,10 @@
 <main id="top">
   <!-- HERO -->
   <section class="hero">
+    <svg class="cloud c1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+    <svg class="cloud c2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+    <svg class="cloud c3" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+    <span class="sun" aria-hidden="true"></span>
     <div class="wrap">
       <div class="hero-text">
         <p class="eyebrow" data-i18n="eyebrow">For alle, også dem der ikke er computermennesker</p>
@@ -278,6 +339,7 @@
   <g class="i2"><rect x="60" y="300" width="260" height="52" rx="20" fill="#fff" stroke="#e3ddd2" stroke-width="2"/><foreignObject x="60" y="300" width="260" height="52"><div xmlns="http://www.w3.org/1999/xhtml" class="bub ai" data-i18n="il_ai">Værsgo! Vil du ændre noget?</div></foreignObject></g>
 </svg>
     </div>
+    <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path fill="#8bd98a" d="M0 64C220 14 470 104 720 62S1210 20 1440 70V120H0Z"/><path fill="#5fc46a" d="M0 92C280 54 540 118 820 88S1300 56 1440 88V120H0Z"/></svg>
   </section>
 
   <!-- WHO IS IT FOR -->
@@ -308,7 +370,9 @@
   </section>
 
   <!-- WHY EXTRALIV -->
-  <section class="block alt">
+  <section class="block sky">
+    <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+    <svg class="cloud d2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <div class="wrap why">
       <div class="why-text reveal">
         <h2 data-i18n="why_h2">Hvorfor hedder det ExtraLiv?</h2>
@@ -320,7 +384,7 @@
   </section>
 
   <!-- PACKAGES -->
-  <section class="block alt" id="pris">
+  <section class="block alt warm" id="pris">
     <div class="wrap">
       <h2  data-i18n="pk_h2">Vælg din pakke</h2>
       <div class="grid pricing">
@@ -433,8 +497,10 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="block contact" id="kontakt">
-    <div class="wrap">
+  <section class="block contact sky" id="kontakt">
+    <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+    <svg class="cloud d3" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
+        <div class="wrap">
       <p><a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">Stil et spørgsmål på WhatsApp</span></a></p>
       <p><span data-i18n="ct_or">eller skriv til</span> <a class="mail" href="mailto:valentinkovalski@gmail.com?subject=ExtraLiv">valentinkovalski@gmail.com</a></p>
     </div>
