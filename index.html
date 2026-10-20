@@ -175,7 +175,65 @@
     .about { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
+
+  /* ---- hero layout + illustration ---- */
+  .hero .wrap { max-width: 1080px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+  .eyebrow { display: inline-block; margin: 0 0 14px; font-weight: 800; font-size: 16px; color: var(--accent-dark); background: var(--accent-soft); border-radius: 999px; padding: 5px 14px; }
+  .il { width: 100%; height: auto; overflow: visible; }
+  .bub { height: 100%; display: flex; align-items: center; padding: 8px 18px; font-family: "Nunito", system-ui, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; }
+  .bub.you { color: #fff; } .bub.ai { color: var(--ink); }
+  .il .i1 { animation: i1 10s ease-out infinite; }
+  .il .i2 { animation: i2 10s ease-out infinite; }
+  .il .i3 { animation: i3 10s ease-out infinite; }
+  .il .i4 { animation: i4 10s ease-out infinite; }
+  .il .i5 { animation: i5 10s ease-out infinite; }
+  .il .i6 { animation: i6 10s ease-out infinite; }
+  .il .i7 { animation: i7 10s ease-out infinite; }
+  @keyframes i1 { 0%,3.00% { opacity: 0; transform: translateY(10px); } 9.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i2 { 0%,16.00% { opacity: 0; transform: translateY(10px); } 22.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i3 { 0%,26.00% { opacity: 0; transform: translateY(10px); } 32.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i4 { 0%,30.00% { opacity: 0; transform: translateY(10px); } 36.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i5 { 0%,34.00% { opacity: 0; transform: translateY(10px); } 40.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i6 { 0%,38.00% { opacity: 0; transform: translateY(10px); } 44.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  @keyframes i7 { 0%,43.00% { opacity: 0; transform: translateY(10px); } 49.00% { opacity: 1; transform: none; } 88% { opacity: 1; transform: none; } 96%,100% { opacity: 0; transform: translateY(10px); } }
+  .il .hp { transform-box: fill-box; transform-origin: center; animation: beat 1.6s ease-in-out infinite; }
+  @keyframes beat { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.25); } }
+  .logo .lh { animation: beat 2.4s ease-in-out infinite; }
+
+  /* ---- who / why ---- */
+  .sub { margin: -12px 0 28px; font-size: 20px; color: var(--muted); max-width: 720px; }
+  .who { grid-template-columns: repeat(4, 1fr); }
+  .who-card h3 { font-size: 19px; margin: 10px 0 6px; }
+  .who-card p { margin: 0; color: var(--muted); font-size: 17px; }
+  .ico { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 18px; background: var(--accent-soft); font-size: 32px; transition: transform .25s; }
+  .who-card:hover .ico, .step:hover .ico { transform: translateY(-3px) rotate(-4deg); }
+  .step { position: relative; }
+  .step .ico { margin-bottom: 4px; }
+  .step .num { position: absolute; top: 18px; right: 18px; width: 32px; height: 32px; font-size: 17px; }
+  .why { display: grid; grid-template-columns: 1.3fr 1fr; gap: 32px; align-items: center; }
+  .why p { font-size: 20px; margin: 0 0 14px; }
+  .why h2 { margin-bottom: 18px; }
+  .why-hearts { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+  .wh { width: 64px; height: 58px; display: block; animation: bob 2.4s ease-in-out infinite; }
+  .wh svg { width: 100%; height: 100%; fill: var(--heart); display: block; }
+  .wh:nth-child(2) { animation-delay: .25s; } .wh:nth-child(3) { animation-delay: .5s; } .wh:nth-child(4) { animation-delay: .75s; } .wh:nth-child(5) { animation-delay: 1s; }
+  @keyframes bob { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-8px) scale(1.08); } }
+
+  /* ---- reveal on scroll ---- */
+  .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
+  .js .reveal.in { opacity: 1; transform: none; }
+  .js .steps .step:nth-child(2), .js .who .who-card:nth-child(2) { transition-delay: .1s; }
+  .js .steps .step:nth-child(3), .js .who .who-card:nth-child(3) { transition-delay: .2s; }
+  .js .who .who-card:nth-child(4) { transition-delay: .3s; }
+  @media (max-width: 960px) { .who { grid-template-columns: repeat(2, 1fr); } .hero .wrap { grid-template-columns: 1fr; } .why { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .who { grid-template-columns: 1fr; } .wh { width: 50px; height: 46px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .il *, .logo .lh, .wh { animation: none !important; }
+    .il [class^="i"] { opacity: 1 !important; transform: none !important; }
+    .js .reveal { opacity: 1; transform: none; transition: none; }
+  }
 </style>
+<script>document.documentElement.className += " js";</script>
 </head>
 <body>
 
@@ -193,7 +251,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="wrap">
-      <div>
+      <div class="hero-text">
+        <p class="eyebrow" data-i18n="eyebrow">For alle, også dem der ikke er computermennesker</p>
         <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
         <p class="offer-line" data-i18n="offer_line">Specialtilbud til 31. december: hjemmeside 3.500 kr. (normalt 7.000 kr.)</p>
         <p class="lead" data-i18n="hero_lead">Vi sætter det hele op på din computer. Du fortæller en AI-assistent, hvordan din drømmehjemmeside skal se ud, og ser den vokse frem. Sidder du fast, eller har du en ny idé? Brug 5 ekstra liv (supportsessioner) når som helst.</p>
@@ -202,19 +261,61 @@
           <a class="btn wa" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa_short">Spørg på WhatsApp</span></a>
         </div>
       </div>
+      <svg class="il" viewBox="0 0 440 360" role="img" aria-label="En person beder AI om en hjemmeside og ser den dukke op" data-i18n-aria="il_aria" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="240" cy="170" r="150" fill="#e3f1ed"/>
+  <rect x="110" y="30" width="310" height="230" rx="16" fill="#fff" stroke="#e3ddd2" stroke-width="2"/>
+  <path d="M110 46a16 16 0 0 1 16-16h278a16 16 0 0 1 16 16v14H110z" fill="#f1ece3"/>
+  <circle cx="130" cy="45" r="4.5" fill="#f0b4b4"/><circle cx="145" cy="45" r="4.5" fill="#f2dca0"/><circle cx="160" cy="45" r="4.5" fill="#b4d9bc"/>
+  <rect x="185" y="38" width="170" height="14" rx="7" fill="#fff"/>
+  <text x="270" y="48.5" text-anchor="middle" font-size="9" font-weight="700" fill="#55606d" font-family="Nunito, sans-serif">yourname.dk</text>
+  <g class="i3"><rect x="128" y="78" width="130" height="14" rx="7" fill="#1f2a37"/></g>
+  <g class="i4"><rect x="128" y="100" width="170" height="8" rx="4" fill="#c9cfdb"/><rect x="128" y="114" width="140" height="8" rx="4" fill="#c9cfdb"/></g>
+  <g class="i5"><rect x="128" y="134" width="96" height="28" rx="14" fill="#1f7a68"/><rect x="146" y="145" width="60" height="6" rx="3" fill="#fff" opacity=".85"/></g>
+  <g class="i6"><rect x="272" y="76" width="130" height="92" rx="12" fill="#e3f1ed"/><circle cx="352" cy="102" r="13" fill="#f2cd37"/><path d="M272 150c20-26 42-30 60-12 16-18 44-14 70 8v22a12 12 0 0 1-12 12H284a12 12 0 0 1-12-12z" fill="#8fc9b5"/></g>
+  <g class="i7"><rect x="128" y="182" width="82" height="60" rx="10" fill="#f1ece3"/><rect x="220" y="182" width="82" height="60" rx="10" fill="#f1ece3"/><rect x="312" y="182" width="90" height="60" rx="10" fill="#f1ece3"/>
+    <path class="hp" d="M169 206c-4-6-12-2-9 5 2 4 9 9 9 9s7-5 9-9c3-7-5-11-9-5z" fill="#e0434f" opacity=".85"/></g>
+  <g class="i1"><rect x="6" y="236" width="200" height="66" rx="20" fill="#1f7a68"/><foreignObject x="6" y="236" width="200" height="66"><div xmlns="http://www.w3.org/1999/xhtml" class="bub you" data-i18n="il_you">Jeg vil gerne have en hjemmeside til mine yogatimer</div></foreignObject></g>
+  <g class="i2"><rect x="60" y="300" width="260" height="52" rx="20" fill="#fff" stroke="#e3ddd2" stroke-width="2"/><foreignObject x="60" y="300" width="260" height="52"><div xmlns="http://www.w3.org/1999/xhtml" class="bub ai" data-i18n="il_ai">Værsgo! Vil du ændre noget?</div></foreignObject></g>
+</svg>
+    </div>
+  </section>
+
+  <!-- WHO IS IT FOR -->
+  <section class="block">
+    <div class="wrap">
+      <h2 class="reveal" data-i18n="who_h2">Hvem er det til?</h2>
+      <p class="sub reveal" data-i18n="who_sub">Til alle, der gerne vil have en hjemmeside, men ikke er computermennesker. Du skal ikke kunne kode og ikke forstå teknik.</p>
+      <div class="grid who">
+        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🧘</span><h3 data-i18n="w1_h">Terapeuter, coaches og undervisere</h3><p data-i18n="w1_p">Vis, hvem du er, og lad folk booke dig.</p></div>
+        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🛍️</span><h3 data-i18n="w2_h">Små butikker og håndværkere</h3><p data-i18n="w2_p">Få dine varer og din historie online.</p></div>
+        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🎨</span><h3 data-i18n="w3_h">Kunstnere, foreninger og hobbyer</h3><p data-i18n="w3_p">En fin side til det, du brænder for.</p></div>
+        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">💡</span><h3 data-i18n="w4_h">Alle med en idé</h3><p data-i18n="w4_p">Har du en idé, kan du få den på nettet.</p></div>
+      </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
   <section class="block">
     <div class="wrap">
-      <h2 data-i18n="how_h2">Sådan virker det</h2>
+      <h2 class="reveal" data-i18n="how_h2">Sådan virker det</h2>
       <ol class="grid steps">
-        <li class="panel step"><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din egen webadresse, et sted til din side online, en AI-assistent og sikker backup. Alt i dit navn.</p></li>
-        <li class="panel step"><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Med dine egne ord. Du ser din hjemmeside tage form og kan rette alt, så ofte du vil.</p></li>
-        <li class="panel step"><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, eller har du en ny idé? Brug dine 5 ekstra liv: 5 supportsessioner, når som helst.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">💻</span><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din egen webadresse, et sted til din side online, en AI-assistent og sikker backup. Alt i dit navn.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">💬</span><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Med dine egne ord. Du ser din hjemmeside tage form og kan rette alt, så ofte du vil.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">🚀</span><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, eller har du en ny idé? Brug dine 5 ekstra liv: 5 supportsessioner, når som helst.</p></li>
       </ol>
-      <div class="video" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
+      <div class="video reveal" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
+    </div>
+  </section>
+
+  <!-- WHY EXTRALIV -->
+  <section class="block alt">
+    <div class="wrap why">
+      <div class="why-text reveal">
+        <h2 data-i18n="why_h2">Hvorfor hedder det ExtraLiv?</h2>
+        <p data-i18n="why_p1"><b>Liv</b> betyder liv på dansk. I et spil giver ekstra liv dig lov til at prøve igen, når noget går galt.</p>
+        <p data-i18n="why_p2">Med ExtraLiv får du <b>5 ekstra liv</b>: 5 supportsessioner, du kan bruge, når du sidder fast eller har en ny idé. Du bliver aldrig alene med din hjemmeside.</p>
+      </div>
+      <div class="why-hearts reveal" aria-hidden="true"><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span></div>
     </div>
   </section>
 
@@ -362,6 +463,15 @@
       hero_lead: `We set everything up on your computer. You describe your dream website to an AI assistant and watch it take shape. Stuck, or got a new idea? Use 5 extra lives (support sessions) any time.`,
       btn_start: `See prices`, btn_wa_short: `Ask on WhatsApp`, btn_wa: `Ask a question on WhatsApp`,
       wa_aria: `Ask a question on WhatsApp`,
+      eyebrow: `For everyone, even if you are not a computer person`,
+      il_aria: `A person asks the AI for a website and sees it appear`, il_you: `I'd like a website for my yoga classes`, il_ai: `Here you go! Want to change anything?`,
+      who_h2: `Who is it for?`, who_sub: `For everyone who wants a website but is not a computer person. You do not need to code or understand tech.`,
+      w1_h: `Therapists, coaches and teachers`, w1_p: `Show who you are and let people book you.`,
+      w2_h: `Small shops and craftspeople`, w2_p: `Get your products and your story online.`,
+      w3_h: `Artists, clubs and hobbies`, w3_p: `A lovely page for what you care about.`,
+      w4_h: `Anyone with an idea`, w4_p: `If you have an idea, you can put it online.`,
+      why_h2: `Why is it called ExtraLiv?`, why_p1: `<b>Liv</b> means life in Danish. In a game, extra lives let you try again when something goes wrong.`,
+      why_p2: `With ExtraLiv you get <b>5 extra lives</b>: 5 support sessions you can use whenever you get stuck or have a new idea. You are never left alone with your website.`,
       how_h2: `How it works`,
       s1_h: `We set up your computer`, s1_p: `Your own web address, a home for your site online, an AI assistant and safe backups. All in your name.`,
       s2_h: `Tell the AI what you want`, s2_p: `In your own words. You watch your website take shape and can change anything, as often as you like.`,
@@ -435,6 +545,16 @@
     document.querySelectorAll('#hearts .heart').forEach(function (h) {
       h.addEventListener('click', function () { var used = h.classList.toggle('used'); h.setAttribute('aria-pressed', used ? 'true' : 'false'); });
     });
+  })();
+</script>
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
   })();
 </script>
 </body>
