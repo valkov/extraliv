@@ -59,9 +59,9 @@
   /* ---- header ---- */
   header.top { padding: 12px 0; }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .logo .lh { width: 1.15em; height: 1.05em; fill: var(--heart); vertical-align: -.1em; margin-left: .08em; shape-rendering: crispEdges; filter: drop-shadow(3px 3px 0 #1c2233); }
+  .logo .lh { width: 1.15em; height: 1.05em; fill: var(--heart); vertical-align: -.1em; margin-right: .35em; shape-rendering: crispEdges; filter: drop-shadow(3px 3px 0 #1c2233); }
   .logo { font-size: 13px; color: #fff; text-shadow: 3px 3px 0 #1c2233; text-decoration: none; }
-  .coins { white-space: nowrap; font-size: 11px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
+  .coins { white-space: nowrap; font-size: 11px; color: var(--coin); background: #000; border: 3px solid var(--coin); box-shadow: 0 3px 0 var(--coin-dark); padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
   .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
   @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
   .lang { display: flex; gap: 2px; font-size: 11px; }
@@ -203,7 +203,7 @@
     .logo { font-size: 10px; }
     .lang button { font-size: 10px; padding: 6px 5px; }
     header.top .wrap { gap: 10px 6px; flex-wrap: wrap; }
-    .coins { order: 3; margin-inline: auto; font-size: 10px; }
+    .coins { order: 3; margin-inline: auto; font-size: 8px; max-width: 100%; }
   }
   @media (max-width: 520px) {
     .pricing { grid-template-columns: 1fr; }
@@ -218,8 +218,8 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="logo pixel" href="#top" aria-label="ExtraLiv">EXTRALI<svg class="lh" viewBox="0 0 11 10" aria-hidden="true"><path d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></a>
-    <a class="coins pixel" href="#pris"><span class="tag-sale" data-i18n="sale_tag">SALE −50%</span> <span data-i18n="coins">Hjemmeside 3.500 kr.</span></a>
+    <a class="logo pixel" href="#top" aria-label="ExtraLiv"><svg class="lh" viewBox="0 0 11 10" aria-hidden="true"><path d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>EXTRALIV</a>
+    <a class="coins pixel" href="#pris"><span class="tag-sale" data-i18n="sale_tag">BLACK FRIDAY −50%</span> <span data-i18n="coins">Hjemmeside 3.500 kr.</span></a>
     <div class="lang pixel" role="group" aria-label="Sprog / Language">
       <button type="button" data-lang="da" aria-pressed="true">DA</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -409,7 +409,7 @@
     };
 
     var EN = {
-      coins: `Website 3,500 DKK`, sale_tag: `SALE −50%`,
+      coins: `Website 3,500 DKK`, sale_tag: `BLACK FRIDAY −50%`,
       hero_h1: `I'll handle the pipes.<br>You bring the vibes.`,
       hero_lead: `I set up everything on your computer. You vibe code your dream website.`,
       btn_start: `PRESS START`, btn_wa_short: `ASK ON WHATSAPP`, btn_wa: `ASK A QUESTION ON WHATSAPP`,
