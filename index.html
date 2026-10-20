@@ -124,14 +124,16 @@
   .heart svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
   .heart .on { fill: var(--heart); }
   .heart.used .on { fill: var(--heart-off); }
-  .costs { margin-top: 22px; padding: 20px; border-color: #1c2233; background: var(--coin); color: #1c2233; box-shadow: 6px 6px 0 #1c2233; }
-  .cost-h { font-size: clamp(12px, 2.6vw, 16px); margin: 0 0 14px; }
-  .cost-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .cost { background: #fff; border: 3px solid #1c2233; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
-  .cost .big { font-size: clamp(16px, 4vw, 26px); color: var(--heart); }
-  .cost .ct { font-size: 18px; font-weight: 800; line-height: 1.3; }
-  .cost-n { margin: 14px 0 0; font-size: 18px; font-weight: 800; }
-  @media (max-width: 600px) { .cost-row { grid-template-columns: 1fr; } }
+  .costs { margin-top: 22px; padding: 16px 18px 18px; border-color: #1c2233; background: var(--coin); color: #1c2233; box-shadow: 6px 6px 0 #1c2233; text-align: center; }
+  .cost-h { font-size: clamp(12px, 2.6vw, 17px); margin: 0 0 12px; }
+  .cost-row { display: flex; align-items: center; justify-content: center; gap: 14px; }
+  .cost { background: #fff; border: 3px solid #1c2233; padding: 10px 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; flex: 1 1 0; max-width: 270px; }
+  .cost .ctag { font-size: 11px; background: #1c2233; color: var(--coin); padding: 5px 8px; }
+  .cost .big { white-space: nowrap; font-size: clamp(16px, 4vw, 26px); color: var(--heart); }
+  .cost .ct { font-size: 15px; font-weight: 800; line-height: 1.25; }
+  .plus { font-size: clamp(28px, 6vw, 44px); line-height: 1; color: #1c2233; }
+  .cost-n { margin: 12px 0 0; font-size: 17px; font-weight: 800; }
+  @media (max-width: 600px) { .cost-row { flex-direction: column; gap: 8px; } .cost { flex-basis: auto; width: 100%; } }
   .note { color: #fff; font-weight: 700; font-size: 15px; text-shadow: 1px 1px 0 #1c2233; margin: 16px 0 0; }
   .hint { font-size: 13px !important; opacity: .85; }
   .todo { background: #fff3a0; color: #1c2233; border: 2px dashed #1c2233; padding: 1px 5px; font-size: 13px; font-weight: 400; }
@@ -312,8 +314,9 @@
       <div class="panel costs">
         <p class="cost-h pixel" data-i18n="cost_h">Bagefter betaler du selv:</p>
         <div class="cost-row">
-          <div class="cost"><span class="big pixel" data-i18n="cost1_big">ca. 100 kr.</span><span class="ct" data-i18n="cost1_t">om måneden til din egen AI-licens (Claude), mens du arbejder på siden</span></div>
-          <div class="cost"><span class="big pixel" data-i18n="cost2_big">ca. 100 kr.</span><span class="ct" data-i18n="cost2_t">om året til dit eget domæne</span></div>
+          <div class="cost"><span class="ctag pixel" data-i18n="cost1_tag">HVER MÅNED</span><span class="big pixel" data-i18n="cost1_big">~100 kr.</span><span class="ct" data-i18n="cost1_t">til din egen AI-licens (Claude)</span></div>
+          <span class="plus pixel" aria-hidden="true">+</span>
+          <div class="cost"><span class="ctag pixel" data-i18n="cost2_tag">HVERT ÅR</span><span class="big pixel" data-i18n="cost2_big">~100 kr.</span><span class="ct" data-i18n="cost2_t">til dit eget domæne</span></div>
         </div>
         <p class="cost-n" data-i18n="cost_note">Intet til mig. Ingen binding.</p>
       </div>
@@ -427,8 +430,8 @@
       pk2_tag: `MOBILE APP`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
       pk2_note: `The price depends on the scope, for example whether a backend must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `CHOOSE THE MOBILE APP`,
       pk3_tag: `1 HOUR`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `BOOK AN HOUR`,
-      cost_h: `Afterwards you pay for:`, cost1_big: `about 100 DKK`, cost1_t: `a month for your own AI licence (Claude) while you work on the site`,
-      cost2_big: `about 100 DKK`, cost2_t: `a year for your own domain`, cost_note: `Nothing to me. No lock-in.`,
+      cost_h: `Afterwards you pay for:`, cost1_big: `~100 DKK`, cost1_tag: `EVERY MONTH`, cost1_t: `for your own AI licence (Claude)`,
+      cost2_tag: `EVERY YEAR`, cost2_big: `~100 DKK`, cost2_t: `for your own domain`, cost_note: `Nothing to me. No lock-in.`,
       cl_h2: `What clients say`,
       t2t_eye: `Guided hikes and retreats`,
       t2t_quote: `“I had never built a website before. I just told the AI what I wanted, and a few sessions later it was live. Easy, and honestly fun. And the site is completely mine.”`,
