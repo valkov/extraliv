@@ -173,9 +173,11 @@
   /* ---- about ---- */
   .about { display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; }
   .photo { width: 120px; height: 120px; border: var(--px) solid var(--ink); box-shadow: 5px 5px 0 var(--ink); background: var(--sky-deep); position: relative; overflow: hidden; }
-  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
   .photo.empty::after { content: "PHOTO"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Press Start 2P", monospace; font-size: 11px; color: #fff; text-shadow: 2px 2px 0 #1c2233; }
   .about h2 { margin-bottom: 8px; }
+  .about a.li { display: inline-block; font-weight: 800; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 6px 12px; text-decoration: none; }
+  .about a.li:hover { transform: translateY(2px); box-shadow: 0 1px 0 #1c2233; }
   .about p { margin: 0 0 6px; }
 
   /* ---- faq ---- */
@@ -362,7 +364,7 @@
       <div>
         <h2 class="pixel" data-i18n="about_h2">Om mig</h2>
         <p data-i18n="about_p1">Hej, jeg hedder Valentin. Jeg har 20 års erfaring med at bygge løsninger til startups, i rådgivning og i store virksomheder. Jeg har selv bygget to hjemmesider ved at tale med AI, og nu hjælper jeg dig i gang.</p>
-        <p data-i18n="about_p2"><span class="todo">UDKAST: ret teksten, så den lyder som dig. Læg dit foto som photo.jpg</span></p>
+        <p><a class="li" href="https://www.linkedin.com/in/valentin-kovalski/" target="_blank" rel="noopener" data-i18n="about_li">Se mig på LinkedIn</a></p>
       </div>
     </div>
   </section>
@@ -440,8 +442,8 @@
       visit: `Visit the site`,
       cl_draft: `<span class="todo">DRAFT: the owners must approve their quote before the page is shared. Keep the Wix/Lovable comparison only if it is true.</span>`,
       about_h2: `About me`,
-      about_p1: `Hi, I am Valentin. I have 20 years of experience building solutions for startups, in consulting and in large enterprises. I built two websites myself just by talking to AI, and now I help you get started.`,
-      about_p2: `<span class="todo">DRAFT: edit the text so it sounds like you. Put your photo in the folder as photo.jpg</span>`,
+      about_p1: `Hi, I am Valentin. I have 20 years of experience building solutions for startups, in consultancy and at large enterprises. I built two websites myself just by talking to AI, and now I help you get started.`,
+      about_li: `See me on LinkedIn`,
       faq_h2: `Questions`,
       q1: `Do I need to know how to code?`, a1: `No. You write or say what you want, and AI builds it.`,
       q2: `Who owns the site?`, a2: `You do. All accounts are in your name, and I have no access afterwards.`,
