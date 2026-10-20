@@ -207,7 +207,8 @@
     .coins { font-size: 8px; padding: 5px 6px; gap: 5px; white-space: nowrap; }
     .logo { font-size: 10px; }
     .lang button { font-size: 10px; padding: 6px 5px; }
-    header.top .wrap { gap: 6px; }
+    header.top .wrap { gap: 10px 6px; flex-wrap: wrap; }
+    .coins { order: 3; margin-inline: auto; font-size: 10px; }
   }
   @media (max-width: 520px) {
     .pricing { grid-template-columns: 1fr; }
@@ -223,7 +224,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo pixel" href="#top">EXTRALIV</a>
-    <a class="coins pixel" href="#pris"><span class="tag-sale" data-i18n="sale_tag">SALE −50%</span> <span data-i18n="coins">3.500 kr.</span></a>
+    <a class="coins pixel" href="#pris"><span class="tag-sale" data-i18n="sale_tag">SALE −50%</span> <span data-i18n="coins">Hjemmeside 3.500 kr.</span></a>
     <div class="lang pixel" role="group" aria-label="Sprog / Language">
       <button type="button" data-lang="da" aria-pressed="true">DA</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -422,7 +423,7 @@
     };
 
     var EN = {
-      coins: `3,500 DKK`, sale_tag: `SALE −50%`,
+      coins: `Website 3,500 DKK`, sale_tag: `SALE −50%`,
       hero_h1: `I'll handle the pipes.<br>You bring the vibes.`,
       hero_lead: `I set up everything on your computer. You vibe code your dream website.`,
       btn_start: `PRESS START`, btn_wa_short: `ASK ON WHATSAPP`, btn_wa: `ASK A QUESTION ON WHATSAPP`,
