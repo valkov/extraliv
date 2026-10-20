@@ -104,7 +104,7 @@
   @media (max-width: 760px) { .dg.fw { display: none; } .dg.fm { display: block; } }
 
   /* ---- packages ---- */
-  .pricing { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
+  .pricing { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
   .card { display: flex; flex-direction: column; gap: 6px; padding: 14px; }
   .card .tag { align-self: flex-start; font-size: 10px; background: var(--ink); color: var(--paper); padding: 6px 7px; }
   .card .tag.hot { background: var(--heart); color: #fff; }
@@ -269,14 +269,6 @@
       <h2 class="pixel" data-i18n="pk_h2">Vælg din pakke</h2>
       <div class="grid pricing">
 
-        <div class="panel card">
-          <span class="tag pixel" data-i18n="pk0_tag">GRATIS</span>
-          <h3 class="pixel" data-i18n="pk0_h">Gratis samtale</h3>
-          <p class="price pixel" data-i18n="pk0_price">0 kr.</p>
-          <p data-i18n="pk0_p">Fortæl om din idé over telefonen. Helt uforpligtende.</p>
-          <a class="btn wa small" data-wa="consult" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk0_btn">SKRIV PÅ WHATSAPP</span></a>
-        </div>
-
         <div class="panel card featured">
           <span class="tag pixel hot" data-i18n="pk1_tag">SPECIALTILBUD</span>
           <h3 class="pixel" data-i18n="pk1_h">Nøglefærdig hjemmeside</h3>
@@ -406,8 +398,8 @@
   (function () {
     var WA_NUMBER = '4550183360';
     var WA_TEXT = {
-      da: { def: 'Hej! Jeg har et spørgsmål om ExtraLiv.', consult: 'Hej! Jeg vil gerne have en gratis samtale om ExtraLiv.', site: 'Hej! Jeg er interesseret i den nøglefærdige hjemmeside.', app: 'Hej! Jeg er interesseret i at bygge en mobilapp.', session: 'Hej! Jeg vil gerne booke en enkelt session.' },
-      en: { def: 'Hi! I have a question about ExtraLiv.', consult: 'Hi! I would like a free consultation about ExtraLiv.', site: 'Hi! I am interested in the turnkey website.', app: 'Hi! I am interested in building a mobile app.', session: 'Hi! I would like to book a single session.' }
+      da: { def: 'Hej! Jeg har et spørgsmål om ExtraLiv.', site: 'Hej! Jeg er interesseret i den nøglefærdige hjemmeside.', app: 'Hej! Jeg er interesseret i at bygge en mobilapp.', session: 'Hej! Jeg vil gerne booke en enkelt session.' },
+      en: { def: 'Hi! I have a question about ExtraLiv.', site: 'Hi! I am interested in the turnkey website.', app: 'Hi! I am interested in building a mobile app.', session: 'Hi! I would like to book a single session.' }
     };
 
     var EN = {
@@ -422,7 +414,6 @@
       fl4_h: `5 extra lives`, fl4_s: `<i>&#9829;&#9829;&#9829;&#9829;&#9829;</i> 5 support sessions, use them any time while iterating.`,
       fl5_h: `🚀 Your dream website is live!`,
       pk_h2: `Choose your package`,
-      pk0_tag: `FREE`, pk0_h: `Free consultation`, pk0_price: `0 DKK`, pk0_p: `Tell me your idea over the phone. No strings attached.`, pk0_btn: `MESSAGE ON WHATSAPP`,
       pk1_tag: `SPECIAL OFFER`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
       pk1_l1: `Setup on your computer`,
       pk1_l2: `Guarantee: a complete, running website on your own domain`,
