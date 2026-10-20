@@ -289,10 +289,32 @@
   footer { background: var(--navy); }
   @media (max-width: 760px) { .cloud { width: 90px !important; } .cloud.c2 { top: 120px; } .sun { width: 70px; height: 70px; right: 6%; } .hero { padding-bottom: 120px; } .hills { height: 90px; } }
   @media (prefers-reduced-motion: reduce) { .cloud, .sun { animation: none !important; } }
+
+  /* ---- black friday banner (rounded) + subtle birds ---- */
+  .sale-top { position: relative; z-index: 4; background: #8fd0ff; display: flex; justify-content: center; padding: 12px 16px 0; }
+  .coins { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; font-size: 15px; font-weight: 800; color: var(--coin); background: #000; border: 3px solid var(--coin); border-radius: 999px; box-shadow: 0 3px 0 var(--coin-dark); padding: 6px 16px 6px 8px; text-decoration: none; transform: rotate(-1.5deg); animation: pulse 1.6s ease-in-out infinite; }
+  .coins .tag-sale { background: var(--heart); color: #fff; padding: 3px 12px; border-radius: 999px; }
+  @keyframes pulse { 50% { transform: rotate(-1.5deg) scale(1.05); } }
+  header.top { padding-top: 10px; }
+  .bird { position: absolute; z-index: 1; width: 26px; height: 13px; left: var(--x, 0); opacity: .38; pointer-events: none; animation: bfly 48s linear infinite, bbob 3.4s ease-in-out infinite; }
+  .bird .wing { transform-box: fill-box; transform-origin: 50% 100%; animation: flap .7s ease-in-out infinite alternate; }
+  .bird.k1 { top: 95px; --x: 20%; animation-duration: 52s, 3.6s; animation-delay: -10s, 0s; }
+  .bird.k2 { top: 130px; --x: 50%; width: 20px; height: 10px; opacity: .3; animation-duration: 64s, 3s; animation-delay: -40s, -1s; }
+  .bird.k3 { top: 62px; --x: 78%; width: 22px; height: 11px; animation-duration: 58s, 4s; animation-delay: -25s, -2s; }
+  .bird.k4 { top: 175px; --x: 35%; width: 18px; height: 9px; opacity: .28; animation-duration: 72s, 3.2s; animation-delay: -55s, -1.4s; }
+  .bird.k5 { top: 60px; --x: 40%; animation-duration: 80s, 3.5s; animation-delay: -20s, 0s; }
+  .bird.k6 { bottom: 60px; top: auto; --x: 80%; width: 20px; height: 10px; opacity: .3; animation-duration: 95s, 3s; animation-delay: -60s, -1s; }
+  @keyframes bfly { from { left: -8%; } to { left: 108%; } }
+  @keyframes bbob { 50% { transform: translateY(-8px); } }
+  @keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(.45); } }
+  @media (max-width: 520px) { .coins { font-size: 12.5px; gap: 6px; padding: 5px 12px 5px 6px; } .coins .tag-sale { padding: 2px 8px; } .bird { opacity: .3; } }
+  @media (prefers-reduced-motion: reduce) { .coins, .bird, .bird .wing { animation: none !important; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
 <body>
+
+<div class="sale-top"><a class="coins" href="#pris"><span class="tag-sale" data-i18n="sale_tag">BLACK FRIDAY −50%</span> <span data-i18n="coins">Hjemmeside 3.500 kr.</span></a></div>
 
 <header class="top">
   <div class="wrap">
@@ -311,7 +333,11 @@
     <svg class="cloud c2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <svg class="cloud c3" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <span class="sun" aria-hidden="true"></span>
-    <div class="wrap">
+    <svg class="bird k1" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="bird k2" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="bird k3" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="bird k4" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="wrap">
       <div class="hero-text">
         <p class="eyebrow" data-i18n="eyebrow">For alle, også dem der ikke er computermennesker</p>
         <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
@@ -371,6 +397,8 @@
 
   <!-- WHY EXTRALIV -->
   <section class="block sky">
+    <svg class="bird k5" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <svg class="bird k6" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <svg class="cloud d2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <div class="wrap why">
@@ -524,6 +552,7 @@
     };
 
     var EN = {
+      coins: `Website 3,500 DKK`, sale_tag: `BLACK FRIDAY −50%`,
       offer_line: `Special offer until December 31: website 3,500 DKK (normally 7,000 DKK)`,
       hero_h1: `Get your own website.<br>Just by talking to your own computer.`,
       hero_lead: `We set everything up on your computer. You describe your dream website to an AI assistant and watch it take shape. Stuck, or got a new idea? Use 5 extra lives (support sessions) any time.`,
