@@ -393,6 +393,8 @@
   .bw .bar i { width: 10px; height: 10px; border-radius: 50%; background: #d9cfbd; flex: none; }
   .bw .bar i:nth-child(1) { background: #f0a3a3; } .bw .bar i:nth-child(2) { background: #f2d58a; } .bw .bar i:nth-child(3) { background: #a8d5b0; }
   .bw .url { margin-left: 8px; flex: 1; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 2px 14px; font-weight: 800; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bw .url { display: flex; align-items: center; gap: 8px; }
+  .bw .url .fav { width: 20px; height: 20px; border-radius: 5px; object-fit: contain; flex: none; display: block; aspect-ratio: auto; transform: none !important; }
   .bw .visit { flex: none; font-size: 14px; font-weight: 800; background: var(--coin); border: 2px solid var(--navy); border-radius: 999px; padding: 0 12px; }
   .bw img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .4s; }
   .bw:hover img { transform: scale(1.03); }
@@ -547,11 +549,11 @@
       <p class="sub reveal" data-i18n="cl_sub">Tryk på en side for at åbne den.</p>
       <div class="grid sites">
         <figure class="site-fig reveal">
-          <a class="bw" href="https://trailstothriving.dk" target="_blank" rel="noopener" aria-label="trailstothriving.dk"><span class="bar"><i></i><i></i><i></i><span class="url">trailstothriving.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/trailstothriving.jpg" alt="trailstothriving.dk" width="800" height="500" loading="lazy"></a>
+          <a class="bw" href="https://trailstothriving.dk" target="_blank" rel="noopener" aria-label="trailstothriving.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/ttt-logo.png" alt="" width="20" height="20">trailstothriving.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/trailstothriving.jpg" alt="trailstothriving.dk" width="800" height="500" loading="lazy"></a>
           <figcaption data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Nu er den live, og helt min egen.”</figcaption>
         </figure>
         <figure class="site-fig reveal">
-          <a class="bw" href="https://re-balance.dk" target="_blank" rel="noopener" aria-label="re-balance.dk"><span class="bar"><i></i><i></i><i></i><span class="url">re-balance.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/rebalance.jpg" alt="re-balance.dk" width="800" height="500" loading="lazy"></a>
+          <a class="bw" href="https://re-balance.dk" target="_blank" rel="noopener" aria-label="re-balance.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/rb-favicon.svg" alt="" width="20" height="20">re-balance.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/rebalance.jpg" alt="re-balance.dk" width="800" height="500" loading="lazy"></a>
           <figcaption data-i18n="rb_quote">“Meget sjovere end Wix eller Lovable. Her blev det hele mit.”</figcaption>
         </figure>
       </div>
