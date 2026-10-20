@@ -96,19 +96,22 @@
   .node p { margin: 0; font-size: 14px; line-height: 1.35; }
   .chips { display: flex; flex-wrap: wrap; gap: 5px; }
   .chip { font-size: 12px; font-weight: 800; padding: 2px 7px; border: 2px solid var(--ink); background: var(--coin); color: #1c2233; }
-  .arr { flex: none; width: 34px; align-self: center; text-align: center; font-size: 22px; color: #fff; text-shadow: 2px 2px 0 #1c2233; font-family: "Nunito", system-ui, sans-serif; font-weight: 800; line-height: 34px; }
-  .loop { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
-  .loop .lb { border: 2px solid var(--ink); padding: 5px 8px; font-size: 13px; font-weight: 800; text-align: center; }
-  .loop .dn { text-align: center; font-size: 14px; line-height: 1; }
-  .loop .back { border: 2px dashed var(--heart); color: var(--heart); font-size: 12px; font-weight: 800; padding: 4px 6px; text-align: center; }
+  .arr { flex: none; width: 40px; align-self: center; display: flex; justify-content: center; }
+  .arr svg { width: 32px; height: 24px; fill: #fff; stroke: #1c2233; stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(2px 2px 0 #1c2233); }
+  .loop { position: relative; display: flex; flex-direction: column; gap: 18px; padding-right: 30px; margin-top: 4px; }
+  .loop .lb { border: 2px solid var(--ink); padding: 5px 8px; font-size: 13px; font-weight: 800; text-align: center; position: relative; background: var(--paper); }
+  .loop .lb:first-child::after { content: ""; position: absolute; left: 50%; bottom: -15px; margin-left: -6px; border: 6px solid transparent; border-top: 9px solid var(--ink); border-bottom: 0; }
+  .loop .lb:first-child::before { content: ""; position: absolute; left: 50%; bottom: -10px; width: 3px; height: 10px; margin-left: -1.5px; background: var(--ink); }
+  .loop .ret { position: absolute; right: 4px; top: 18px; bottom: 18px; width: 24px; border: 3px solid var(--heart); border-left: 0; }
+  .loop .ret::before { content: ""; position: absolute; left: -2px; top: -9px; border: 7px solid transparent; border-right: 11px solid var(--heart); border-left: 0; }
+  .loop-note { color: var(--heart); font-size: 12px; font-weight: 800; text-align: center; line-height: 1.25; }
   .lives { font-size: 18px; color: var(--heart); letter-spacing: 2px; line-height: 1; }
   .node.end { background: var(--coin); color: #1c2233; border-color: #1c2233; box-shadow: 6px 6px 0 #1c2233; }
   .node.end .num { background: #1c2233; color: var(--coin); }
   @media (max-width: 899px) {
     .flow { flex-direction: column; }
-    .arr { width: auto; height: 34px; }
-    .arr::before { content: "\2193"; }
-    .arr { font-size: 0; } .arr::before { font-size: 24px; }
+    .arr { width: auto; height: 40px; }
+    .arr svg { transform: rotate(90deg); }
   }
 
   /* ---- packages ---- */
@@ -260,18 +263,19 @@
     <div class="wrap">
       <div class="flow">
         <div class="panel node"><span class="num pixel">1</span><h3 class="pixel" data-i18n="fl1_h">Jeg sætter op</h3><div class="chips" data-i18n="fl1_chips"><span class="chip">Domæne</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Mails</span><span class="chip">CMS</span><span class="chip">Backend</span></div></div>
-        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
         <div class="panel node"><span class="num pixel">2</span><h3 class="pixel" data-i18n="fl2_h">Du lærer</h3><p data-i18n="fl2_p">Jeg lærer dig at bruge lokal AI til at bygge og udgive din side.</p></div>
-        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
         <div class="panel node"><span class="num pixel">3</span><h3 class="pixel" data-i18n="fl3_h">Iterér</h3>
           <div class="loop" aria-label="loop">
-            <div class="lb" data-i18n="fl3_a">Eksperimentér</div><div class="dn" aria-hidden="true">&darr;</div>
+            <div class="lb" data-i18n="fl3_a">Eksperimentér</div>
             <div class="lb" data-i18n="fl3_b">Se resultatet med det samme</div>
-            <div class="back" data-i18n="fl3_c">&#8630; tilbage, til du er glad</div>
-          </div></div>
-        <div class="arr" aria-hidden="true">&rarr;</div>
+            <div class="ret" aria-hidden="true"></div>
+          </div>
+          <div class="loop-note" data-i18n="fl3_c">tilbage, til du er glad</div></div>
+        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
         <div class="panel node"><span class="num pixel">4</span><h3 class="pixel" data-i18n="fl4_h">5 ekstra liv</h3><div class="lives" aria-hidden="true">&#9829;&#9829;&#9829;&#9829;&#9829;</div><p data-i18n="fl4_p">5 ekstra supportsessioner, du kan bruge når som helst, til at give vilde idéer liv sammen med mig.</p></div>
-        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
         <div class="panel node end"><span class="num pixel">5</span><h3 class="pixel" data-i18n="fl5_h">Færdig</h3><p data-i18n="fl5_p">Siden kører lokalt på din egen computer.</p></div>
       </div>
     </div>
@@ -425,7 +429,7 @@
       mascot_aria: `Pixel-art plumber with a hard hat and a wrench`, wa_aria: `Ask a question on WhatsApp`,
       fl1_h: `I set up`, fl1_chips: `<span class="chip">Domain</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Emails</span><span class="chip">CMS</span><span class="chip">Backend</span>`,
       fl2_h: `You learn`, fl2_p: `I teach you to use local AI to build the website and publish it.`,
-      fl3_h: `Iterate`, fl3_a: `Experiment`, fl3_b: `See the result immediately`, fl3_c: `&#8630; back, until you are happy`,
+      fl3_h: `Iterate`, fl3_a: `Experiment`, fl3_b: `See the result immediately`, fl3_c: `back, until you are happy`,
       fl4_h: `5 extra lives`, fl4_p: `5 extra support sessions you can use any time to bring crazy ideas to life together.`,
       fl5_h: `Done`, fl5_p: `The site runs locally on your own computer.`,
       pk_h2: `Choose your package`,
