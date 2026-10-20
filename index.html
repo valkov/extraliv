@@ -152,6 +152,17 @@
   .price { font-size: clamp(22px, 4vw, 34px); margin: 8px 0 4px; }
   .price small { font-family: "Nunito", sans-serif; font-size: 16px; font-weight: 700; }
 
+  /* ---- package cards ---- */
+  .pricing { align-items: stretch; }
+  .card { display: flex; flex-direction: column; gap: 4px; }
+  .card h3 { font-size: 15px; margin: 8px 0 4px; }
+  .card .tag { align-self: flex-start; font-size: 11px; background: var(--ink); color: var(--paper); padding: 6px 8px; }
+  .card .tag.hot { background: var(--heart); color: #fff; }
+  .card .btn { margin-top: auto; align-self: flex-start; }
+  .card.featured { border-color: var(--coin); box-shadow: calc(var(--px) * 2) calc(var(--px) * 2) 0 var(--coin-dark); outline: var(--px) solid var(--ink); }
+  .card .price { margin: 4px 0; }
+  .card ul.checks { margin: 8px 0; }
+
   /* ---- proof ---- */
   .proof a.site { display: block; text-decoration: none; color: inherit; }
   .proof .site-name { font-size: 13px; margin: 0 0 8px; word-break: break-all; }
@@ -323,32 +334,60 @@
     </div>
   </section>
 
-  <!-- PRICE / EKSTRA LIV -->
+  <!-- PACKAGES -->
   <section class="block alt" id="pris">
     <div class="wrap">
-      <h2 class="pixel" data-i18n="ex_h2">Ekstra liv</h2>
-      <p class="sub" data-i18n="ex_sub">Gik noget galt, eller sidder du fast? Hvert hjerte er en supportsession på 45 minutter. Prøv at trykke på dem.</p>
-      <div class="panel" style="max-width:640px">
-        <p class="pixel" style="font-size:12px;margin:0" data-i18n="pkg_name">Pakken “Nøglefærdig”</p>
-        <p class="price-old pixel" data-i18n="price_old">7.000 kr.</p>
-        <p class="price pixel" data-i18n="price">3.500 kr.</p>
-        <p class="offer" data-i18n="offer">Salg til og med 31. december 2026</p>
-        <p class="guarantee" data-i18n="guarantee">Garanti: du ender med en komplet, kørende hjemmeside på dit eget domæne, klar til at blive brugt. Nøglefærdig.</p>
-        <p class="app-note" data-i18n="app_note">Vil du have en mobilapp? Det er også muligt, men de 3.500 kr. gælder kun hjemmesiden. Pris og omfang for en app aftaler vi i telefonen eller når vi mødes.</p>
-        <p style="margin:0 0 8px" data-i18n="pkg_desc">Fuld opsætning på din computer, din hjemmeside bygget sammen med dig + 3 ekstra liv.</p>
-        <div class="hearts" id="hearts" role="group" aria-label="Dine ekstra liv" data-i18n-aria="hearts_aria">
-          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 1" data-i18n-aria="heart1_aria">
-            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
-          </button>
-          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 2" data-i18n-aria="heart2_aria">
-            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
-          </button>
-          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 3" data-i18n-aria="heart3_aria">
-            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
-          </button>
+      <h2 class="pixel" data-i18n="pk_h2">Vælg din pakke</h2>
+      <p class="sub" data-i18n="pk_sub">Start med en gratis samtale, eller gå direkte til den pakke, der passer dig.</p>
+      <div class="grid two pricing">
+
+        <div class="panel card">
+          <span class="tag pixel" data-i18n="pk0_tag">GRATIS</span>
+          <h3 class="pixel" data-i18n="pk0_h">Gratis samtale</h3>
+          <p class="price pixel" data-i18n="pk0_price">0 kr.</p>
+          <p data-i18n="pk0_p">Fortæl mig om din idé over telefonen, så finder vi ud af, hvad der giver mening. Helt uforpligtende. Skriv til mig på WhatsApp, så aftaler vi et tidspunkt.</p>
+          <a class="btn wa small" data-wa="consult" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk0_btn">SKRIV PÅ WHATSAPP</span></a>
         </div>
-        <p class="hint" data-i18n="hint">Flere liv kan købes bagefter. <span class="todo">UDKAST: pris pr. ekstra liv, antal sessioner og præcis hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
-        <a class="btn" href="#kontakt" style="margin-top:12px" data-i18n="btn_start">TRYK START</a>
+
+        <div class="panel card featured">
+          <span class="tag pixel hot" data-i18n="pk1_tag">SPECIALTILBUD</span>
+          <h3 class="pixel" data-i18n="pk1_h">Nøglefærdig hjemmeside</h3>
+          <p class="price-old pixel" data-i18n="pk1_old">7.000 kr.</p>
+          <p class="price pixel" data-i18n="pk1_price">3.500 kr.</p>
+          <p class="offer" data-i18n="pk1_offer">Specialtilbud til og med 31. december 2026</p>
+          <p class="guarantee" data-i18n="pk1_guar">Garanti: du ender med en komplet, kørende hjemmeside på dit eget domæne, klar til at blive brugt.</p>
+          <ul class="checks">
+            <li data-i18n="pk1_l1">Fuld opsætning på din computer</li>
+            <li data-i18n="pk1_l2">Din hjemmeside bygget sammen med dig</li>
+            <li data-i18n="pk1_l3">Domæne, hosting, CMS og kontaktformular sat op</li>
+            <li data-i18n="pk1_l4">3 ekstra liv: 3 supportsessioner på 45 minutter</li>
+          </ul>
+          <div class="hearts" id="hearts" role="group" aria-label="Dine ekstra liv" data-i18n-aria="hearts_aria">
+            <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 1" data-i18n-aria="heart1_aria"><svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></button>
+            <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 2" data-i18n-aria="heart2_aria"><svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></button>
+            <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 3" data-i18n-aria="heart3_aria"><svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></button>
+          </div>
+          <a class="btn wa small" data-wa="site" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk1_btn">VÆLG HJEMMESIDEN</span></a>
+          <p class="hint" data-i18n="pk1_hint"><span class="todo">UDKAST: præcis hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
+        </div>
+
+        <div class="panel card">
+          <span class="tag pixel" data-i18n="pk2_tag">MOBILAPP</span>
+          <h3 class="pixel" data-i18n="pk2_h">Byg din mobilapp</h3>
+          <p class="price pixel" data-i18n="pk2_price">5.000 kr.</p>
+          <p data-i18n="pk2_p">Jeg hjælper dig med at bygge din egen mobilapp med AI og gøre den klar til App Store og Google Play.</p>
+          <p class="hint" data-i18n="pk2_note">Udviklerkonti hos Apple og Google betaler du selv. <span class="todo">UDKAST: tjek aktuelle priser og hvad appen skal indeholde</span></p>
+          <a class="btn wa small" data-wa="app" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk2_btn">VÆLG MOBILAPPEN</span></a>
+        </div>
+
+        <div class="panel card">
+          <span class="tag pixel" data-i18n="pk3_tag">1 TIME</span>
+          <h3 class="pixel" data-i18n="pk3_h">Enkelt session</h3>
+          <p class="price pixel" data-i18n="pk3_price">500 kr.</p>
+          <p data-i18n="pk3_p">En time med mig, når du sidder fast, eller når du vil videre med næste idé. Vi aftaler tidspunktet, så det passer dig.</p>
+          <a class="btn wa small" data-wa="session" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk3_btn">BOOK EN TIME</span></a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -416,7 +455,7 @@
       </details>
       <details>
         <summary data-i18n="q4">Kan jeg bygge en app og ikke kun en hjemmeside?</summary>
-        <p data-i18n="a4">Ja. Webapps som bookingsider og små værktøjer kan vi sætte op med det samme. En rigtig mobilapp til App Store og Google Play er også mulig, men den er ikke med i prisen på 3.500 kr., som kun gælder hjemmesiden. Pris og omfang aftaler vi i telefonen eller når vi mødes.</p>
+        <p data-i18n="a4">Ja. Webapps som bookingsider og små værktøjer kan vi sætte op sammen med hjemmesiden. En rigtig mobilapp til App Store og Google Play er en separat pakke til 5.000 kr., og prisen på 3.500 kr. gælder kun hjemmesiden. Har du spørgsmål om omfanget, så start med en gratis samtale.</p>
       </details>
       <details>
         <summary data-i18n="q5">Hvad koster det efter opsætningen?</summary>
@@ -488,18 +527,8 @@
       cost_2: 'Domain: about 100 DKK a year',
       cost_3: 'Hosting, CMS and email: free for most small sites',
       cost_4: 'No monthly payment to me, no lock-in',
-      ex_h2: 'Extra lives',
-      ex_sub: 'Did something go wrong, or are you stuck? Each heart is a 45-minute support session. Try clicking them.',
-      pkg_name: 'The “Turnkey” package',
-      price_old: '7,000 DKK',
-      price: '3,500 DKK',
-      offer: 'Sale until December 31, 2026',
-      guarantee: 'Guarantee: you end up with a complete, running website on your own domain, ready to use. Turnkey.',
-      app_note: 'Want a mobile app? That is possible too, but the 3,500 DKK covers the website only. We agree the price and scope of an app on the phone or when we meet.',
-      pkg_desc: 'Full setup on your computer, your website built together with you + 3 extra lives.',
       hearts_aria: 'Your extra lives',
       heart1_aria: 'Extra life 1', heart2_aria: 'Extra life 2', heart3_aria: 'Extra life 3',
-      hint: 'More lives can be bought later. <span class="todo">DRAFT: price per extra life, number of sessions and exactly what “complete website” covers (pages, features) are not decided</span>',
       proof_h2: 'What clients say',
       proof_sub: 'Two websites, built without writing a single line of code. Click and see them for yourself.',
       pf1_desc: 'Guided nature hikes and retreats for better mental health.',
@@ -510,6 +539,27 @@
       pf2_who: 'Owner of re-balance.dk',
       visit: 'VISIT THE SITE',
       draft: '<span class="todo">DRAFT: the owner must approve or rewrite this quote before it is published. Keep the Wix/Lovable comparison only if it is true</span>',
+      pk_h2: 'Choose your package',
+      pk_sub: 'Start with a free call, or go straight to the package that suits you.',
+      pk0_tag: 'FREE', pk0_h: 'Free consultation', pk0_price: '0 DKK',
+      pk0_p: 'Tell me about your idea over the phone and we will work out what makes sense. No strings attached. Message me on WhatsApp and we will set a time.',
+      pk0_btn: 'MESSAGE ON WHATSAPP',
+      pk1_tag: 'SPECIAL OFFER', pk1_h: 'Turnkey website', pk1_old: '7,000 DKK', pk1_price: '3,500 DKK',
+      pk1_offer: 'Special offer until December 31, 2026',
+      pk1_guar: 'Guarantee: you end up with a complete, running website on your own domain, ready to use.',
+      pk1_l1: 'Full setup on your computer',
+      pk1_l2: 'Your website built together with you',
+      pk1_l3: 'Domain, hosting, CMS and contact form set up',
+      pk1_l4: '3 extra lives: 3 support sessions of 45 minutes',
+      pk1_btn: 'CHOOSE THE WEBSITE',
+      pk1_hint: '<span class="todo">DRAFT: exactly what “complete website” covers (pages, features) is not decided</span>',
+      pk2_tag: 'MOBILE APP', pk2_h: 'Build your mobile app', pk2_price: '5,000 DKK',
+      pk2_p: 'I help you build your own mobile app with AI and get it ready for the App Store and Google Play.',
+      pk2_note: 'You pay for the Apple and Google developer accounts yourself. <span class="todo">DRAFT: check current prices and what the app should include</span>',
+      pk2_btn: 'CHOOSE THE MOBILE APP',
+      pk3_tag: '1 HOUR', pk3_h: 'Single session', pk3_price: '500 DKK',
+      pk3_p: 'One hour with me when you are stuck, or when you want to move on to your next idea. We agree a time that suits you.',
+      pk3_btn: 'BOOK AN HOUR',
       about_h2: 'About me',
       about_p1: 'Hi, I am Valentin. I have 20 years of experience building solutions for startups, in consulting and in large enterprises. Now I have built two websites without writing the code myself, just by talking to AI, and I help others get started so they can do the same.',
       about_p2: '<span class="todo">DRAFT: edit the text so it sounds like you. Optionally add where you live and which languages you help in. Put your photo in the folder as photo.jpg</span>',
@@ -518,7 +568,7 @@
       q1: 'Do I need to know how to code?', a1: 'No. You write or say what you want, and AI builds it. I show you how it works.',
       q2: 'Who owns the website?', a2: 'You do. All accounts are created in your name and I have no access afterwards. You can take the code wherever you like.',
       q3: 'What if something breaks?', a3: 'Every change is saved in GitHub, so you can always go one step back. And you have your extra lives if you get stuck.',
-      q4: 'Can I build an app, not just a website?', a4: 'Yes. Web apps like booking pages and small tools we can set up right away. A real mobile app for the App Store and Google Play is possible too, but it is not included in the 3,500 DKK, which covers the website only. We agree the price and scope on the phone or when we meet.',
+      q4: 'Can I build an app, not just a website?', a4: 'Yes. Web apps like booking pages and small tools we can set up together with the website. A real mobile app for the App Store and Google Play is a separate package at 5,000 DKK, and the 3,500 DKK covers the website only. If you have questions about the scope, start with a free call.',
       q5: 'What does it cost after the setup?', a5: 'About 15 USD a month for Claude and around 100 DKK a year for your domain. The rest is free for most small sites.',
       q6: 'What about personal data and GDPR?', a6: 'You are the data controller for your site. I help you set up a privacy policy and cookie information, and choose EU regions where possible.',
       ct_h2: 'Ready for level 1?',
@@ -536,7 +586,10 @@
     };
 
     var WA_NUMBER = '4550183360';
-    var WA_TEXT = { da: 'Hej! Jeg har et spørgsmål om ExtraLiv.', en: 'Hi! I have a question about ExtraLiv.' };
+    var WA_TEXT = {
+      da: { def: 'Hej! Jeg har et spørgsmål om ExtraLiv.', consult: 'Hej! Jeg vil gerne have en gratis samtale om ExtraLiv.', site: 'Hej! Jeg er interesseret i den nøglefærdige hjemmeside.', app: 'Hej! Jeg er interesseret i at bygge en mobilapp.', session: 'Hej! Jeg vil gerne booke en enkelt session.' },
+      en: { def: 'Hi! I have a question about ExtraLiv.', consult: 'Hi! I would like a free consultation about ExtraLiv.', site: 'Hi! I am interested in the turnkey website.', app: 'Hi! I am interested in building a mobile app.', session: 'Hi! I would like to book a single session.' }
+    };
 
     var DA = {};
     var nodes = document.querySelectorAll('[data-i18n]');
@@ -555,7 +608,7 @@
         if (v !== undefined) n.setAttribute('aria-label', v);
       });
       document.querySelectorAll('[data-wa]').forEach(function (a) {
-        a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT[lang]));
+        a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT[lang][a.getAttribute('data-wa') || 'def']));
       });
       document.documentElement.lang = lang;
       document.title = META[lang].title;
