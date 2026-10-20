@@ -359,6 +359,21 @@
   @keyframes hb1 { 0%, 54.00% { transform: none; opacity: 1; fill: var(--heart); } 55.20% { transform: translateX(-.4px) rotate(-12deg); } 56.40% { transform: translateX(.4px) rotate(12deg); } 57.60% { transform: translateX(-.4px) rotate(-12deg); } 59.00% { transform: none; opacity: 1; fill: var(--heart); } 64.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
   .faq details.wide { grid-column: 1 / -1; }
   @media (prefers-reduced-motion: reduce) { .hh .solid { animation: none; } }
+
+  /* ---- steps: centered, bigger coloured icons, arrows between ---- */
+  .steps { gap: 28px; }
+  .step { text-align: center; padding: 26px 20px 22px; position: relative; }
+  .step .ico { width: 84px; height: 84px; font-size: 44px; margin: 0 auto 10px; border-radius: 50%; }
+  .step:nth-child(1) .ico { background: #fff3c4; }
+  .step:nth-child(2) .ico { background: #d9ecff; }
+  .step:nth-child(3) .ico { background: #d8f5df; }
+  .step .num { top: 14px; right: auto; left: calc(50% + 24px); width: 30px; height: 30px; font-size: 16px; }
+  .step h3 { margin: 6px 0 6px; font-size: 21px; }
+  .step p { margin: 0 0 6px; }
+  .step .s2x { margin-top: 10px; font-weight: 700; color: var(--ink); }
+  .lives-anim { justify-content: center; }
+  .step:not(:last-child)::after { content: "\2192"; position: absolute; right: -30px; top: 50%; transform: translateY(-50%); width: 32px; height: 32px; border-radius: 50%; background: var(--coin); border: 2px solid var(--navy); display: grid; place-items: center; font-weight: 800; z-index: 2; }
+  @media (max-width: 960px) { .step:not(:last-child)::after { content: "\2193"; right: auto; left: 50%; top: auto; bottom: -30px; transform: translateX(-50%); } .steps { gap: 36px; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
