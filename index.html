@@ -10,7 +10,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Press+Start+2P&family=Nunito:wght@400;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --sky: #7cc8ff;
@@ -89,30 +89,15 @@
   .grid { display: grid; gap: 18px; }
 
   /* ---- flow diagram ---- */
-  .flow { display: flex; align-items: stretch; gap: 0; }
-  .node { flex: 1 1 0; min-width: 0; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
-  .node .num { align-self: flex-start; font-size: 10px; background: var(--ink); color: var(--paper); padding: 6px 7px; }
-  .node h3 { font-size: 12px; }
-  .node p { margin: 0; font-size: 14px; line-height: 1.35; }
-  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
-  .chip { font-size: 12px; font-weight: 800; padding: 2px 7px; border: 2px solid var(--ink); background: var(--coin); color: #1c2233; }
-  .arr { flex: none; width: 40px; align-self: center; display: flex; justify-content: center; }
-  .arr svg { width: 32px; height: 24px; fill: #fff; stroke: #1c2233; stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(2px 2px 0 #1c2233); }
-  .loop { position: relative; display: flex; flex-direction: column; gap: 18px; padding-right: 30px; margin-top: 4px; }
-  .loop .lb { border: 2px solid var(--ink); padding: 5px 8px; font-size: 13px; font-weight: 800; text-align: center; position: relative; background: var(--paper); }
-  .loop .lb:first-child::after { content: ""; position: absolute; left: 50%; bottom: -15px; margin-left: -6px; border: 6px solid transparent; border-top: 9px solid var(--ink); border-bottom: 0; }
-  .loop .lb:first-child::before { content: ""; position: absolute; left: 50%; bottom: -10px; width: 3px; height: 10px; margin-left: -1.5px; background: var(--ink); }
-  .loop .ret { position: absolute; right: 4px; top: 18px; bottom: 18px; width: 24px; border: 3px solid var(--heart); border-left: 0; }
-  .loop .ret::before { content: ""; position: absolute; left: -2px; top: -9px; border: 7px solid transparent; border-right: 11px solid var(--heart); border-left: 0; }
-  .loop-note { color: var(--heart); font-size: 12px; font-weight: 800; text-align: center; line-height: 1.25; }
-  .lives { font-size: 18px; color: var(--heart); letter-spacing: 2px; line-height: 1; }
-  .node.end { background: var(--coin); color: #1c2233; border-color: #1c2233; box-shadow: 6px 6px 0 #1c2233; }
-  .node.end .num { background: #1c2233; color: var(--coin); }
-  @media (max-width: 899px) {
-    .flow { flex-direction: column; }
-    .arr { width: auto; height: 40px; }
-    .arr svg { transform: rotate(90deg); }
-  }
+  .diagram { padding: 12px; }
+  .dg { display: block; width: 100%; height: auto; overflow: visible; }
+  .dg.fm { display: none; max-width: 420px; margin-inline: auto; }
+  .dn { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 4px; padding: 8px 14px; font-family: "Caveat", "Comic Sans MS", cursive; font-size: 24px; line-height: 1.05; color: #1c2233; box-sizing: border-box; }
+  .dn b { font-size: 32px; font-weight: 700; }
+  .dn i { font-style: normal; color: var(--heart); letter-spacing: 2px; display: block; font-size: 22px; }
+  .dn.q b { font-size: 38px; }
+  .dn.lab { color: #e8457a; font-size: 24px; font-weight: 700; padding: 0; }
+  @media (max-width: 760px) { .dg.fw { display: none; } .dg.fm { display: block; } }
 
   /* ---- packages ---- */
   .pricing { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
@@ -262,23 +247,7 @@
   <!-- STEPS -->
   <section class="block">
     <div class="wrap">
-      <div class="flow">
-        <div class="panel node"><span class="num pixel">1</span><h3 class="pixel" data-i18n="fl1_h">Jeg sætter op</h3><div class="chips" data-i18n="fl1_chips"><span class="chip">Domæne</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Mails</span><span class="chip">CMS</span><span class="chip">Backend</span></div></div>
-        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
-        <div class="panel node"><span class="num pixel">2</span><h3 class="pixel" data-i18n="fl2_h">Du lærer</h3><p data-i18n="fl2_p">Jeg lærer dig at bruge lokal AI til at bygge og udgive din side.</p></div>
-        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
-        <div class="panel node"><span class="num pixel">3</span><h3 class="pixel" data-i18n="fl3_h">Iterér</h3>
-          <div class="loop" aria-label="loop">
-            <div class="lb" data-i18n="fl3_a">Eksperimentér</div>
-            <div class="lb" data-i18n="fl3_b">Se resultatet med det samme</div>
-            <div class="ret" aria-hidden="true"></div>
-          </div>
-          <div class="loop-note" data-i18n="fl3_c">tilbage, til du er glad</div></div>
-        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
-        <div class="panel node"><span class="num pixel">4</span><h3 class="pixel" data-i18n="fl4_h">5 ekstra liv</h3><div class="lives" aria-hidden="true">&#9829;&#9829;&#9829;&#9829;&#9829;</div><p data-i18n="fl4_p">5 ekstra supportsessioner, du kan bruge når som helst, til at give vilde idéer liv sammen med mig.</p></div>
-        <div class="arr" aria-hidden="true"><svg viewBox="0 0 32 24"><polygon points="1,8 18,8 18,1 31,12 18,23 18,16 1,16"/></svg></div>
-        <div class="panel node end"><span class="num pixel">5</span><h3 class="pixel" data-i18n="fl5_h">Færdig</h3><p data-i18n="fl5_p">Siden kører lokalt på din egen computer.</p></div>
-      </div>
+      <div class="panel diagram"><svg class="dg fw" viewBox="0 -50 1000 590" role="img" aria-label="Flow" xmlns="http://www.w3.org/2000/svg"><defs><filter id="roughfw" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter><marker id="ahfw" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1 L10 6 L2 11" fill="none" stroke="#e8457a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g filter="url(#roughfw)"><g stroke="none"><rect x="10" y="60" width="190" height="150" rx="10" fill="#9db0ff"/><rect x="270" y="60" width="190" height="150" rx="10" fill="#b9a6f5"/><rect x="530" y="60" width="190" height="150" rx="10" fill="#8fdcd2"/><polygon points="880,45 980,135 880,225 780,135" fill="#ffe27a"/><rect x="620" y="330" width="320" height="150" rx="75" fill="#a9dc93"/><rect x="190" y="330" width="320" height="150" rx="75" fill="#ffc400"/></g><g fill="none" stroke="#e8457a" stroke-width="5" stroke-linecap="round" marker-end="url(#ahfw)"><path d="M205 140 Q235 100 262 133"/><path d="M465 140 Q495 100 522 133"/><path d="M725 140 Q750 100 774 133"/><path d="M880 42 C 870 -45, 650 -45, 625 54"/><path d="M880 228 C 880 290, 830 300, 785 326"/><path d="M614 405 Q 580 360 516 398"/></g></g><foreignObject x="10" y="60" width="190" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl1_h">Jeg sætter op</b><span data-i18n="fl1_s">Domæne · Claude · GitHub · Hosting · Mails · CMS · Backend</span></div></foreignObject><foreignObject x="270" y="60" width="190" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl2_h">Du lærer</b><span data-i18n="fl2_p">Jeg lærer dig at bygge og udgive med lokal AI.</span></div></foreignObject><foreignObject x="530" y="60" width="190" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl3_h">Iterér</b><span data-i18n="fl3_s">Eksperimentér og se resultatet med det samme.</span></div></foreignObject><foreignObject x="810" y="95" width="140" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="dn q"><b data-i18n="fl_q">Glad?</b></div></foreignObject><foreignObject x="650" y="335" width="260" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl4_h">5 ekstra liv</b><span data-i18n="fl4_s"><i>&#9829;&#9829;&#9829;&#9829;&#9829;</i> 5 supportsessioner, når som helst, til vilde idéer.</span></div></foreignObject><foreignObject x="220" y="335" width="260" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl5_h">Færdig</b><span data-i18n="fl5_p">Siden kører lokalt på din egen computer.</span></div></foreignObject><foreignObject x="700" y="-48" width="160" height="40"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl3_c">Ikke endnu</span></div></foreignObject><foreignObject x="890" y="255" width="90" height="36"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl_yes">Ja!</span></div></foreignObject></svg><svg class="dg fm" viewBox="0 -10 400 1010" role="img" aria-label="Flow" xmlns="http://www.w3.org/2000/svg"><defs><filter id="roughfm" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="3"/><feDisplacementMap in="SourceGraphic" scale="5"/></filter><marker id="ahfm" viewBox="0 0 12 12" refX="9" refY="6" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M2 1 L10 6 L2 11" fill="none" stroke="#e8457a" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></marker></defs><g filter="url(#roughfm)"><g stroke="none"><rect x="30" y="0" width="260" height="140" rx="10" fill="#9db0ff"/><rect x="30" y="190" width="260" height="110" rx="10" fill="#b9a6f5"/><rect x="30" y="350" width="260" height="120" rx="10" fill="#8fdcd2"/><polygon points="160,520 270,605 160,690 50,605" fill="#ffe27a"/><rect x="30" y="745" width="260" height="130" rx="65" fill="#a9dc93"/><rect x="30" y="920" width="260" height="90" rx="45" fill="#ffc400"/></g><g fill="none" stroke="#e8457a" stroke-width="5" stroke-linecap="round" marker-end="url(#ahfm)"><path d="M160 144 Q185 165 160 186"/><path d="M160 304 Q185 325 160 346"/><path d="M160 474 Q185 497 160 516"/><path d="M272 605 C 385 600, 385 420, 296 405"/><path d="M160 694 Q185 720 160 741"/><path d="M160 879 Q185 900 160 916"/></g></g><foreignObject x="30" y="0" width="260" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl1_h">Jeg sætter op</b><span data-i18n="fl1_s">Domæne · Claude · GitHub · Hosting · Mails · CMS · Backend</span></div></foreignObject><foreignObject x="30" y="190" width="260" height="110"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl2_h">Du lærer</b><span data-i18n="fl2_p">Jeg lærer dig at bygge og udgive med lokal AI.</span></div></foreignObject><foreignObject x="30" y="350" width="260" height="120"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl3_h">Iterér</b><span data-i18n="fl3_s">Eksperimentér og se resultatet med det samme.</span></div></foreignObject><foreignObject x="90" y="570" width="140" height="70"><div xmlns="http://www.w3.org/1999/xhtml" class="dn q"><b data-i18n="fl_q">Glad?</b></div></foreignObject><foreignObject x="40" y="750" width="240" height="120"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl4_h">5 ekstra liv</b><span data-i18n="fl4_s"><i>&#9829;&#9829;&#9829;&#9829;&#9829;</i> 5 supportsessioner, når som helst, til vilde idéer.</span></div></foreignObject><foreignObject x="40" y="925" width="240" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl5_h">Færdig</b><span data-i18n="fl5_p">Siden kører lokalt på din egen computer.</span></div></foreignObject><foreignObject x="290" y="615" width="100" height="40"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl3_c">Ikke endnu</span></div></foreignObject><foreignObject x="180" y="694" width="80" height="36"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl_yes">Ja!</span></div></foreignObject></svg></div>
     </div>
   </section>
 
@@ -428,10 +397,10 @@
       hero_lead: `I set up everything on your computer. You vibe code your dream website.`,
       btn_start: `PRESS START`, btn_wa_short: `ASK ON WHATSAPP`, btn_wa: `ASK A QUESTION ON WHATSAPP`,
       mascot_aria: `Pixel-art plumber with a hard hat and a wrench`, wa_aria: `Ask a question on WhatsApp`,
-      fl1_h: `I set up`, fl1_chips: `<span class="chip">Domain</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Emails</span><span class="chip">CMS</span><span class="chip">Backend</span>`,
-      fl2_h: `You learn`, fl2_p: `I teach you to use local AI to build the website and publish it.`,
-      fl3_h: `Iterate`, fl3_a: `Experiment`, fl3_b: `See the result immediately`, fl3_c: `back, until you are happy`,
-      fl4_h: `5 extra lives`, fl4_p: `5 extra support sessions you can use any time to bring crazy ideas to life together.`,
+      fl1_h: `I set up`, fl1_s: `Domain · Claude · GitHub · Hosting · Emails · CMS · Backend`,
+      fl2_h: `You learn`, fl2_p: `I teach you to build and publish with local AI.`,
+      fl3_h: `Iterate`, fl3_s: `Experiment and see the result immediately.`, fl3_c: `Not yet`, fl_q: `Happy?`, fl_yes: `Yes!`,
+      fl4_h: `5 extra lives`, fl4_s: `<i>&#9829;&#9829;&#9829;&#9829;&#9829;</i> 5 support sessions, any time, for crazy ideas.`,
       fl5_h: `Done`, fl5_p: `The site runs locally on your own computer.`,
       pk_h2: `Choose your package`,
       pk0_tag: `FREE`, pk0_h: `Free consultation`, pk0_price: `0 DKK`, pk0_p: `Tell me your idea over the phone. No strings attached.`, pk0_btn: `MESSAGE ON WHATSAPP`,
