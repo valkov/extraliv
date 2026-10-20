@@ -146,7 +146,7 @@
   .about a.li:hover { background: var(--accent-soft); }
 
   /* ---- faq ---- */
-  .faq { grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: start; }
+  .faq { grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: stretch; }
   details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
   summary { font-size: 18px; font-weight: 800; line-height: 1.4; cursor: pointer; }
   details p { margin: 10px 0 0; font-size: 17px; color: var(--muted); }
@@ -309,6 +309,40 @@
   @keyframes flap { from { transform: scaleY(1); } to { transform: scaleY(.45); } }
   @media (max-width: 520px) { .coins { font-size: 12.5px; gap: 6px; padding: 5px 12px 5px 6px; } .coins .tag-sale { padding: 2px 8px; } .bird { opacity: .3; } }
   @media (prefers-reduced-motion: reduce) { .coins, .bird, .bird .wing { animation: none !important; } }
+
+  /* ---- lighter bottom ---- */
+  section.block { padding: 44px 0; }
+  .chips { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; padding: 0; margin: 0 0 22px; }
+  .chips li { background: #fff; border: 2px solid var(--navy); border-radius: 999px; padding: 3px 14px 3px 10px; font-weight: 800; font-size: 16px; color: var(--navy); }
+  .chips li::before { content: "\2713"; color: #12924b; margin-right: 6px; }
+  .sub { margin: -10px 0 22px; }
+  .who-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .chip { display: inline-flex; align-items: center; gap: 10px; background: #fff; border: 2px solid var(--navy); box-shadow: 0 3px 0 var(--navy); border-radius: 16px; padding: 8px 16px 8px 10px; font-weight: 800; font-size: 18px; }
+  .chip i { font-style: normal; font-size: 26px; background: #fff3c4; border-radius: 12px; width: 42px; height: 42px; display: grid; place-items: center; }
+  .step { padding: 18px 20px; }
+  .step h3 { font-size: 20px; margin: 8px 0 4px; }
+  .step p { font-size: 17px; }
+  .step .ico { width: 52px; height: 52px; font-size: 28px; }
+  .video { max-width: 560px; }
+  .why { grid-template-columns: 1.4fr 1fr; }
+  .why h2 { margin-bottom: 12px; }
+  .why p { margin: 0; font-size: 20px; }
+  .sites { grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .site-card { display: flex; flex-direction: column; gap: 14px; }
+  .site-card blockquote { margin: 0; font-size: 17px; color: var(--muted); }
+  .site { display: flex; align-items: center; gap: 16px; text-decoration: none; color: var(--ink); }
+  .sicon { flex: none; width: 88px; height: 88px; border-radius: 24px; display: grid; place-items: center; font-size: 44px; background: linear-gradient(150deg, var(--c1), var(--c2)); border: 2px solid var(--navy); box-shadow: 0 5px 0 var(--navy); transition: transform .2s; }
+  .site:hover .sicon { transform: translateY(-4px) rotate(-3deg); }
+  .stext { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; }
+  .stext b { font-size: 22px; }
+  .stext .dom { color: var(--accent-dark); font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+  .stext .seye { color: var(--muted); font-size: 15px; }
+  .site .go { margin-left: auto; width: 40px; height: 40px; border-radius: 50%; background: var(--coin); border: 2px solid var(--navy); display: grid; place-items: center; font-weight: 800; transition: transform .2s; flex: none; }
+  .site:hover .go { transform: translateX(4px); }
+  summary { pointer-events: none; cursor: default; list-style: none; }
+  summary::-webkit-details-marker { display: none; }
+  details p { margin-top: 6px; }
+  @media (max-width: 760px) { .sites { grid-template-columns: 1fr; } .sicon { width: 72px; height: 72px; font-size: 36px; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -342,6 +376,7 @@
         <p class="eyebrow" data-i18n="eyebrow">For alle, også dem der ikke er computermennesker</p>
         <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
         <p class="lead" data-i18n="hero_lead">Vi sætter det hele op på din computer. Du fortæller en AI-assistent, hvordan din drømmehjemmeside skal se ud, og ser den vokse frem.</p>
+        <ul class="chips"><li data-i18n="ch1">Ingen kode</li><li data-i18n="ch2">Ingen teknik</li><li data-i18n="ch3">Ingen overraskelser</li></ul>
         <div class="hero-actions">
           <a class="btn" href="#pris" data-i18n="btn_start">Se priser</a>
           <a class="btn wa" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa_short">Spørg på WhatsApp</span></a>
@@ -371,12 +406,12 @@
   <section class="block">
     <div class="wrap">
       <h2 class="reveal" data-i18n="who_h2">Hvem er det til?</h2>
-      <p class="sub reveal" data-i18n="who_sub">Til alle, der gerne vil have en hjemmeside, men ikke er computermennesker. Du skal ikke kunne kode og ikke forstå teknik.</p>
-      <div class="grid who">
-        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🧘</span><h3 data-i18n="w1_h">Terapeuter, coaches og undervisere</h3><p data-i18n="w1_p">Vis, hvem du er, og lad folk booke dig.</p></div>
-        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🛍️</span><h3 data-i18n="w2_h">Små butikker og håndværkere</h3><p data-i18n="w2_p">Få dine varer og din historie online.</p></div>
-        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">🎨</span><h3 data-i18n="w3_h">Kunstnere, foreninger og hobbyer</h3><p data-i18n="w3_p">En fin side til det, du brænder for.</p></div>
-        <div class="panel who-card reveal"><span class="ico" aria-hidden="true">💡</span><h3 data-i18n="w4_h">Alle med en idé</h3><p data-i18n="w4_p">Har du en idé, kan du få den på nettet.</p></div>
+      <p class="sub reveal" data-i18n="who_sub">Til alle, der vil have en hjemmeside, men ikke er computermennesker.</p>
+      <div class="who-row reveal">
+        <span class="chip"><i aria-hidden="true">🧘</i><span data-i18n="w1_h">Terapeuter og coaches</span></span>
+        <span class="chip"><i aria-hidden="true">🛍️</i><span data-i18n="w2_h">Små butikker</span></span>
+        <span class="chip"><i aria-hidden="true">🎨</i><span data-i18n="w3_h">Kunstnere og foreninger</span></span>
+        <span class="chip"><i aria-hidden="true">💡</i><span data-i18n="w4_h">Alle med en idé</span></span>
       </div>
     </div>
   </section>
@@ -386,9 +421,9 @@
     <div class="wrap">
       <h2 class="reveal" data-i18n="how_h2">Sådan virker det</h2>
       <ol class="grid steps">
-        <li class="panel step reveal"><span class="ico" aria-hidden="true">💻</span><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din egen webadresse, et sted til din side online, en AI-assistent og sikker backup. Alt i dit navn.</p></li>
-        <li class="panel step reveal"><span class="ico" aria-hidden="true">💬</span><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Med dine egne ord. Du ser din hjemmeside tage form og kan rette alt, så ofte du vil.</p></li>
-        <li class="panel step reveal"><span class="ico" aria-hidden="true">🚀</span><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, eller har du en ny idé? Brug dine 5 ekstra liv: 5 supportsessioner, når som helst.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">💻</span><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din webadresse, din AI-assistent og alt det tekniske. Alt i dit navn.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">💬</span><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Sig, hvad du vil have, og ret, så ofte du vil.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">🚀</span><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, har du dine 5 ekstra liv.</p></li>
       </ol>
       <div class="video reveal" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
     </div>
@@ -396,15 +431,12 @@
 
   <!-- WHY EXTRALIV -->
   <section class="block sky">
-    <svg class="bird k5" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    <svg class="bird k6" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <svg class="cloud d2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <div class="wrap why">
       <div class="why-text reveal">
-        <h2 data-i18n="why_h2">Hvorfor hedder det ExtraLiv?</h2>
-        <p data-i18n="why_p1">Ligesom i et spil har du <b>ekstra liv</b>, hvis noget går galt. Så kan du bare prøve igen, uden at miste det, du allerede har bygget.</p>
-        <p data-i18n="why_p2">Med ExtraLiv får du <b>5 ekstra liv</b>: 5 supportsessioner, du kan bruge, når du sidder fast eller har en ny idé. Du bliver aldrig alene med din hjemmeside.</p>
+        <h2 data-i18n="why_h2">Hvorfor ExtraLiv?</h2>
+        <p data-i18n="why_p1">Ligesom i et spil får du <b>5 ekstra liv</b>: 5 supportsessioner, når du sidder fast eller har en ny idé. Du bliver aldrig alene med din hjemmeside.</b>, hvis noget går galt. Så kan du bare prøve igen, uden at miste det, du allerede har bygget.</p>
       </div>
       <div class="why-hearts reveal" aria-hidden="true"><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span></div>
     </div>
@@ -463,35 +495,22 @@
     </div>
   </section>
 
-  <!-- CLIENTS: each card uses the real theme of the client's site -->
-  <section class="block alt" style="padding-top:0">
+  <!-- CLIENT SITES: colourful icons people can click -->
+  <section class="block alt">
     <div class="wrap">
-      <div class="panel clients-block">
-      <h2 class="cl-h" data-i18n="cl_h2">Hvad kunder siger</h2>
-      <div class="grid clients">
-        <article class="client t2t">
-          <div class="bar"><i></i><i></i><i></i>&nbsp;trailstothriving.dk</div>
-          <div class="body">
-            <p class="eyebrow" data-i18n="t2t_eye">Naturvandringer og retreats</p>
-            <h3>Trails to Thriving</h3>
-            <blockquote data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Jeg fortalte bare AI’en, hvad jeg ville have, og et par sessioner senere var den live. Nemt, og faktisk sjovt. Og siden er helt min egen.”</blockquote>
-            <div class="palette" aria-hidden="true"><span style="background:#3f6b41"></span><span style="background:#1b472e"></span><span style="background:#839d6f"></span><span style="background:#a9c4a0"></span><span style="background:#e9e3d3"></span></div>
-            <a class="cbtn" href="https://trailstothriving.dk" target="_blank" rel="noopener" data-i18n="visit">Besøg siden</a>
-          </div>
-        </article>
-        <article class="client rb">
-          <div class="bar"><i></i><i></i><i></i>&nbsp;re-balance.dk</div>
-          <div class="body">
-            <p class="eyebrow" data-i18n="rb_eye">Terapi i København</p>
-            <h3>Re-Balance</h3>
-            <blockquote data-i18n="rb_quote">“Det føltes som at tale med en kollega, ikke som at kæmpe med et værktøj. Meget sjovere end Wix eller Lovable, hvor jeg altid endte med at give op. Her blev det hele mit.”</blockquote>
-            <div class="palette" aria-hidden="true"><span style="background:#3f6b52"></span><span style="background:#26362a"></span><span style="background:#b3592f"></span><span style="background:#c3d6b8"></span><span style="background:#f3e6cf"></span></div>
-            <a class="cbtn" href="https://re-balance.dk" target="_blank" rel="noopener" data-i18n="visit">Besøg siden</a>
-          </div>
-        </article>
+      <h2 class="reveal" data-i18n="cl_h2">Sider lavet på denne måde</h2>
+      <p class="sub reveal" data-i18n="cl_sub">Tryk på et ikon og se siden.</p>
+      <div class="grid sites">
+        <div class="panel site-card reveal">
+          <a class="site" href="https://trailstothriving.dk" target="_blank" rel="noopener" style="--c1:#3f8a57;--c2:#1b472e"><span class="sicon" aria-hidden="true">🌿</span><span class="stext"><b>Trails to Thriving</b><span class="dom">trailstothriving.dk</span><span class="seye" data-i18n="t2t_eye">Naturvandringer og retreats</span></span><span class="go" aria-hidden="true">&rarr;</span></a>
+          <blockquote data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Jeg fortalte bare AI’en, hvad jeg ville have, og et par sessioner senere var den live. Nemt, og faktisk sjovt. Og siden er helt min egen.”</blockquote>
+        </div>
+        <div class="panel site-card reveal">
+          <a class="site" href="https://re-balance.dk" target="_blank" rel="noopener" style="--c1:#e0834f;--c2:#b3592f"><span class="sicon" aria-hidden="true">⚖️</span><span class="stext"><b>Re-Balance</b><span class="dom">re-balance.dk</span><span class="seye" data-i18n="rb_eye">Terapi i København</span></span><span class="go" aria-hidden="true">&rarr;</span></a>
+          <blockquote data-i18n="rb_quote">“Det føltes som at tale med en kollega, ikke som at kæmpe med et værktøj. Meget sjovere end Wix eller Lovable, hvor jeg altid endte med at give op. Her blev det hele mit.”</blockquote>
+        </div>
       </div>
       <p class="draft" data-i18n="cl_draft"><span class="todo">UDKAST: ejerne skal godkende deres citat, før siden deles. Behold Wix/Lovable-sammenligningen kun hvis den er sand.</span></p>
-      </div>
     </div>
   </section>
 
@@ -515,10 +534,10 @@
     <div class="wrap">
       <h2  data-i18n="faq_h2">Spørgsmål</h2>
       <div class="grid faq">
-        <details><summary data-i18n="q1">Skal jeg kunne kode?</summary><p data-i18n="a1">Nej. Du skriver eller siger, hvad du vil have, og AI bygger det.</p></details>
-        <details><summary data-i18n="q2">Hvem ejer siden?</summary><p data-i18n="a2">Dig. Alle konti står i dit navn, og jeg har ingen adgang bagefter.</p></details>
-        <details><summary data-i18n="q3">Hvad hvis noget går i stykker?</summary><p data-i18n="a3">Alle versioner af din side bliver gemt, så du altid kan gå et skridt tilbage. Og du har dine ekstra liv.</p></details>
-        <details><summary data-i18n="q4">Hvad med GDPR?</summary><p data-i18n="a4">Du ejer din sides data. Jeg hjælper med privatlivspolitik og cookie-besked og vælger EU-servere, hvor det er muligt.</p></details>
+        <details open><summary data-i18n="q1">Skal jeg kunne kode?</summary><p data-i18n="a1">Nej. Du skriver eller siger, hvad du vil have, og AI bygger det.</p></details>
+        <details open><summary data-i18n="q2">Hvem ejer siden?</summary><p data-i18n="a2">Dig. Alle konti står i dit navn, og jeg har ingen adgang bagefter.</p></details>
+        <details open><summary data-i18n="q3">Hvad hvis noget går i stykker?</summary><p data-i18n="a3">Alle versioner af din side bliver gemt, så du altid kan gå et skridt tilbage. Og du har dine ekstra liv.</p></details>
+        <details open><summary data-i18n="q4">Hvad med GDPR?</summary><p data-i18n="a4">Du ejer din sides data. Jeg hjælper med privatlivspolitik og cookie-besked og vælger EU-servere, hvor det er muligt.</p></details>
       </div>
     </div>
   </section>
@@ -558,17 +577,17 @@
       wa_aria: `Ask a question on WhatsApp`,
       eyebrow: `For everyone, even if you are not a computer person`,
       il_aria: `A person asks the AI for a website and sees it appear`, il_you: `I'd like a website for my yoga classes`, il_ai: `Here you go! Want to change anything?`,
-      who_h2: `Who is it for?`, who_sub: `For everyone who wants a website but is not a computer person. You do not need to code or understand tech.`,
-      w1_h: `Therapists, coaches and teachers`, w1_p: `Show who you are and let people book you.`,
-      w2_h: `Small shops and craftspeople`, w2_p: `Get your products and your story online.`,
-      w3_h: `Artists, clubs and hobbies`, w3_p: `A lovely page for what you care about.`,
-      w4_h: `Anyone with an idea`, w4_p: `If you have an idea, you can put it online.`,
-      why_h2: `Why is it called ExtraLiv?`, why_p1: `<b>Liv</b> means life in Danish. In a game, extra lives let you try again when something goes wrong.`,
-      why_p2: `With ExtraLiv you get <b>5 extra lives</b>: 5 support sessions you can use whenever you get stuck or have a new idea. You are never left alone with your website.`,
+      who_h2: `Who is it for?`, who_sub: `For everyone who wants a website but is not a computer person.`,
+      w1_h: `Therapists and coaches`,
+      w2_h: `Small shops`,
+      w3_h: `Artists and clubs`,
+      w4_h: `Anyone with an idea`,
+      why_h2: `Why ExtraLiv?`, why_p1: `Like in a game, you get <b>5 extra lives</b>: 5 support sessions for when you are stuck or have a new idea. You are never alone with your website.`,
+      ch1: `No code`, ch2: `No tech`, ch3: `No surprises`,
       how_h2: `How it works`,
-      s1_h: `We set up your computer`, s1_p: `Your own web address, a home for your site online, an AI assistant and safe backups. All in your name.`,
-      s2_h: `Tell the AI what you want`, s2_p: `In your own words. You watch your website take shape and can change anything, as often as you like.`,
-      s3_h: `Your website is live`, s3_p: `Stuck, or got a new idea? Use your 5 extra lives: 5 support sessions, any time.`,
+      s1_h: `We set up your computer`, s1_p: `Your web address, your AI assistant and all the tech. All in your name.`,
+      s2_h: `Tell the AI what you want`, s2_p: `Say what you want and change it as often as you like.`,
+      s3_h: `Your website is live`, s3_p: `Stuck? You have your 5 extra lives.`,
       video_aria: `Video`, video_t: `Video: see how it works`, video_s: `Coming soon`,
       pk_h2: `Choose your package`,
       pk1_tag: `Special offer`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
@@ -583,7 +602,7 @@
       pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `Choose the mobile app`,
       pk3_tag: `1 hour`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `Book an hour`,
       cost_note: `Afterwards you only pay <b>about 100 DKK a month</b> for your own AI subscription (Claude) while you work on the site, and <b>about 100 DKK a year</b> for your own web address. Nothing to me, no lock-in.`,
-      cl_h2: `What clients say`,
+      cl_h2: `Sites made this way`, cl_sub: `Tap an icon to see the site.`,
       t2t_eye: `Guided hikes and retreats`,
       t2t_quote: `“I had never built a website before. I just told the AI what I wanted, and a few sessions later it was live. Easy, and honestly fun. And the site is completely mine.”`,
       rb_eye: `Therapy in Copenhagen`,
