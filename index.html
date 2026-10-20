@@ -424,6 +424,11 @@
   .gi .chk { stroke-dasharray: 40; animation: draw 3.2s ease-in-out infinite; }
   @keyframes draw { 0% { stroke-dashoffset: 40; } 30%, 90% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 40; } }
   @media (prefers-reduced-motion: reduce) { .gi, .gi * { animation: none !important; } }
+
+  /* ---- footnotes under the prices: quiet, left aligned ---- */
+  .costs { margin-top: 22px; padding: 2px 0 2px 16px; background: none; border: 0; border-left: 4px solid var(--coin); border-radius: 0; box-shadow: none; text-align: left; max-width: 860px; }
+  .costs .cn { margin: 0 0 8px; font-size: 15px; font-weight: 400; line-height: 1.55; color: #3c4756; }
+  .costs .cn:last-child { margin-bottom: 0; }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -520,7 +525,7 @@
           <span class="tag hot" data-i18n="pk1_tag">Specialtilbud</span>
           <h3  data-i18n="pk1_h">Nøglefærdig hjemmeside</h3>
           <p class="price-old" data-i18n="pk1_old">7.000 kr.</p>
-          <p class="price" data-i18n="pk1_price">3.500 kr.</p>
+          <p class="price" data-i18n="pk1_price">3.500 kr.*</p>
           <p class="offer" data-i18n="pk1_offer">Til og med 31. dec. 2026</p>
           <ul class="checks">
             <li data-i18n="pk1_l1">Vi sætter det hele op for dig</li>
@@ -534,7 +539,7 @@
               <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 5" data-i18n-aria="heart5_aria"><svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></button>
             </div>
             </li>
-            <li data-i18n="pk1_l4">Garanti: en komplet, fungerende hjemmeside på din egen webadresse</li>
+            <li data-i18n="pk1_l4">Garanti: en komplet, fungerende hjemmeside på din egen webadresse**</li>
           </ul>
           <a class="btn wa small" data-wa="site" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk1_btn">Vælg hjemmesiden</span></a>
           <p class="hint" data-i18n="pk1_hint"><span class="todo">UDKAST: hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
@@ -557,8 +562,9 @@
           <a class="btn wa small" data-wa="session" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk3_btn">Book en time</span></a>
         </div>
       </div>
-      <div class="panel costs">
-        <p class="cost-s" data-i18n="cost_note">Bagefter betaler du kun <b>ca. 100 kr. om måneden</b> for dit eget AI-abonnement (Claude), mens du arbejder på siden, og <b>ca. 100 kr. om året</b> for din egen webadresse. Intet til mig, ingen binding.</p>
+      <div class="costs">
+        <p class="cn" data-i18n="cost_note">* Standardpris efter opsætning: Bagefter betaler du kun ca. 100 kr. om måneden for dit eget AI-abonnement (Claude), mens du arbejder på siden, og ca. 100 kr. om året for din egen webadresse. Intet til mig, ingen binding.</p>
+        <p class="cn" data-i18n="cost_note2">** Har du brug for ekstra tjenester, fx en kalender, et bookingsystem eller kortbetaling? Alt det kan tilføjes. Afhængigt af de funktioner, du vælger, køber du disse komponenter hos tredjeparter, ikke hos mig, og de koster lidt ekstra.</p>
       </div>
     </div>
   </section>
@@ -660,18 +666,19 @@
       s3_h: `Your website is live`,
       video_aria: `Video`, video_t: `Video: see how it works`, video_s: `Coming soon`,
       pk_h2: `Choose your package`,
-      pk1_tag: `Special offer`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
+      pk1_tag: `Special offer`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK*`, pk1_offer: `Until Dec 31, 2026`,
       pk1_l1: `We set everything up for you`,
       pk1_l2: `Talk to your own AI assistant and see changes instantly`,
       pk1_l3: `5 extra lives: 5 sessions of 45 min.`,
-      pk1_l4: `Guarantee: a complete, working website on your own web address`,
+      pk1_l4: `Guarantee: a complete, working website on your own web address**`,
       pk1_btn: `Choose the website`,
       pk1_hint: `<span class="todo">DRAFT: what “complete website” covers (pages, features) is not decided</span>`,
       hearts_aria: `Your extra lives`, heart1_aria: `Extra life 1`, heart2_aria: `Extra life 2`, heart3_aria: `Extra life 3`, heart4_aria: `Extra life 4`, heart5_aria: `Extra life 5`,
       pk2_tag: `Mobile app`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
       pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `Choose the mobile app`,
       pk3_tag: `1 hour`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `Book an hour`,
-      cost_note: `Afterwards you only pay <b>about 100 DKK a month</b> for your own AI subscription (Claude) while you work on the site, and <b>about 100 DKK a year</b> for your own web address. Nothing to me, no lock-in.`,
+      cost_note2: `** Need extra services, like a calendar, a booking system or card payments? All of that can be added. Depending on the features you want, these components are bought from third parties, not from me, and cost a little extra.`,
+      cost_note: `* Standard price after setup: afterwards you only pay about 100 DKK a month for your own AI subscription (Claude) while you work on the site, and about 100 DKK a year for your own web address. Nothing to me, no lock-in.`,
       cl_h2: `Sites made this way`, cl_sub: `Tap a site to open it.`,
       t2t_eye: `Guided hikes and retreats`,
       t2t_quote: `“I had never built a website before. Now it is live, and completely mine.”`,
