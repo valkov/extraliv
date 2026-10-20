@@ -60,7 +60,7 @@
   header.top { padding: 12px 0; }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .logo { font-size: 13px; color: #fff; text-shadow: 3px 3px 0 #1c2233; text-decoration: none; }
-  .coins { font-size: 11px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
+  .coins { white-space: nowrap; font-size: 11px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
   .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
   @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
   .lang { display: flex; gap: 6px; }
@@ -178,12 +178,13 @@
   @media (max-width: 760px) {
     .hero .wrap, .steps, .clients, .faq { grid-template-columns: 1fr; }
     .mascot { max-width: 130px; }
-    .c1, .c3 { display: none; }
-    .c2 { top: 12px; right: 4%; width: 70px; }
+    .cloud { display: none; }
     .about { grid-template-columns: 100px 1fr; }
     .photo { width: 100px; height: 100px; }
-    .coins { font-size: 9px; padding: 5px 7px; }
-    .logo { font-size: 11px; }
+    .coins { font-size: 8px; padding: 5px 6px; gap: 5px; white-space: nowrap; }
+    .logo { font-size: 10px; }
+    .lang button { font-size: 9px; padding: 6px 7px; }
+    header.top .wrap { gap: 6px; }
   }
   @media (max-width: 520px) {
     .pricing { grid-template-columns: 1fr; }
