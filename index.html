@@ -343,6 +343,22 @@
   summary::-webkit-details-marker { display: none; }
   details p { margin-top: 6px; }
   @media (max-width: 760px) { .sites { grid-template-columns: 1fr; } .sicon { width: 72px; height: 72px; font-size: 36px; } }
+
+  /* ---- extra-lives hearts (break right to left, then refill) ---- */
+  .lives-anim { display: flex; gap: 4px; margin-top: 10px; }
+  .lives-anim .hh { display: block; width: 24px; height: 22px; }
+  .lives-anim .hh svg { width: 100%; height: 100%; display: block; overflow: visible; shape-rendering: crispEdges; }
+  .hh .ghost { fill: none; stroke: #b3202e; stroke-width: .8; stroke-dasharray: 1.4 1; }
+  .hh .solid { fill: var(--heart); transform-box: fill-box; transform-origin: 50% 80%; animation-duration: 10s; animation-timing-function: ease-in; animation-iteration-count: infinite; }
+  .hh:nth-child(1) .solid { animation-name: hb1; } .hh:nth-child(2) .solid { animation-name: hb2; } .hh:nth-child(3) .solid { animation-name: hb3; }
+  .hh:nth-child(4) .solid { animation-name: hb4; } .hh:nth-child(5) .solid { animation-name: hb5; }
+  @keyframes hb5 { 0%, 10.00% { transform: none; opacity: 1; fill: var(--heart); } 11.20% { transform: translateX(-.4px) rotate(-12deg); } 12.40% { transform: translateX(.4px) rotate(12deg); } 13.60% { transform: translateX(-.4px) rotate(-12deg); } 15.00% { transform: none; opacity: 1; fill: var(--heart); } 20.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
+  @keyframes hb4 { 0%, 21.00% { transform: none; opacity: 1; fill: var(--heart); } 22.20% { transform: translateX(-.4px) rotate(-12deg); } 23.40% { transform: translateX(.4px) rotate(12deg); } 24.60% { transform: translateX(-.4px) rotate(-12deg); } 26.00% { transform: none; opacity: 1; fill: var(--heart); } 31.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
+  @keyframes hb3 { 0%, 32.00% { transform: none; opacity: 1; fill: var(--heart); } 33.20% { transform: translateX(-.4px) rotate(-12deg); } 34.40% { transform: translateX(.4px) rotate(12deg); } 35.60% { transform: translateX(-.4px) rotate(-12deg); } 37.00% { transform: none; opacity: 1; fill: var(--heart); } 42.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
+  @keyframes hb2 { 0%, 43.00% { transform: none; opacity: 1; fill: var(--heart); } 44.20% { transform: translateX(-.4px) rotate(-12deg); } 45.40% { transform: translateX(.4px) rotate(12deg); } 46.60% { transform: translateX(-.4px) rotate(-12deg); } 48.00% { transform: none; opacity: 1; fill: var(--heart); } 53.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
+  @keyframes hb1 { 0%, 54.00% { transform: none; opacity: 1; fill: var(--heart); } 55.20% { transform: translateX(-.4px) rotate(-12deg); } 56.40% { transform: translateX(.4px) rotate(12deg); } 57.60% { transform: translateX(-.4px) rotate(-12deg); } 59.00% { transform: none; opacity: 1; fill: var(--heart); } 64.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); } 95%, 100% { transform: none; opacity: 1; fill: var(--heart); } }
+  .faq details.wide { grid-column: 1 / -1; }
+  @media (prefers-reduced-motion: reduce) { .hh .solid { animation: none; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -423,22 +439,9 @@
       <ol class="grid steps">
         <li class="panel step reveal"><span class="ico" aria-hidden="true">💻</span><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din webadresse, din AI-assistent og alt det tekniske. Alt i dit navn.</p></li>
         <li class="panel step reveal"><span class="ico" aria-hidden="true">💬</span><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Sig, hvad du vil have, og ret, så ofte du vil.</p></li>
-        <li class="panel step reveal"><span class="ico" aria-hidden="true">🚀</span><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, har du dine 5 ekstra liv.</p></li>
+        <li class="panel step reveal"><span class="ico" aria-hidden="true">🚀</span><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, har du dine 5 ekstra liv.</p><div class="lives-anim" aria-hidden="true"><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span></div></li>
       </ol>
       <div class="video reveal" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
-    </div>
-  </section>
-
-  <!-- WHY EXTRALIV -->
-  <section class="block sky">
-    <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
-    <svg class="cloud d2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
-    <div class="wrap why">
-      <div class="why-text reveal">
-        <h2 data-i18n="why_h2">Hvorfor ExtraLiv?</h2>
-        <p data-i18n="why_p1">Ligesom i et spil får du <b>5 ekstra liv</b>: 5 supportsessioner, når du sidder fast eller har en ny idé. Du bliver aldrig alene med din hjemmeside.</b>, hvis noget går galt. Så kan du bare prøve igen, uden at miste det, du allerede har bygget.</p>
-      </div>
-      <div class="why-hearts reveal" aria-hidden="true"><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span><span class="wh"><svg viewBox="0 0 24 22"><path d="M12 21.5C5 15.6 1.5 11.9 1.5 7.6 1.5 4.3 4 2 7 2c2 0 3.800 1 5 2.800C13.200 3 15 2 17 2c3 0 5.500 2.300 5.500 5.600 0 4.300-3.500 8-10.500 13.900z"/></svg></span></div>
     </div>
   </section>
 
@@ -534,6 +537,7 @@
     <div class="wrap">
       <h2  data-i18n="faq_h2">Spørgsmål</h2>
       <div class="grid faq">
+        <details open class="wide"><summary data-i18n="q0">Hvorfor hedder det ExtraLiv?</summary><p data-i18n="a0">Ligesom i et spil får du <b>5 ekstra liv</b>: 5 supportsessioner, når du sidder fast eller har en ny idé. Du bliver aldrig alene med din hjemmeside.</p></details>
         <details open><summary data-i18n="q1">Skal jeg kunne kode?</summary><p data-i18n="a1">Nej. Du skriver eller siger, hvad du vil have, og AI bygger det.</p></details>
         <details open><summary data-i18n="q2">Hvem ejer siden?</summary><p data-i18n="a2">Dig. Alle konti står i dit navn, og jeg har ingen adgang bagefter.</p></details>
         <details open><summary data-i18n="q3">Hvad hvis noget går i stykker?</summary><p data-i18n="a3">Alle versioner af din side bliver gemt, så du altid kan gå et skridt tilbage. Og du har dine ekstra liv.</p></details>
@@ -582,7 +586,6 @@
       w2_h: `Small shops`,
       w3_h: `Artists and clubs`,
       w4_h: `Anyone with an idea`,
-      why_h2: `Why ExtraLiv?`, why_p1: `Like in a game, you get <b>5 extra lives</b>: 5 support sessions for when you are stuck or have a new idea. You are never alone with your website.`,
       ch1: `No code`, ch2: `No tech`, ch3: `No surprises`,
       how_h2: `How it works`,
       s1_h: `We set up your computer`, s1_p: `Your web address, your AI assistant and all the tech. All in your name.`,
@@ -614,6 +617,7 @@
       about_p2: `Having your dream website is so easy with AI nowadays and I'm here to help you. Drop me a message if you have any questions, I'll be happy to answer!`,
       about_li: `See me on LinkedIn`,
       faq_h2: `Questions`,
+      q0: `Why is it called ExtraLiv?`, a0: `Like in a game, you get <b>5 extra lives</b>: 5 support sessions for when you are stuck or have a new idea. You are never alone with your website.`,
       q1: `Do I need to know how to code?`, a1: `No. You write or say what you want, and AI builds it.`,
       q2: `Who owns the site?`, a2: `You do. All accounts are in your name, and I have no access afterwards.`,
       q3: `What if something breaks?`, a3: `Every version of your site is saved, so you can always go back a step. And you have your extra lives.`,
