@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="da">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ExtraLiv – Jeg tager rørene, du tager vibes</title>
+<meta name="description" content="Jeg sætter AI, GitHub, domæne og det hele op på din computer, så du selv kan bygge og udgive din hjemmeside ved at tale med AI. Pris fra 3.500 kr. (tilbud) — nøglefærdig hjemmeside.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --sky: #7cc8ff;
+    --sky-deep: #4fa8ee;
+    --ink: #1c2233;
+    --paper: #fffdf5;
+    --grass: #3fae4a;
+    --grass-dark: #2c8337;
+    --brick: #b8663a;
+    --brick-dark: #8a4824;
+    --coin: #ffc400;
+    --coin-dark: #c79200;
+    --heart: #ee3b4a;
+    --heart-off: #c9cfdb;
+    --teal: #1fa5a0;
+    --px: 4px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --sky: #1d2a52;
+      --sky-deep: #131c3a;
+      --ink: #f1f3fb;
+      --paper: #232b46;
+      --heart-off: #4a5373;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--sky);
+    color: var(--ink);
+    font-family: "Nunito", system-ui, sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+  .pixel { font-family: "Press Start 2P", monospace; line-height: 1.5; letter-spacing: 0; }
+  .wrap { width: min(1000px, 100% - 32px); margin-inline: auto; }
+
+  /* ---- chunky pixel panel ---- */
+  .panel {
+    background: var(--paper);
+    border: var(--px) solid var(--ink);
+    box-shadow: calc(var(--px) * 2) calc(var(--px) * 2) 0 var(--ink);
+    padding: 24px;
+  }
+
+  /* ---- buttons ---- */
+  .btn {
+    display: inline-block;
+    font-family: "Press Start 2P", monospace;
+    font-size: 14px;
+    text-decoration: none;
+    color: #1c2233;
+    background: var(--coin);
+    border: var(--px) solid #1c2233;
+    box-shadow: 0 var(--px) 0 var(--coin-dark), 0 calc(var(--px) * 2) 0 #1c2233;
+    padding: 16px 22px;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+  .btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--coin-dark), 0 var(--px) 0 #1c2233; }
+  .btn:focus-visible, a:focus-visible, button:focus-visible { outline: 4px solid #1c2233; outline-offset: 4px; background-color: #fff3a0; }
+
+  /* ---- header ---- */
+  header.top { padding: 16px 0; }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .logo { font-size: 14px; color: #fff; text-shadow: 3px 3px 0 #1c2233; text-decoration: none; }
+  .coins { font-size: 12px; color: #fff; text-shadow: 2px 2px 0 #1c2233; display: flex; align-items: center; gap: 8px; }
+  .coin { width: 16px; height: 16px; background: var(--coin); border: 3px solid #1c2233; border-radius: 50%; display: inline-block; }
+
+  .lang { display: flex; gap: 8px; }
+  .lang button { font: inherit; font-size: 12px; color: #1c2233; background: var(--paper); border: 3px solid #1c2233; padding: 8px 10px; cursor: pointer; box-shadow: 0 3px 0 #1c2233; }
+  .lang button[aria-pressed="true"] { background: var(--coin); }
+  .vvs-note { font-size: 14px; font-weight: 700; color: #fff; text-shadow: 1px 1px 0 #1c2233; margin: -12px 0 24px; }
+  .vvs-note:empty { display: none; }
+
+  /* ---- hero ---- */
+  .hero { position: relative; padding: 24px 0 80px; overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(22px, 4.2vw, 40px); color: #fff; text-shadow: 4px 4px 0 #1c2233; margin: 0 0 20px; }
+  .hero p.lead { font-size: 20px; font-weight: 700; background: var(--paper); border: var(--px) solid var(--ink); padding: 16px; box-shadow: 8px 8px 0 var(--ink); margin: 0 0 28px; }
+  .mascot { width: 100%; max-width: 280px; margin-inline: auto; display: block; image-rendering: pixelated; animation: bob 1.4s steps(2) infinite; }
+  @keyframes bob { 50% { transform: translateY(-8px); } }
+  .cloud { position: absolute; background: #fff; border: 4px solid #1c2233; height: 28px; width: 100px; z-index: 0; }
+  .cloud::before { content: ""; position: absolute; left: 20px; top: -20px; width: 44px; height: 20px; background: #fff; border: 4px solid #1c2233; border-bottom: 0; }
+  .c1 { top: 70px; left: 6%; }
+  .c2 { top: 150px; right: 8%; width: 130px; }
+  .c3 { top: 30px; left: 55%; width: 80px; }
+
+  /* ---- ground strip ---- */
+  .ground { height: 40px; background:
+    linear-gradient(var(--grass) 0 12px, var(--grass-dark) 12px 16px, var(--brick) 16px 100%);
+    border-top: 4px solid #1c2233; }
+  .bricks { height: 56px; border-bottom: 4px solid #1c2233; background:
+    linear-gradient(90deg, var(--brick-dark) 4px, transparent 4px) 0 0 / 64px 28px,
+    linear-gradient(var(--brick-dark) 4px, transparent 4px) 0 0 / 64px 28px,
+    var(--brick); }
+
+  /* ---- sections ---- */
+  section.block { background: var(--paper); color: var(--ink); padding: 72px 0; }
+  section.block.alt { background: var(--sky-deep); }
+  section.block h2 { font-size: clamp(16px, 2.6vw, 24px); margin: 0 0 12px; }
+  section.block.alt h2 { color: #fff; text-shadow: 3px 3px 0 #1c2233; }
+  .sub { font-weight: 700; margin: 0 0 32px; max-width: 60ch; }
+  section.block.alt .sub { color: #fff; text-shadow: 1px 1px 0 #1c2233; }
+
+  .grid { display: grid; gap: 24px; }
+  .grid.three { grid-template-columns: repeat(3, 1fr); }
+  .grid.two { grid-template-columns: repeat(2, 1fr); }
+
+  .level .tag { display: inline-block; font-size: 11px; background: var(--ink); color: var(--paper); padding: 6px 8px; margin-bottom: 14px; }
+  .level h3 { font-size: 13px; margin: 0 0 10px; }
+  .level p { margin: 0; font-size: 17px; }
+
+  ul.checks { list-style: none; padding: 0; margin: 0; }
+  ul.checks li { padding-left: 32px; position: relative; margin-bottom: 10px; }
+  ul.checks li::before { content: ""; position: absolute; left: 0; top: 6px; width: 16px; height: 16px; background: var(--grass); border: 3px solid var(--ink); }
+
+  /* ---- hearts ---- */
+  .hearts { display: flex; gap: 12px; margin: 16px 0; }
+  .heart { width: 44px; height: 40px; border: 0; padding: 0; background: none; cursor: pointer; }
+  .heart svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
+  .heart .on { fill: var(--heart); }
+  .heart.used .on { fill: var(--heart-off); }
+  .hint { font-size: 14px; opacity: .8; }
+  .price { font-size: clamp(22px, 4vw, 34px); margin: 8px 0 4px; }
+  .price small { font-family: "Nunito", sans-serif; font-size: 16px; font-weight: 700; }
+
+  /* ---- proof ---- */
+  .proof a.site { display: block; text-decoration: none; color: inherit; }
+  .proof .site-name { font-size: 13px; margin: 0 0 8px; word-break: break-all; }
+  .proof .quote { font-style: italic; opacity: .85; }
+  .todo { background: #fff3a0; color: #1c2233; border: 2px dashed #1c2233; padding: 2px 6px; font-size: 14px; }
+
+  /* ---- price extras ---- */
+  .price-old { font-size: 14px; text-decoration: line-through; opacity: .6; margin: 12px 0 0; }
+  .offer { display: inline-block; font-weight: 800; font-size: 15px; background: var(--coin); color: #1c2233; border: 3px solid #1c2233; padding: 4px 10px; margin: 4px 0 12px; }
+  .guarantee { font-weight: 700; border-left: 8px solid var(--grass); padding-left: 12px; margin: 8px 0 16px; }
+
+  .testimonial .site-desc { font-weight: 700; margin: 0 0 12px; opacity: .8; }
+  .testimonial blockquote { margin: 0 0 12px; padding-left: 14px; border-left: 6px solid var(--coin); font-size: 18px; }
+  .testimonial .who { font-weight: 800; font-size: 15px; margin: 0 0 16px; }
+  .testimonial .draft { margin: 0; font-size: 14px; }
+  .btn.small { font-size: 11px; padding: 12px 14px; }
+
+  /* ---- about ---- */
+  .about { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; }
+  .photo { width: 220px; height: 220px; border: var(--px) solid var(--ink); box-shadow: 8px 8px 0 var(--ink); background: var(--sky-deep); position: relative; overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .photo.empty::after { content: "PHOTO"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Press Start 2P", monospace; font-size: 14px; color: #fff; text-shadow: 2px 2px 0 #1c2233; }
+  .about h2 { margin-bottom: 12px; }
+  .about p { margin: 0 0 12px; }
+
+  /* ---- faq ---- */
+  details { background: var(--paper); border: var(--px) solid var(--ink); padding: 16px 20px; margin-bottom: 16px; box-shadow: 6px 6px 0 var(--ink); }
+  summary { font-family: "Press Start 2P", monospace; font-size: 12px; line-height: 1.6; cursor: pointer; }
+  details p { margin: 12px 0 0; }
+
+  /* ---- contact ---- */
+  .contact { text-align: center; }
+  .contact h2 { text-shadow: 3px 3px 0 #1c2233; color: #fff; }
+  footer { background: var(--ink); color: #dfe4f5; padding: 28px 0; font-size: 14px; text-align: center; }
+  footer a { color: var(--coin); }
+
+  @media (max-width: 760px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .grid.three, .grid.two { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; }
+    .photo { width: 180px; height: 180px; }
+    .mascot { max-width: 200px; }
+    .coins { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .mascot { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo pixel" href="#top">EXTRALIV</a>
+    <div class="coins pixel" aria-hidden="true"><span class="coin"></span> <span data-i18n="coins">3.500 kr.</span></div>
+    <div class="lang pixel" role="group" aria-label="Sprog / Language">
+      <button type="button" data-lang="da" aria-pressed="true">DA</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <span class="cloud c1" aria-hidden="true"></span>
+    <span class="cloud c2" aria-hidden="true"></span>
+    <span class="cloud c3" aria-hidden="true"></span>
+    <div class="wrap">
+      <div>
+        <h1 class="pixel" data-i18n="hero_h1">Jeg tager rørene.<br>Du tager vibes.</h1>
+        <p class="lead" data-i18n="hero_lead">Jeg sætter AI, GitHub, domæne og det hele op på din computer og sørger for, at du ender med en komplet, kørende hjemmeside. Bagefter bygger du selv videre ved at tale med AI og udgiver ved at sige “publish”. Ingen kode. Du ejer det hele.</p>
+        <a class="btn" href="#kontakt" data-i18n="btn_start">TRYK START</a>
+      </div>
+
+      <!-- Original mascot: a little plumber with a wrench (pixel art, drawn from scratch) -->
+      <svg class="mascot" viewBox="0 0 16 20" shape-rendering="crispEdges" role="img" aria-label="Pixel-tegnet VVS'er med hjelm og svensknøgle" data-i18n-aria="mascot_aria">
+        <rect x="5" y="1" width="6" height="2" fill="#f4c20d"/>
+        <rect x="3" y="3" width="10" height="1" fill="#d9a800"/>
+        <rect x="4" y="4" width="8" height="5" fill="#f2b98c"/>
+        <rect x="6" y="5" width="1" height="2" fill="#1c2233"/>
+        <rect x="9" y="5" width="1" height="2" fill="#1c2233"/>
+        <rect x="7" y="8" width="2" height="1" fill="#b5523b"/>
+        <rect x="3" y="9" width="10" height="3" fill="#ffffff"/>
+        <rect x="4" y="10" width="8" height="6" fill="#1fa5a0"/>
+        <rect x="4" y="9" width="1" height="1" fill="#1fa5a0"/>
+        <rect x="11" y="9" width="1" height="1" fill="#1fa5a0"/>
+        <rect x="7" y="12" width="2" height="2" fill="#168581"/>
+        <rect x="2" y="12" width="2" height="2" fill="#f2b98c"/>
+        <rect x="12" y="12" width="2" height="2" fill="#f2b98c"/>
+        <rect x="13" y="9" width="1" height="3" fill="#8a8f98"/>
+        <rect x="12" y="7" width="1" height="2" fill="#8a8f98"/>
+        <rect x="14" y="7" width="1" height="2" fill="#8a8f98"/>
+        <rect x="12" y="9" width="3" height="1" fill="#8a8f98"/>
+        <rect x="4" y="16" width="3" height="2" fill="#1fa5a0"/>
+        <rect x="9" y="16" width="3" height="2" fill="#1fa5a0"/>
+        <rect x="3" y="18" width="4" height="2" fill="#6b4a2b"/>
+        <rect x="9" y="18" width="4" height="2" fill="#6b4a2b"/>
+      </svg>
+    </div>
+  </section>
+  <div class="ground" aria-hidden="true"></div>
+  <div class="bricks" aria-hidden="true"></div>
+
+  <!-- PROBLEM -->
+  <section class="block">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="prob_h2">Du har en idé.<br>Rørene er i vejen.</h2>
+      <p class="sub" data-i18n="prob_sub">AI kan i dag bygge en hel hjemmeside, hvis du bare taler til den. Men for at komme i gang skal du først igennem terminal, GitHub, SSH-nøgler, DNS, CMS og mailopsætning. Det er dér, de fleste giver op. Dér kommer jeg ind.</p>
+    </div>
+  </section>
+
+  <!-- LEVELS -->
+  <section class="block alt" id="sadan">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="lv_h2">Sådan klarer du banen</h2>
+      <p class="sub" data-i18n="lv_sub">Tre baner. Første bane tager jeg. Resten klarer du selv, og jeg står ved siden af.</p>
+      <div class="grid three">
+        <div class="panel level">
+          <span class="tag pixel" data-i18n="lv1_tag">BANE 1</span>
+          <h3 class="pixel" data-i18n="lv1_h">Opsætning</h3>
+          <p data-i18n="lv1_p">Jeg kommer til dig og sætter din computer op: Claude, GitHub, domæne, hosting, CMS og kontaktformular. Alt under dine egne konti.</p>
+        </div>
+        <div class="panel level">
+          <span class="tag pixel" data-i18n="lv2_tag">BANE 2</span>
+          <h3 class="pixel" data-i18n="lv2_h">Byg</h3>
+          <p data-i18n="lv2_p">Du taler med AI og ser resultatet på din egen skærm. “Gør overskriften større.” “Tilføj en bookingside.” Prøv de vilde idéer af.</p>
+        </div>
+        <div class="panel level">
+          <span class="tag pixel" data-i18n="lv3_tag">BANE 3</span>
+          <h3 class="pixel" data-i18n="lv3_h">Publish</h3>
+          <p data-i18n="lv3_p">Du siger “publish”, og siden er live på dit eget domæne. Du ejer koden og betaler ingen platform for at have den.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="block">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="get_h2">Det får du</h2>
+      <div class="grid two" style="margin-top:24px">
+        <div class="panel">
+          <ul class="checks">
+            <li data-i18n="get_7">En komplet, kørende hjemmeside på dit eget domæne</li>
+            <li data-i18n="get_1">Fuld opsætning på din egen computer</li>
+            <li data-i18n="get_2">AI-assistent klar til at bygge for dig</li>
+            <li data-i18n="get_3">Eget domæne og gratis hosting</li>
+            <li data-i18n="get_4">Redigerbart indhold med CMS</li>
+            <li data-i18n="get_5">Kontaktformular med mail</li>
+            <li data-i18n="get_6">Et lille snydeark: sådan starter, udgiver og fortryder du</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <p class="pixel" style="font-size:13px;margin-top:0" data-i18n="cost_h">Hvad det koster bagefter</p>
+          <ul class="checks">
+            <li data-i18n="cost_1">Claude: ca. 15 USD om måneden</li>
+            <li data-i18n="cost_2">Domæne: ca. 100 kr. om året</li>
+            <li data-i18n="cost_3">Hosting, CMS og mail: gratis til de fleste små sider</li>
+            <li data-i18n="cost_4">Ingen månedlig betaling til mig, ingen binding</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICE / EKSTRA LIV -->
+  <section class="block alt" id="pris">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="ex_h2">Ekstra liv</h2>
+      <p class="sub" data-i18n="ex_sub">Gik noget galt, eller sidder du fast? Hvert hjerte er en supportsession på 45 minutter. Prøv at trykke på dem.</p>
+      <div class="panel" style="max-width:640px">
+        <p class="pixel" style="font-size:12px;margin:0" data-i18n="pkg_name">Pakken “Nøglefærdig”</p>
+        <p class="price-old pixel" data-i18n="price_old">4.500 kr.</p>
+        <p class="price pixel" data-i18n="price">3.500 kr.</p>
+        <p class="offer" data-i18n="offer">Tilbud til og med 31. december 2026</p>
+        <p class="guarantee" data-i18n="guarantee">Garanti: du ender med en komplet, kørende hjemmeside på dit eget domæne, klar til at blive brugt. Nøglefærdig.</p>
+        <p style="margin:0 0 8px" data-i18n="pkg_desc">Fuld opsætning på din computer, din hjemmeside bygget sammen med dig + 3 ekstra liv.</p>
+        <div class="hearts" id="hearts" role="group" aria-label="Dine ekstra liv" data-i18n-aria="hearts_aria">
+          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 1" data-i18n-aria="heart1_aria">
+            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
+          </button>
+          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 2" data-i18n-aria="heart2_aria">
+            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
+          </button>
+          <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 3" data-i18n-aria="heart3_aria">
+            <svg viewBox="0 0 11 10"><path class="on" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>
+          </button>
+        </div>
+        <p class="hint" data-i18n="hint">Flere liv kan købes bagefter. <span class="todo">UDKAST: pris pr. ekstra liv, antal sessioner og præcis hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
+        <a class="btn" href="#kontakt" style="margin-top:12px" data-i18n="btn_start">TRYK START</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="block proof" id="kunder">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="proof_h2">Hvad kunder siger</h2>
+      <p class="sub" data-i18n="proof_sub">To hjemmesider, bygget uden at skrive en eneste linje kode. Klik og se dem selv.</p>
+      <div class="grid two">
+        <div class="panel testimonial">
+          <p class="pixel site-name">trailstothriving.dk</p>
+          <p class="site-desc" data-i18n="pf1_desc">Guidede naturvandringer og retreats for bedre mental sundhed.</p>
+          <blockquote data-i18n="pf1_quote">“Jeg havde aldrig bygget en hjemmeside før. Jeg fortalte bare AI’en, hvad jeg ville have, og et par sessioner senere var den live. Det var nemt, og faktisk sjovt. Og siden er helt min egen.”</blockquote>
+          <p class="who" data-i18n="pf1_who">Ejer af trailstothriving.dk</p>
+          <a class="btn small" href="https://trailstothriving.dk" target="_blank" rel="noopener" data-i18n="visit">BESØG SIDEN</a>
+          <p class="draft" data-i18n="draft"><span class="todo">UDKAST: ejeren skal godkende eller omskrive citatet, før det offentliggøres</span></p>
+        </div>
+        <div class="panel testimonial">
+          <p class="pixel site-name">re-balance.dk</p>
+          <p class="site-desc" data-i18n="pf2_desc">Kropsorienteret, traumeinformeret terapi i København.</p>
+          <blockquote data-i18n="pf2_quote">“Det føltes som at tale med en kollega, ikke som at kæmpe med et værktøj. Det var meget sjovere end Wix eller Lovable, hvor jeg altid endte med at give op. Her blev det hele mit, og jeg kan selv ændre det, når jeg vil.”</blockquote>
+          <p class="who" data-i18n="pf2_who">Ejer af re-balance.dk</p>
+          <a class="btn small" href="https://re-balance.dk" target="_blank" rel="noopener" data-i18n="visit">BESØG SIDEN</a>
+          <p class="draft" data-i18n="draft"><span class="todo">UDKAST: ejeren skal godkende eller omskrive citatet. Behold kun sammenligningen med Wix/Lovable, hvis det passer</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="block">
+    <div class="wrap about">
+      <div class="photo empty" id="photo">
+        <img src="photo.jpg" alt="Valentin" onerror="this.remove()" onload="this.parentNode.classList.remove('empty')">
+      </div>
+      <div>
+        <h2 class="pixel" data-i18n="about_h2">Om mig</h2>
+        <p data-i18n="about_p1">Hej, jeg hedder Valentin. Jeg er softwareudvikler, og jeg har bygget to hjemmesider uden selv at skrive koden, bare ved at tale med AI. Nu hjælper jeg andre i gang, så de kan gøre det samme.</p>
+        <p data-i18n="about_p2"><span class="todo">UDKAST: ret teksten, så den lyder som dig. Tilføj evt. hvor du bor og hvilke sprog du hjælper på. Læg dit foto i mappen som photo.jpg</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block alt">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="faq_h2">Spørgsmål</h2>
+      <p class="sub"></p>
+      <details>
+        <summary data-i18n="q7">Hvad betyder “nøglefærdig”?</summary>
+        <p data-i18n="a7">Du står ikke med en forberedt computer og skal selv i gang. Du ender med en komplet hjemmeside, der kører på dit eget domæne. Vi bygger den første version sammen, og jeg sørger for, at den er live og virker.</p>
+      </details>
+      <details>
+        <summary data-i18n="q1">Skal jeg kunne kode?</summary>
+        <p data-i18n="a1">Nej. Du skriver eller siger, hvad du vil have, og AI laver det. Jeg viser dig, hvordan det foregår.</p>
+      </details>
+      <details>
+        <summary data-i18n="q2">Hvem ejer hjemmesiden?</summary>
+        <p data-i18n="a2">Dig. Alle konti oprettes i dit navn, og jeg har ingen adgang bagefter. Du kan tage koden med, hvor du vil.</p>
+      </details>
+      <details>
+        <summary data-i18n="q3">Hvad hvis noget går i stykker?</summary>
+        <p data-i18n="a3">Alle ændringer gemmes i GitHub, så du kan altid gå et skridt tilbage. Og du har dine ekstra liv, hvis du sidder fast.</p>
+      </details>
+      <details>
+        <summary data-i18n="q4">Kan jeg bygge en app og ikke kun en hjemmeside?</summary>
+        <p data-i18n="a4">Webapps som bookingsider og små værktøjer kan vi sætte op med det samme. Mobilapps til App Store og Google Play kræver ekstra opsætning, så snak med mig først.</p>
+      </details>
+      <details>
+        <summary data-i18n="q5">Hvad koster det efter opsætningen?</summary>
+        <p data-i18n="a5">Cirka 15 USD om måneden til Claude og omkring 100 kr. om året til dit domæne. Resten er gratis for de fleste små sider.</p>
+      </details>
+      <details>
+        <summary data-i18n="q6">Hvad med persondata og GDPR?</summary>
+        <p data-i18n="a6">Du er selv dataansvarlig for din side. Jeg hjælper dig med at sætte en privatlivspolitik og cookie-information op, og vælger EU-regioner, hvor det er muligt.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="block contact" id="kontakt" style="background:var(--sky)">
+    <div class="wrap">
+      <h2 class="pixel" data-i18n="ct_h2">Klar til bane 1?</h2>
+      <p class="sub" style="margin-inline:auto;color:#fff;text-shadow:1px 1px 0 #1c2233" data-i18n="ct_sub">Skriv til mig, så finder vi et tidspunkt til opsætningen.</p>
+      <a class="btn" href="mailto:DIN@EMAIL.DK?subject=ExtraLiv" data-i18n="ct_btn">SKRIV TIL MIG</a>
+      <p data-i18n="ct_todo"><span class="todo">UDKAST: skift e-mailadressen, eller indsæt booking-link</span></p>
+    </div>
+  </section>
+</main>
+
+<div class="ground" aria-hidden="true"></div>
+<footer>
+  <div class="wrap">
+    <p data-i18n="f1">ExtraLiv · <span class="todo">CVR og kontaktoplysninger</span></p>
+    <p data-i18n="f2">Alt på denne side er tegnet fra bunden. Ikke tilknyttet nogen spilvirksomhed.</p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var EN = {
+      coins: '3,500 DKK',
+      hero_h1: "I'll handle the pipes.<br>You bring the vibes.",
+      hero_lead: 'I set up AI, GitHub, your domain and everything else on your computer, and make sure you end up with a complete, running website. Afterwards you keep building just by talking to AI, and publish by saying “publish”. No code. You own it all.',
+      btn_start: 'PRESS START',
+      mascot_aria: 'Pixel-art plumber with a hard hat and a wrench',
+      prob_h2: 'You have an idea.<br>The pipes are in the way.',
+      prob_sub: 'AI can build a whole website today if you just talk to it. But to get started you first have to get through the terminal, GitHub, SSH keys, DNS, a CMS and email setup. That is where most people give up. That is where I come in.',
+      lv_h2: 'How to clear the level',
+      lv_sub: 'Three levels. I take the first one. You clear the rest yourself, with me standing next to you.',
+      lv1_tag: 'LEVEL 1', lv1_h: 'Setup',
+      lv1_p: 'I come to you and set up your computer: Claude, GitHub, domain, hosting, CMS and contact form. All under your own accounts.',
+      lv2_tag: 'LEVEL 2', lv2_h: 'Build',
+      lv2_p: 'You talk to AI and see the result on your own screen. “Make the heading bigger.” “Add a booking page.” Try out your wildest ideas.',
+      lv3_tag: 'LEVEL 3', lv3_h: 'Publish',
+      lv3_p: 'You say “publish” and the site is live on your own domain. You own the code and pay no platform to keep it.',
+      get_h2: 'What you get',
+      get_7: 'A complete, running website on your own domain',
+      get_1: 'Full setup on your own computer',
+      get_2: 'An AI assistant ready to build for you',
+      get_3: 'Your own domain and free hosting',
+      get_4: 'Editable content with a CMS',
+      get_5: 'A contact form that sends email',
+      get_6: 'A small cheat sheet: how to start, publish and undo',
+      cost_h: 'What it costs afterwards',
+      cost_1: 'Claude: about 15 USD a month',
+      cost_2: 'Domain: about 100 DKK a year',
+      cost_3: 'Hosting, CMS and email: free for most small sites',
+      cost_4: 'No monthly payment to me, no lock-in',
+      ex_h2: 'Extra lives',
+      ex_sub: 'Did something go wrong, or are you stuck? Each heart is a 45-minute support session. Try clicking them.',
+      pkg_name: 'The “Turnkey” package',
+      price_old: '4,500 DKK',
+      price: '3,500 DKK',
+      offer: 'Offer until December 31, 2026',
+      guarantee: 'Guarantee: you end up with a complete, running website on your own domain, ready to use. Turnkey.',
+      pkg_desc: 'Full setup on your computer, your website built together with you + 3 extra lives.',
+      hearts_aria: 'Your extra lives',
+      heart1_aria: 'Extra life 1', heart2_aria: 'Extra life 2', heart3_aria: 'Extra life 3',
+      hint: 'More lives can be bought later. <span class="todo">DRAFT: price per extra life, number of sessions and exactly what “complete website” covers (pages, features) are not decided</span>',
+      proof_h2: 'What clients say',
+      proof_sub: 'Two websites, built without writing a single line of code. Click and see them for yourself.',
+      pf1_desc: 'Guided nature hikes and retreats for better mental health.',
+      pf1_quote: '“I had never built a website before. I just told the AI what I wanted, and a few sessions later it was live. It was easy, and honestly fun. And the site is completely mine.”',
+      pf1_who: 'Owner of trailstothriving.dk',
+      pf2_desc: 'Body-oriented, trauma-informed therapy in Copenhagen.',
+      pf2_quote: '“It felt like talking to a colleague, not fighting a tool. It was much more fun than Wix or Lovable, where I always ended up giving up. Here everything became mine, and I can change it myself whenever I want.”',
+      pf2_who: 'Owner of re-balance.dk',
+      visit: 'VISIT THE SITE',
+      draft: '<span class="todo">DRAFT: the owner must approve or rewrite this quote before it is published. Keep the Wix/Lovable comparison only if it is true</span>',
+      about_h2: 'About me',
+      about_p1: 'Hi, I am Valentin. I am a software developer, and I built two websites without writing the code myself, just by talking to AI. Now I help others get started so they can do the same.',
+      about_p2: '<span class="todo">DRAFT: edit the text so it sounds like you. Optionally add where you live and which languages you help in. Put your photo in the folder as photo.jpg</span>',
+      faq_h2: 'Questions',
+      q7: 'What does “turnkey” mean?', a7: 'You are not left with a prepared computer and told to get on with it. You end up with a complete website running on your own domain. We build the first version together, and I make sure it is live and working.',
+      q1: 'Do I need to know how to code?', a1: 'No. You write or say what you want, and AI builds it. I show you how it works.',
+      q2: 'Who owns the website?', a2: 'You do. All accounts are created in your name and I have no access afterwards. You can take the code wherever you like.',
+      q3: 'What if something breaks?', a3: 'Every change is saved in GitHub, so you can always go one step back. And you have your extra lives if you get stuck.',
+      q4: 'Can I build an app, not just a website?', a4: 'Web apps like booking pages and small tools we can set up right away. Mobile apps for the App Store and Google Play need extra setup, so talk to me first.',
+      q5: 'What does it cost after the setup?', a5: 'About 15 USD a month for Claude and around 100 DKK a year for your domain. The rest is free for most small sites.',
+      q6: 'What about personal data and GDPR?', a6: 'You are the data controller for your site. I help you set up a privacy policy and cookie information, and choose EU regions where possible.',
+      ct_h2: 'Ready for level 1?',
+      ct_sub: 'Write to me and we will find a time for the setup.',
+      ct_btn: 'WRITE TO ME',
+      ct_todo: '<span class="todo">DRAFT: change the email address, or add a booking link</span>',
+      f1: 'ExtraLiv · <span class="todo">CVR and contact details</span>',
+      f2: 'Everything on this page is drawn from scratch. Not affiliated with any game company.'
+    };
+    var META = {
+      da: { title: 'ExtraLiv – Jeg tager rørene, du tager vibes',
+            desc: 'Jeg sætter AI, GitHub, domæne og det hele op på din computer, så du selv kan bygge og udgive din hjemmeside ved at tale med AI. Pris fra 3.500 kr. (tilbud): nøglefærdig hjemmeside.' },
+      en: { title: "ExtraLiv – I'll handle the pipes, you bring the vibes",
+            desc: 'I set up AI, GitHub, your domain and everything else on your computer, so you can build and publish your own website just by talking to AI. Price from 3,500 DKK (offer): a turnkey website.' }
+    };
+
+    var DA = {};
+    var nodes = document.querySelectorAll('[data-i18n]');
+    nodes.forEach(function (n) { DA[n.getAttribute('data-i18n')] = n.innerHTML; });
+    var aria = document.querySelectorAll('[data-i18n-aria]');
+    aria.forEach(function (n) { DA[n.getAttribute('data-i18n-aria')] = n.getAttribute('aria-label'); });
+
+    function setLang(lang, save) {
+      var dict = lang === 'en' ? EN : DA;
+      nodes.forEach(function (n) {
+        var v = dict[n.getAttribute('data-i18n')];
+        if (v !== undefined) n.innerHTML = v;
+      });
+      aria.forEach(function (n) {
+        var v = dict[n.getAttribute('data-i18n-aria')];
+        if (v !== undefined) n.setAttribute('aria-label', v);
+      });
+      document.documentElement.lang = lang;
+      document.title = META[lang].title;
+      var m = document.querySelector('meta[name="description"]');
+      if (m) m.setAttribute('content', META[lang].desc);
+      document.querySelectorAll('.lang button').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+      if (save) { try { localStorage.setItem('lang', lang); } catch (e) {} }
+    }
+
+    function initial() {
+      var q = (location.search.match(/[?&]lang=(da|en)/) || [])[1];
+      if (q) return q;
+      try { var s = localStorage.getItem('lang'); if (s === 'da' || s === 'en') return s; } catch (e) {}
+      return /^da\b/i.test(navigator.language || '') ? 'da' : 'en';
+    }
+
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); });
+    });
+    setLang(initial(), false);
+
+    document.querySelectorAll('#hearts .heart').forEach(function (h) {
+      h.addEventListener('click', function () {
+        var used = h.classList.toggle('used');
+        h.setAttribute('aria-pressed', used ? 'true' : 'false');
+      });
+    });
+  })();
+</script>
+</body>
+</html>
