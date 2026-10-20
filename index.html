@@ -76,7 +76,9 @@
   header.top { padding: 16px 0; }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .logo { font-size: 14px; color: #fff; text-shadow: 3px 3px 0 #1c2233; text-decoration: none; }
-  .coins { font-size: 12px; color: #fff; text-shadow: 2px 2px 0 #1c2233; display: flex; align-items: center; gap: 8px; }
+  .coins { font-size: 12px; color: #1c2233; background: var(--coin); border: 4px solid #1c2233; box-shadow: 0 4px 0 #1c2233; padding: 8px 12px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; }
+  .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
+  @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
   .coin { width: 16px; height: 16px; background: var(--coin); border: 3px solid #1c2233; border-radius: 50%; display: inline-block; }
 
   .lang { display: flex; gap: 8px; }
@@ -84,6 +86,16 @@
   .lang button[aria-pressed="true"] { background: var(--coin); }
   .vvs-note { font-size: 14px; font-weight: 700; color: #fff; text-shadow: 1px 1px 0 #1c2233; margin: -12px 0 24px; }
   .vvs-note:empty { display: none; }
+
+  /* ---- whatsapp ---- */
+  .btn.wa { background: #25d366; color: #0b2e18; box-shadow: 0 var(--px) 0 #168a43, 0 calc(var(--px) * 2) 0 #1c2233; display: inline-flex; align-items: center; gap: 12px; }
+  .btn.wa:hover { box-shadow: 0 2px 0 #168a43, 0 var(--px) 0 #1c2233; }
+  .btn.big { font-size: clamp(14px, 3.2vw, 20px); padding: 22px 28px; }
+  .btn.wa svg { width: 28px; height: 28px; flex: none; shape-rendering: crispEdges; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .wa-float { position: fixed; right: 16px; bottom: 16px; z-index: 50; width: 64px; height: 64px; background: #25d366; border: 4px solid #1c2233; box-shadow: 0 4px 0 #1c2233; display: grid; place-items: center; }
+  .wa-float svg { width: 32px; height: 32px; shape-rendering: crispEdges; }
+  .app-note { background: #fff3a0; color: #1c2233; border: 3px solid #1c2233; padding: 12px 14px; font-weight: 800; margin: 0 0 16px; }
 
   /* ---- hero ---- */
   .hero { position: relative; padding: 24px 0 80px; overflow: hidden; }
@@ -155,9 +167,9 @@
   .btn.small { font-size: 11px; padding: 12px 14px; }
 
   /* ---- about ---- */
-  .about { display: grid; grid-template-columns: 220px 1fr; gap: 32px; align-items: center; }
-  .photo { width: 220px; height: 220px; border: var(--px) solid var(--ink); box-shadow: 8px 8px 0 var(--ink); background: var(--sky-deep); position: relative; overflow: hidden; }
-  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .about { display: grid; grid-template-columns: 150px 1fr; gap: 28px; align-items: center; }
+  .photo { width: 150px; height: 150px; border: var(--px) solid var(--ink); box-shadow: 6px 6px 0 var(--ink); background: var(--sky-deep); position: relative; overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; display: block; }
   .photo.empty::after { content: "PHOTO"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Press Start 2P", monospace; font-size: 14px; color: #fff; text-shadow: 2px 2px 0 #1c2233; }
   .about h2 { margin-bottom: 12px; }
   .about p { margin: 0 0 12px; }
@@ -177,12 +189,13 @@
     .hero .wrap { grid-template-columns: 1fr; }
     .grid.three, .grid.two { grid-template-columns: 1fr; }
     .about { grid-template-columns: 1fr; }
-    .photo { width: 180px; height: 180px; }
+    .photo { width: 150px; height: 150px; }
     .mascot { max-width: 200px; }
-    .coins { display: none; }
+    .coins { font-size: 10px; padding: 6px 8px; }
+    .logo { font-size: 12px; }
   }
   @media (prefers-reduced-motion: reduce) {
-    .mascot { animation: none; }
+    .mascot, .coins { animation: none; }
     html { scroll-behavior: auto; }
   }
 </style>
@@ -192,7 +205,7 @@
 <header class="top">
   <div class="wrap">
     <a class="logo pixel" href="#top">EXTRALIV</a>
-    <div class="coins pixel" aria-hidden="true"><span class="coin"></span> <span data-i18n="coins">3.500 kr.</span></div>
+    <a class="coins pixel" href="#pris" style="text-decoration:none"><span class="tag-sale" data-i18n="sale_tag">SALE −50%</span> <span data-i18n="coins">3.500 kr.</span></a>
     <div class="lang pixel" role="group" aria-label="Sprog / Language">
       <button type="button" data-lang="da" aria-pressed="true">DA</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
@@ -210,7 +223,10 @@
       <div>
         <h1 class="pixel" data-i18n="hero_h1">Jeg tager rørene.<br>Du tager vibes.</h1>
         <p class="lead" data-i18n="hero_lead">Jeg sætter AI, GitHub, domæne og det hele op på din computer og sørger for, at du ender med en komplet, kørende hjemmeside. Bagefter bygger du selv videre ved at tale med AI og udgiver ved at sige “publish”. Ingen kode. Du ejer det hele.</p>
-        <a class="btn" href="#kontakt" data-i18n="btn_start">TRYK START</a>
+        <div class="hero-actions">
+          <a class="btn" href="#pris" data-i18n="btn_start">TRYK START</a>
+          <a class="btn wa" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa_short">SPØRG PÅ WHATSAPP</span></a>
+        </div>
       </div>
 
       <!-- Original mascot: a little plumber with a wrench (pixel art, drawn from scratch) -->
@@ -311,10 +327,11 @@
       <p class="sub" data-i18n="ex_sub">Gik noget galt, eller sidder du fast? Hvert hjerte er en supportsession på 45 minutter. Prøv at trykke på dem.</p>
       <div class="panel" style="max-width:640px">
         <p class="pixel" style="font-size:12px;margin:0" data-i18n="pkg_name">Pakken “Nøglefærdig”</p>
-        <p class="price-old pixel" data-i18n="price_old">4.500 kr.</p>
+        <p class="price-old pixel" data-i18n="price_old">7.000 kr.</p>
         <p class="price pixel" data-i18n="price">3.500 kr.</p>
-        <p class="offer" data-i18n="offer">Tilbud til og med 31. december 2026</p>
+        <p class="offer" data-i18n="offer">Salg til og med 31. december 2026</p>
         <p class="guarantee" data-i18n="guarantee">Garanti: du ender med en komplet, kørende hjemmeside på dit eget domæne, klar til at blive brugt. Nøglefærdig.</p>
+        <p class="app-note" data-i18n="app_note">Vil du have en mobilapp? Det er også muligt, men de 3.500 kr. gælder kun hjemmesiden. Pris og omfang for en app aftaler vi i telefonen eller når vi mødes.</p>
         <p style="margin:0 0 8px" data-i18n="pkg_desc">Fuld opsætning på din computer, din hjemmeside bygget sammen med dig + 3 ekstra liv.</p>
         <div class="hearts" id="hearts" role="group" aria-label="Dine ekstra liv" data-i18n-aria="hearts_aria">
           <button class="heart" type="button" aria-pressed="false" aria-label="Ekstra liv 1" data-i18n-aria="heart1_aria">
@@ -396,7 +413,7 @@
       </details>
       <details>
         <summary data-i18n="q4">Kan jeg bygge en app og ikke kun en hjemmeside?</summary>
-        <p data-i18n="a4">Webapps som bookingsider og små værktøjer kan vi sætte op med det samme. Mobilapps til App Store og Google Play kræver ekstra opsætning, så snak med mig først.</p>
+        <p data-i18n="a4">Ja. Webapps som bookingsider og små værktøjer kan vi sætte op med det samme. En rigtig mobilapp til App Store og Google Play er også mulig, men den er ikke med i prisen på 3.500 kr., som kun gælder hjemmesiden. Pris og omfang aftaler vi i telefonen eller når vi mødes.</p>
       </details>
       <details>
         <summary data-i18n="q5">Hvad koster det efter opsætningen?</summary>
@@ -413,7 +430,9 @@
   <section class="block contact" id="kontakt" style="background:var(--sky)">
     <div class="wrap">
       <h2 class="pixel" data-i18n="ct_h2">Klar til bane 1?</h2>
-      <p class="sub" style="margin-inline:auto;color:#fff;text-shadow:1px 1px 0 #1c2233" data-i18n="ct_sub">Skriv til mig, så finder vi et tidspunkt til opsætningen.</p>
+      <p class="sub" style="margin-inline:auto;color:#fff;text-shadow:1px 1px 0 #1c2233" data-i18n="ct_sub">Stil et spørgsmål, eller skriv, så finder vi et tidspunkt til opsætningen.</p>
+      <p><a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">STIL ET SPØRGSMÅL PÅ WHATSAPP</span></a></p>
+      <p data-i18n="wa_note" style="color:#fff;font-weight:700;text-shadow:1px 1px 0 #1c2233">Svar som regel inden for en dag. <span class="todo">UDKAST: skriv dit WhatsApp-nummer i scriptet (WA_NUMBER)</span></p>
       <a class="btn" href="mailto:DIN@EMAIL.DK?subject=ExtraLiv" data-i18n="ct_btn">SKRIV TIL MIG</a>
       <p data-i18n="ct_todo"><span class="todo">UDKAST: skift e-mailadressen, eller indsæt booking-link</span></p>
     </div>
@@ -428,10 +447,17 @@
   </div>
 </footer>
 
+<a class="wa-float" data-wa href="#kontakt" target="_blank" rel="noopener" aria-label="WhatsApp" data-i18n-aria="wa_aria"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg></a>
+
 <script>
   (function () {
     var EN = {
       coins: '3,500 DKK',
+      wa_aria: 'Ask a question on WhatsApp',
+      sale_tag: 'SALE −50%',
+      btn_wa_short: 'ASK ON WHATSAPP',
+      btn_wa: 'ASK A QUESTION ON WHATSAPP',
+      wa_note: 'Reply usually within a day. <span class="todo">DRAFT: add your WhatsApp number in the script (WA_NUMBER)</span>',
       hero_h1: "I'll handle the pipes.<br>You bring the vibes.",
       hero_lead: 'I set up AI, GitHub, your domain and everything else on your computer, and make sure you end up with a complete, running website. Afterwards you keep building just by talking to AI, and publish by saying “publish”. No code. You own it all.',
       btn_start: 'PRESS START',
@@ -462,10 +488,11 @@
       ex_h2: 'Extra lives',
       ex_sub: 'Did something go wrong, or are you stuck? Each heart is a 45-minute support session. Try clicking them.',
       pkg_name: 'The “Turnkey” package',
-      price_old: '4,500 DKK',
+      price_old: '7,000 DKK',
       price: '3,500 DKK',
-      offer: 'Offer until December 31, 2026',
+      offer: 'Sale until December 31, 2026',
       guarantee: 'Guarantee: you end up with a complete, running website on your own domain, ready to use. Turnkey.',
+      app_note: 'Want a mobile app? That is possible too, but the 3,500 DKK covers the website only. We agree the price and scope of an app on the phone or when we meet.',
       pkg_desc: 'Full setup on your computer, your website built together with you + 3 extra lives.',
       hearts_aria: 'Your extra lives',
       heart1_aria: 'Extra life 1', heart2_aria: 'Extra life 2', heart3_aria: 'Extra life 3',
@@ -488,11 +515,11 @@
       q1: 'Do I need to know how to code?', a1: 'No. You write or say what you want, and AI builds it. I show you how it works.',
       q2: 'Who owns the website?', a2: 'You do. All accounts are created in your name and I have no access afterwards. You can take the code wherever you like.',
       q3: 'What if something breaks?', a3: 'Every change is saved in GitHub, so you can always go one step back. And you have your extra lives if you get stuck.',
-      q4: 'Can I build an app, not just a website?', a4: 'Web apps like booking pages and small tools we can set up right away. Mobile apps for the App Store and Google Play need extra setup, so talk to me first.',
+      q4: 'Can I build an app, not just a website?', a4: 'Yes. Web apps like booking pages and small tools we can set up right away. A real mobile app for the App Store and Google Play is possible too, but it is not included in the 3,500 DKK, which covers the website only. We agree the price and scope on the phone or when we meet.',
       q5: 'What does it cost after the setup?', a5: 'About 15 USD a month for Claude and around 100 DKK a year for your domain. The rest is free for most small sites.',
       q6: 'What about personal data and GDPR?', a6: 'You are the data controller for your site. I help you set up a privacy policy and cookie information, and choose EU regions where possible.',
       ct_h2: 'Ready for level 1?',
-      ct_sub: 'Write to me and we will find a time for the setup.',
+      ct_sub: 'Ask a question, or write to me, and we will find a time for the setup.',
       ct_btn: 'WRITE TO ME',
       ct_todo: '<span class="todo">DRAFT: change the email address, or add a booking link</span>',
       f1: 'ExtraLiv · <span class="todo">CVR and contact details</span>',
@@ -504,6 +531,9 @@
       en: { title: "ExtraLiv – I'll handle the pipes, you bring the vibes",
             desc: 'I set up AI, GitHub, your domain and everything else on your computer, so you can build and publish your own website just by talking to AI. Price from 3,500 DKK (offer): a turnkey website.' }
     };
+
+    var WA_NUMBER = '45XXXXXXXX'; // TODO: your number with country code, digits only, e.g. 4512345678
+    var WA_TEXT = { da: 'Hej! Jeg har et spørgsmål om ExtraLiv.', en: 'Hi! I have a question about ExtraLiv.' };
 
     var DA = {};
     var nodes = document.querySelectorAll('[data-i18n]');
@@ -520,6 +550,9 @@
       aria.forEach(function (n) {
         var v = dict[n.getAttribute('data-i18n-aria')];
         if (v !== undefined) n.setAttribute('aria-label', v);
+      });
+      document.querySelectorAll('[data-wa]').forEach(function (a) {
+        a.setAttribute('href', 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_TEXT[lang]));
       });
       document.documentElement.lang = lang;
       document.title = META[lang].title;
