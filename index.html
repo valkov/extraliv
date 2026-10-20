@@ -11,179 +11,97 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@400;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sky: #7cc8ff;
-    --sky-deep: #4fa8ee;
-    --ink: #1c2233;
-    --paper: #fffdf5;
-    --grass: #3fae4a;
-    --grass-dark: #2c8337;
-    --brick: #b8663a;
-    --brick-dark: #8a4824;
-    --coin: #ffc400;
-    --coin-dark: #c79200;
-    --heart: #ee3b4a;
+    --bg: #faf8f4;
+    --soft: #f1ece3;
+    --ink: #1f2a37;
+    --muted: #55606d;
+    --accent: #1f7a68;
+    --accent-dark: #17594b;
+    --accent-soft: #e3f1ed;
+    --warm: #fff3cf;
+    --line: #e3ddd2;
+    --heart: #e0434f;
     --heart-off: #c9cfdb;
-    --px: 3px;
+    --wa: #12924b;
   }
   * { box-sizing: border-box; }
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: var(--sky); color: var(--ink); font-family: "Nunito", system-ui, sans-serif; font-size: 17px; line-height: 1.5; }
-  .pixel { font-family: "Press Start 2P", monospace; line-height: 1.5; letter-spacing: 0; }
-  .wrap { width: min(1100px, 100% - 32px); margin-inline: auto; }
-  h2, h3 { margin: 0; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Nunito", system-ui, sans-serif; font-size: 18px; line-height: 1.6; }
+  .wrap { width: min(1080px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { margin: 0; line-height: 1.2; font-weight: 800; }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
-  .panel { background: var(--paper); border: var(--px) solid var(--ink); box-shadow: 6px 6px 0 var(--ink); padding: 16px; }
+  .panel { background: #fff; border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 4px 18px rgba(31,42,55,.07); padding: 22px; }
 
   /* ---- buttons ---- */
-  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: "Press Start 2P", monospace; font-size: 12px; text-decoration: none; color: #1c2233; background: var(--coin); border: var(--px) solid #1c2233; box-shadow: 0 var(--px) 0 var(--coin-dark), 0 calc(var(--px) * 2) 0 #1c2233; padding: 14px 18px; margin-bottom: 8px; cursor: pointer; }
-  .btn:hover { transform: translateY(2px); box-shadow: 0 2px 0 var(--coin-dark), 0 var(--px) 0 #1c2233; }
-  .btn.wa { background: #25d366; color: #0b2e18; box-shadow: 0 var(--px) 0 #168a43, 0 calc(var(--px) * 2) 0 #1c2233; }
-  .btn.wa:hover { box-shadow: 0 2px 0 #168a43, 0 var(--px) 0 #1c2233; }
-  .btn.big { font-size: clamp(13px, 3vw, 18px); padding: 20px 26px; }
-  .btn.small { font-size: 10px; padding: 11px 13px; }
-  .btn svg { width: 22px; height: 22px; flex: none; shape-rendering: crispEdges; }
-  a:focus-visible, button:focus-visible { outline: 4px solid #1c2233; outline-offset: 3px; background-color: #fff3a0; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; font-family: inherit; font-size: 18px; font-weight: 800; text-decoration: none; color: #fff; background: var(--accent); border: 0; border-radius: 14px; padding: 14px 24px; cursor: pointer; transition: background .15s, transform .15s; }
+  .btn:hover { background: var(--accent-dark); transform: translateY(-1px); }
+  .btn.wa { background: var(--wa); }
+  .btn.wa:hover { background: #0d7a3e; }
+  .btn.big { font-size: 20px; padding: 18px 30px; }
+  .btn.small { font-size: 16px; padding: 12px 18px; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
 
   /* ---- header ---- */
-  header.top { padding: 12px 0; }
+  header.top { padding: 16px 0; }
   header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-  .logo .lh { width: 1.15em; height: 1.05em; fill: var(--heart); vertical-align: -.1em; margin-right: .35em; shape-rendering: crispEdges; filter: drop-shadow(3px 3px 0 #1c2233); }
-  .logo { font-size: 13px; color: #fff; text-shadow: 3px 3px 0 #1c2233; text-decoration: none; }
-  .coins { white-space: nowrap; font-size: 11px; color: var(--coin); background: #000; border: 3px solid var(--coin); box-shadow: 0 3px 0 var(--coin-dark); padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
-  .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
-  @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
-  .lang { display: flex; gap: 2px; font-size: 11px; }
-  .lang button { font: inherit; font-size: 11px; color: rgba(255,255,255,.7); background: transparent; border: 0; padding: 6px 7px; cursor: pointer; text-shadow: 1px 1px 0 rgba(28,34,51,.6); }
-  .lang button[aria-pressed="true"] { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
-  .lang button[aria-pressed="false"]:hover { color: #fff; }
+  .logo { display: inline-flex; align-items: center; gap: 8px; font-size: 24px; font-weight: 800; color: var(--ink); text-decoration: none; letter-spacing: -.01em; }
+  .logo .lh { width: 24px; height: 22px; fill: var(--heart); }
+  .lang { display: flex; gap: 4px; font-size: 16px; }
+  .lang button { font: inherit; font-weight: 700; color: var(--muted); background: transparent; border: 0; padding: 6px 10px; border-radius: 8px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { color: var(--ink); background: var(--soft); }
 
   /* ---- hero ---- */
-  .hero { position: relative; padding: 8px 0 44px; overflow: hidden; }
-  .hero .wrap { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; align-items: center; position: relative; z-index: 1; }
-  .hero h1 { font-size: clamp(20px, 3.8vw, 34px); color: #fff; text-shadow: 4px 4px 0 #1c2233; margin: 0 0 14px; }
-  .hero p.lead { font-size: 18px; font-weight: 700; background: var(--paper); border: var(--px) solid var(--ink); padding: 12px 14px; box-shadow: 6px 6px 0 var(--ink); margin: 0 0 18px; max-width: 560px; }
+  .hero { padding: 36px 0 56px; }
+  .hero .wrap { max-width: 860px; }
+  .hero h1 { font-size: clamp(32px, 5.4vw, 52px); letter-spacing: -.02em; margin: 0 0 20px; }
+  .hero p.lead { font-size: clamp(19px, 2.4vw, 22px); color: var(--muted); margin: 0 0 24px; max-width: 680px; }
+  .offer-line { display: inline-block; font-weight: 800; font-size: 17px; background: var(--warm); border: 1px solid #f0dfae; border-radius: 999px; padding: 6px 16px; margin: 0 0 26px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .mascot { width: 100%; max-width: 200px; margin-inline: auto; display: block; image-rendering: pixelated; animation: bob 1.4s steps(2) infinite; }
-  @keyframes bob { 50% { transform: translateY(-6px); } }
-  .cloud { position: absolute; background: #b9e0ff; border: 3px solid rgba(28,34,51,.35); height: 22px; width: 90px; z-index: 0; opacity: .6; pointer-events: none; }
-  .cloud::before { content: ""; position: absolute; left: 18px; top: -16px; width: 40px; height: 16px; background: #b9e0ff; border: 3px solid rgba(28,34,51,.35); border-bottom: 0; }
-  .cloud { left: 0; animation: fly 40s linear infinite; }
-  .c1 { top: 50px; animation-duration: 38s; animation-delay: -12s; }
-  .c2 { top: 120px; width: 120px; animation-duration: 55s; animation-delay: -35s; }
-  .c3 { top: 24px; width: 70px; animation-duration: 30s; animation-delay: -4s; }
-  @keyframes fly { from { transform: translateX(-160px); } to { transform: translateX(100vw); } }
-  .ground { height: 28px; background: linear-gradient(var(--grass) 0 9px, var(--grass-dark) 9px 12px, var(--brick) 12px 100%); border-top: 4px solid #1c2233; }
 
   /* ---- sections ---- */
-  section.block { background: var(--paper); padding: 36px 0; }
-  section.block.alt { background: var(--sky-deep); }
-  section.block h2 { font-size: clamp(14px, 2.2vw, 20px); margin: 0 0 16px; }
-  section.block.alt h2 { color: #fff; text-shadow: 3px 3px 0 #1c2233; }
-  .grid { display: grid; gap: 18px; }
+  section.block { padding: 56px 0; }
+  section.block.alt { background: var(--soft); }
+  section.block h2 { font-size: clamp(26px, 3.6vw, 36px); margin: 0 0 28px; letter-spacing: -.01em; }
+  .grid { display: grid; gap: 20px; }
 
-  /* ---- flow diagram ---- */
-  .diagram { padding: 12px; }
-  .dg { display: block; width: 100%; height: auto; overflow: visible; }
-  .dg.fm { display: none; max-width: 420px; margin-inline: auto; }
-  .sh { fill: var(--ink); }
-  .f-paper, .f-coin, .f-heart, .f-grass { stroke: var(--ink); stroke-width: 3; }
-  .f-paper { fill: var(--paper); } .f-coin { fill: var(--coin); } .f-heart { fill: #ffb3c1; } .f-grass { fill: var(--grass); }
-  .ar { fill: none; stroke: var(--ink); stroke-width: 4; stroke-linejoin: miter; }
-  .ar.dash { stroke-dasharray: 8 8; }
-  .ahd { fill: var(--ink); stroke: none; }
-  .dn { height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 8px; padding: 8px 12px; font-family: "Nunito", system-ui, sans-serif; font-size: 17px; font-weight: 700; line-height: 1.25; color: var(--ink); box-sizing: border-box; }
-  .dn.col { color: #1c2233; }
-  .dn b { font-family: "Press Start 2P", monospace; font-size: 13px; font-weight: 400; line-height: 1.4; }
-  .tip { cursor: help; outline: none; display: grid; width: 100%; }
-  .tip .ta, .tip .tb { grid-area: 1 / 1; align-self: center; transition: opacity .3s, transform .3s; }
-  .tip .tb { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; opacity: 0; pointer-events: none; }
-  .tip .tb em { font-style: normal; font-family: "Nunito", system-ui, sans-serif; font-size: 14px; font-weight: 800; background: var(--coin); border: 2px solid #1c2233; color: #1c2233; padding: 1px 7px; opacity: 0; transform: translateY(8px) scale(.9); transition: opacity .25s, transform .25s; }
-  .dn.a:hover .ta, .dn.a:focus-within .ta { opacity: 0; transform: scale(.9); }
-  .dn.a:hover .tb, .dn.a:focus-within .tb { opacity: 1; }
-  .dn.a:hover .tb em, .dn.a:focus-within .tb em { opacity: 1; transform: none; }
-  .tip .tb em:nth-child(2) { transition-delay: .06s; } .tip .tb em:nth-child(3) { transition-delay: .12s; } .tip .tb em:nth-child(4) { transition-delay: .18s; }
-  .tip .tb em:nth-child(5) { transition-delay: .24s; } .tip .tb em:nth-child(6) { transition-delay: .3s; } .tip .tb em:nth-child(7) { transition-delay: .36s; }
-  .dn .rk { font-size: 2em; line-height: 1; }
-  .dn i { font-style: normal; color: var(--heart); letter-spacing: 3px; display: block; font-size: 20px; }
-  .dn i .hh { display: inline-block; margin: 0 3px; }
-  .dn i .hh svg { width: 22px; height: 20px; display: block; overflow: visible; shape-rendering: crispEdges; }
-  .dn.sm i .hh svg { width: 16px; height: 14px; }
-  .hh .ghost { fill: none; stroke: #b3202e; stroke-width: .8; stroke-dasharray: 1.4 1; }
-  .hh .solid { fill: var(--heart); transform-box: fill-box; transform-origin: 50% 80%; animation-duration: 10s; animation-timing-function: ease-in; animation-iteration-count: infinite; }
-  .hh:nth-child(1) .solid { animation-name: hb1; }
-  .hh:nth-child(2) .solid { animation-name: hb2; }
-  .hh:nth-child(3) .solid { animation-name: hb3; }
-  .hh:nth-child(4) .solid { animation-name: hb4; }
-  .hh:nth-child(5) .solid { animation-name: hb5; }
-  @keyframes hb5 {
-    0%, 10.00% { transform: none; opacity: 1; fill: var(--heart); }
-    11.20% { transform: translateX(-.4px) rotate(-12deg); } 12.40% { transform: translateX(.4px) rotate(12deg); } 13.60% { transform: translateX(-.4px) rotate(-12deg); }
-    15.00% { transform: none; opacity: 1; fill: var(--heart); }
-    20.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
-  }
-  @keyframes hb4 {
-    0%, 21.00% { transform: none; opacity: 1; fill: var(--heart); }
-    22.20% { transform: translateX(-.4px) rotate(-12deg); } 23.40% { transform: translateX(.4px) rotate(12deg); } 24.60% { transform: translateX(-.4px) rotate(-12deg); }
-    26.00% { transform: none; opacity: 1; fill: var(--heart); }
-    31.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
-  }
-  @keyframes hb3 {
-    0%, 32.00% { transform: none; opacity: 1; fill: var(--heart); }
-    33.20% { transform: translateX(-.4px) rotate(-12deg); } 34.40% { transform: translateX(.4px) rotate(12deg); } 35.60% { transform: translateX(-.4px) rotate(-12deg); }
-    37.00% { transform: none; opacity: 1; fill: var(--heart); }
-    42.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
-  }
-  @keyframes hb2 {
-    0%, 43.00% { transform: none; opacity: 1; fill: var(--heart); }
-    44.20% { transform: translateX(-.4px) rotate(-12deg); } 45.40% { transform: translateX(.4px) rotate(12deg); } 46.60% { transform: translateX(-.4px) rotate(-12deg); }
-    48.00% { transform: none; opacity: 1; fill: var(--heart); }
-    53.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
-  }
-  @keyframes hb1 {
-    0%, 54.00% { transform: none; opacity: 1; fill: var(--heart); }
-    55.20% { transform: translateX(-.4px) rotate(-12deg); } 56.40% { transform: translateX(.4px) rotate(12deg); } 57.60% { transform: translateX(-.4px) rotate(-12deg); }
-    59.00% { transform: none; opacity: 1; fill: var(--heart); }
-    64.00%, 90% { transform: translateY(2px) rotate(40deg) scale(.7); opacity: 0; fill: var(--heart-off); }
-    95%, 100% { transform: none; opacity: 1; fill: var(--heart); }
-  }
-  .dn.q b { font-size: 16px; }
-  .dn.sm { font-size: 13px; padding: 6px 8px; gap: 6px; } .dn.sm b { font-size: 10px; } .dn.sm i { letter-spacing: 0; line-height: 0; }
-  .dn.sm i .hh { margin: 0 1px; }
-  .dn.lab { font-family: "Press Start 2P", monospace; font-size: 11px; font-weight: 400; padding: 0; }
-  @media (max-width: 760px) { .dg.fw { display: none; } .dg.fm { display: block; } }
+  /* ---- how it works ---- */
+  .steps { list-style: none; padding: 0; margin: 0 0 32px; grid-template-columns: repeat(3, 1fr); }
+  .step h3 { font-size: 22px; margin: 12px 0 8px; }
+  .step p { margin: 0; color: var(--muted); font-size: 18px; }
+  .num { width: 44px; height: 44px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-size: 22px; font-weight: 800; }
+  .video { max-width: 760px; margin-inline: auto; aspect-ratio: 16 / 9; background: #1f2a37; border-radius: 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; color: #fff; text-align: center; padding: 16px; }
+  .video .play { width: 72px; height: 72px; border-radius: 50%; background: rgba(255,255,255,.16); display: grid; place-items: center; font-size: 30px; padding-left: 6px; }
+  .video p { margin: 0; font-size: 20px; font-weight: 800; }
+  .video p.soon { font-size: 16px; font-weight: 600; opacity: .75; }
 
   /* ---- packages ---- */
   .pricing { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
-  .card { display: flex; flex-direction: column; gap: 6px; padding: 14px; }
-  .card .tag { align-self: flex-start; font-size: 10px; background: var(--ink); color: var(--paper); padding: 6px 7px; }
-  .card .tag.hot { background: var(--heart); color: #fff; }
-  .card h3 { font-size: 12px; margin: 4px 0 0; }
-  .card .price { font-size: 22px; margin: 2px 0; }
-  .card p { margin: 0; font-size: 15px; line-height: 1.4; }
+  .card { display: flex; flex-direction: column; gap: 8px; }
+  .card .tag { align-self: flex-start; font-size: 14px; font-weight: 800; background: var(--accent-soft); color: var(--accent-dark); border-radius: 999px; padding: 3px 12px; }
+  .card .tag.hot { background: #fde8ea; color: #a6212c; }
+  .card h3 { font-size: 22px; margin: 4px 0 0; }
+  .card .price { font-size: 32px; font-weight: 800; margin: 0; line-height: 1.1; }
+  .card p { margin: 0; font-size: 17px; line-height: 1.5; }
   .card .btn { margin-top: auto; align-self: flex-start; }
-  .card.featured { border-color: var(--coin); outline: var(--px) solid var(--ink); box-shadow: 6px 6px 0 var(--coin-dark); }
-  .price-old { font-size: 12px; text-decoration: line-through; opacity: .6; margin: 0; }
-  .offer { align-self: flex-start; font-weight: 800; font-size: 13px !important; background: var(--coin); color: #1c2233; border: 3px solid #1c2233; padding: 3px 8px; }
-  ul.checks { list-style: none; padding: 0; margin: 4px 0; }
-  ul.checks li { padding-left: 24px; position: relative; margin-bottom: 6px; font-size: 15px; line-height: 1.35; }
-  ul.checks li::before { content: ""; position: absolute; left: 0; top: 4px; width: 12px; height: 12px; background: var(--grass); border: 3px solid var(--ink); }
-  .hearts { display: flex; flex-wrap: wrap; gap: 4px; margin: 4px 0 2px; }
-  .heart { width: 15px; height: 14px; border: 0; padding: 0; background: none; cursor: pointer; }
+  .card.featured { border: 2px solid var(--accent); box-shadow: 0 8px 28px rgba(31,122,104,.18); }
+  .price-old { font-size: 16px !important; text-decoration: line-through; color: var(--muted); margin: 0; }
+  .offer { align-self: flex-start; font-weight: 800; font-size: 15px !important; background: var(--warm); border-radius: 999px; padding: 2px 12px; }
+  ul.checks { list-style: none; padding: 0; margin: 6px 0 10px; }
+  ul.checks li { padding-left: 28px; position: relative; margin-bottom: 8px; font-size: 17px; line-height: 1.45; }
+  ul.checks li::before { content: "\2713"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 800; }
+  .hearts { display: flex; flex-wrap: wrap; gap: 5px; margin: 6px 0 2px; }
+  .heart { width: 20px; height: 18px; border: 0; padding: 0; background: none; cursor: pointer; }
   .heart svg { width: 100%; height: 100%; display: block; shape-rendering: crispEdges; }
   .heart .on { fill: var(--heart); }
   .heart.used .on { fill: var(--heart-off); }
-  .costs { margin-top: 22px; padding: 16px 18px 18px; border-color: #1c2233; background: var(--coin); color: #1c2233; box-shadow: 6px 6px 0 #1c2233; text-align: center; }
-  .cost-s { margin: 0; font-size: clamp(16px, 2.4vw, 20px); font-weight: 700; line-height: 1.4; color: #1c2233; }
-  .note { color: #fff; font-weight: 700; font-size: 15px; text-shadow: 1px 1px 0 #1c2233; margin: 16px 0 0; }
-  .hint { font-size: 13px !important; opacity: .85; }
-  .todo { background: #fff3a0; color: #1c2233; border: 2px dashed #1c2233; padding: 1px 5px; font-size: 13px; font-weight: 400; }
+  .costs { margin-top: 28px; padding: 22px 24px; background: var(--warm); border: 1px solid #f0dfae; box-shadow: none; text-align: center; }
+  .cost-s { margin: 0; font-size: clamp(18px, 2.4vw, 21px); font-weight: 700; line-height: 1.5; }
+  .hint { font-size: 14px !important; color: var(--muted); }
+  .todo { background: #fff3a0; color: #1f2a37; border: 1px dashed #8a7a2a; padding: 1px 5px; font-size: 13px; font-weight: 400; }
 
   /* ---- clients: each card wears the real theme of the client site ---- */
   .clients { grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -193,13 +111,12 @@
   .client .body { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
   .client .eyebrow { text-transform: uppercase; letter-spacing: .18em; font-size: 11px; font-weight: 600; margin: 0; }
   .client h3 { font-size: 22px; margin: 0; line-height: 1.15; }
-  .client blockquote { margin: 4px 0; font-size: 16px; line-height: 1.5; }
+  .client blockquote { margin: 4px 0; font-size: 17px; line-height: 1.5; }
   .client .palette { display: flex; gap: 6px; }
   .client .palette span { width: 20px; height: 20px; display: inline-block; border: 1px solid rgba(0,0,0,.12); }
-  .client .cbtn { display: inline-block; align-self: flex-start; padding: 10px 18px; text-decoration: none; font-size: 14px; font-weight: 600; color: #fff; margin-top: auto; }
-  .client .cbtn:focus-visible { outline: 3px solid #1c2233; outline-offset: 3px; }
+  .client .cbtn { display: inline-block; align-self: flex-start; padding: 10px 18px; text-decoration: none; font-size: 15px; font-weight: 600; color: #fff; margin-top: auto; }
 
-  .t2t { background: #1b472e; color: #e9e3d3; font-family: "Poppins", sans-serif; border-radius: 28px; border: 1px solid rgba(233,227,211,.2); box-shadow: 0 14px 40px rgba(33,66,43,.4); }
+  .t2t { background: #1b472e; color: #e9e3d3; font-family: "Poppins", sans-serif; border-radius: 28px; border: 1px solid rgba(233,227,211,.2); box-shadow: 0 14px 40px rgba(33,66,43,.3); }
   .t2t .bar { background: #143823; color: #a9c4a0; }
   .t2t .bar i { background: rgba(233,227,211,.35); }
   .t2t .eyebrow { color: #a9c4a0; }
@@ -215,69 +132,57 @@
   .rb blockquote { border-left: 3px solid #b3592f; padding-left: 14px; }
   .rb .palette span { border-radius: 0; }
   .rb .cbtn { background: #b3592f; border-radius: 0; font-family: "Montserrat", sans-serif; letter-spacing: .04em; }
-  .clients-block { padding: 22px 20px 18px; }
-  section.block.alt .clients-block h2.cl-h { color: var(--ink); text-shadow: none; margin: 0 0 18px; }
-  .clients-block .draft { color: var(--ink); }
-  .draft { margin: 8px 0 0; font-size: 13px; color: #fff; }
+  .clients-block h2.cl-h { margin: 0 0 22px; }
+  .draft { margin: 14px 0 0; font-size: 13px; }
 
   /* ---- about ---- */
-  .about { display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: stretch; }
-  .photo { width: 150px; height: 150px; align-self: start; border: var(--px) solid var(--ink); box-shadow: 5px 5px 0 var(--ink); background: var(--sky-deep); position: relative; overflow: hidden; }
+  .about { display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: start; }
+  .photo { width: 160px; height: 160px; border-radius: 18px; background: var(--soft); position: relative; overflow: hidden; box-shadow: 0 4px 18px rgba(31,42,55,.12); }
   .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; display: block; }
-  .photo.empty::after { content: "PHOTO"; position: absolute; inset: 0; display: grid; place-items: center; font-family: "Press Start 2P", monospace; font-size: 11px; color: #fff; text-shadow: 2px 2px 0 #1c2233; }
-  .about h2 { margin-bottom: 8px; }
-  .about a.li { display: inline-block; font-weight: 800; font-size: 16px; margin-top: 6px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 14px; text-decoration: none; }
-  .about a.li:hover { transform: translateY(2px); box-shadow: 0 1px 0 #1c2233; }
-  .about p { margin: 0 0 6px; }
+  .photo.empty::after { content: "Foto"; position: absolute; inset: 0; display: grid; place-items: center; font-weight: 700; color: var(--muted); }
+  .about h2 { margin-bottom: 12px; }
+  .about p { margin: 0 0 10px; }
+  .about a.li { display: inline-block; font-weight: 800; font-size: 17px; margin-top: 6px; color: var(--accent-dark); border: 2px solid var(--accent); border-radius: 999px; padding: 8px 18px; text-decoration: none; }
+  .about a.li:hover { background: var(--accent-soft); }
 
   /* ---- faq ---- */
-  .faq { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  details { background: var(--paper); border: var(--px) solid var(--ink); padding: 10px 14px; box-shadow: 4px 4px 0 var(--ink); }
-  summary { font-family: "Press Start 2P", monospace; font-size: 10px; line-height: 1.6; cursor: pointer; }
-  details p { margin: 8px 0 0; font-size: 15px; }
+  .faq { grid-template-columns: repeat(2, 1fr); gap: 14px; align-items: start; }
+  details { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 14px 18px; }
+  summary { font-size: 18px; font-weight: 800; line-height: 1.4; cursor: pointer; }
+  details p { margin: 10px 0 0; font-size: 17px; color: var(--muted); }
 
   /* ---- contact ---- */
-  section.block.contact { text-align: center; background: var(--sky); }
-  .contact h2 { color: #fff; text-shadow: 3px 3px 0 #1c2233; }
-  .contact p { margin: 4px 0; color: #fff; font-weight: 700; text-shadow: 1px 1px 0 #1c2233; }
-  .contact a.mail { color: #fff; }
-  footer { background: var(--ink); color: #dfe4f5; padding: 16px 0; font-size: 13px; text-align: center; }
+  section.block.contact { text-align: center; background: var(--accent-soft); }
+  .contact p { margin: 8px 0; }
+  .contact a.mail { color: var(--accent-dark); font-weight: 700; }
+  footer { background: var(--ink); color: #cfd6df; padding: 22px 0; font-size: 15px; text-align: center; }
   footer p { margin: 2px 0; }
-  footer a { color: var(--coin); }
-  .wa-float { position: fixed; right: 14px; bottom: 14px; z-index: 50; width: 58px; height: 58px; background: #25d366; border: 4px solid #1c2233; box-shadow: 0 4px 0 #1c2233; display: grid; place-items: center; }
-  .wa-float svg { width: 30px; height: 30px; shape-rendering: crispEdges; }
+  .wa-float { position: fixed; right: 16px; bottom: 16px; z-index: 50; width: 60px; height: 60px; border-radius: 50%; background: var(--wa); box-shadow: 0 6px 18px rgba(0,0,0,.25); display: grid; place-items: center; }
+  .wa-float svg { width: 30px; height: 30px; }
 
   @media (max-width: 960px) {
     .pricing { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: 1fr; }
   }
   @media (max-width: 760px) {
-    .hero .wrap, .clients, .faq { grid-template-columns: 1fr; }
-    .mascot { max-width: 130px; }
-    .cloud { display: none; }
-    .about { grid-template-columns: 100px 1fr; }
-    .photo { width: 100px; height: 100px; }
-    .coins { font-size: 8px; padding: 5px 6px; gap: 5px; white-space: nowrap; }
-    .logo { font-size: 10px; }
-    .lang button { font-size: 10px; padding: 6px 5px; }
-    header.top .wrap { gap: 10px 6px; flex-wrap: wrap; }
-    .coins { order: 3; margin-inline: auto; font-size: 8px; max-width: 100%; }
+    .clients, .faq { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 110px 1fr; gap: 18px; }
+    .photo { width: 110px; height: 110px; }
+    section.block { padding: 40px 0; }
   }
-  @media (max-width: 520px) {
+  @media (max-width: 560px) {
     .pricing { grid-template-columns: 1fr; }
+    .about { grid-template-columns: 1fr; }
   }
-  @media (prefers-reduced-motion: reduce) {
-    .mascot, .coins, .cloud, .hh .solid { animation: none; }
-    html { scroll-behavior: auto; }
-  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 </style>
 </head>
 <body>
 
 <header class="top">
   <div class="wrap">
-    <a class="logo pixel" href="#top" aria-label="ExtraLiv"><svg class="lh" viewBox="0 0 11 10" aria-hidden="true"><path d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>EXTRALIV</a>
-    <a class="coins pixel" href="#pris"><span class="tag-sale" data-i18n="sale_tag">BLACK FRIDAY −50%</span> <span data-i18n="coins">Hjemmeside 3.500 kr.</span></a>
-    <div class="lang pixel" role="group" aria-label="Sprog / Language">
+    <a class="logo" href="#top" aria-label="ExtraLiv"><svg class="lh" viewBox="0 0 11 10" aria-hidden="true"><path d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg>ExtraLiv</a>
+    <div class="lang" role="group" aria-label="Sprog / Language">
       <button type="button" data-lang="da" aria-pressed="true">DA</button>
       <button type="button" data-lang="en" aria-pressed="false">EN</button>
     </div>
@@ -287,48 +192,43 @@
 <main id="top">
   <!-- HERO -->
   <section class="hero">
-    <span class="cloud c1" aria-hidden="true"></span>
-    <span class="cloud c2" aria-hidden="true"></span>
-    <span class="cloud c3" aria-hidden="true"></span>
     <div class="wrap">
       <div>
-        <h1 class="pixel" data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
+        <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
+        <p class="offer-line" data-i18n="offer_line">Specialtilbud til 31. december: hjemmeside 3.500 kr. (normalt 7.000 kr.)</p>
         <p class="lead" data-i18n="hero_lead">Vi sætter det hele op på din computer. Du fortæller en AI-assistent, hvordan din drømmehjemmeside skal se ud, og ser den vokse frem. Sidder du fast, eller har du en ny idé? Brug 5 ekstra liv (supportsessioner) når som helst.</p>
         <div class="hero-actions">
-          <a class="btn" href="#pris" data-i18n="btn_start">TRYK START</a>
-          <a class="btn wa" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa_short">SPØRG PÅ WHATSAPP</span></a>
+          <a class="btn" href="#pris" data-i18n="btn_start">Se priser</a>
+          <a class="btn wa" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa_short">Spørg på WhatsApp</span></a>
         </div>
       </div>
-      <svg class="mascot" viewBox="0 0 16 20" shape-rendering="crispEdges" role="img" aria-label="Pixel-tegnet VVS'er med hjelm og svensknøgle" data-i18n-aria="mascot_aria">
-        <rect x="5" y="1" width="6" height="2" fill="#f4c20d"/><rect x="3" y="3" width="10" height="1" fill="#d9a800"/>
-        <rect x="4" y="4" width="8" height="5" fill="#f2b98c"/><rect x="6" y="5" width="1" height="2" fill="#1c2233"/><rect x="9" y="5" width="1" height="2" fill="#1c2233"/><rect x="7" y="8" width="2" height="1" fill="#b5523b"/>
-        <rect x="3" y="9" width="10" height="3" fill="#ffffff"/><rect x="4" y="10" width="8" height="6" fill="#1fa5a0"/><rect x="4" y="9" width="1" height="1" fill="#1fa5a0"/><rect x="11" y="9" width="1" height="1" fill="#1fa5a0"/><rect x="7" y="12" width="2" height="2" fill="#168581"/>
-        <rect x="2" y="12" width="2" height="2" fill="#f2b98c"/><rect x="12" y="12" width="2" height="2" fill="#f2b98c"/>
-        <rect x="13" y="9" width="1" height="3" fill="#8a8f98"/><rect x="12" y="7" width="1" height="2" fill="#8a8f98"/><rect x="14" y="7" width="1" height="2" fill="#8a8f98"/><rect x="12" y="9" width="3" height="1" fill="#8a8f98"/>
-        <rect x="4" y="16" width="3" height="2" fill="#1fa5a0"/><rect x="9" y="16" width="3" height="2" fill="#1fa5a0"/><rect x="3" y="18" width="4" height="2" fill="#6b4a2b"/><rect x="9" y="18" width="4" height="2" fill="#6b4a2b"/>
-      </svg>
     </div>
   </section>
-  <div class="ground" aria-hidden="true"></div>
 
-  <!-- STEPS -->
+  <!-- HOW IT WORKS -->
   <section class="block">
     <div class="wrap">
-      <div class="panel diagram"><svg class="dg fw" viewBox="0 -50 1000 590" role="img" aria-label="Flow" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ahfw" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" class="ahd"/></marker></defs><g class="ar" marker-end="url(#ahfw)"><path d="M206 135 H262"/><path d="M546 135 H772"/><path d="M880 40 V0 H405 V52"/><path d="M880 232 V322"/></g><g class="ar dash" marker-end="url(#ahfw)"><path d="M405 322 V218"/></g><g stroke-linejoin="miter"><rect x="16" y="66" width="190" height="150" class="sh"/><rect x="10" y="60" width="190" height="150" class="f-paper"/><rect x="276" y="66" width="270" height="150" class="sh"/><rect x="270" y="60" width="270" height="150" class="f-paper"/><polygon points="886,51 986,141 886,231 786,141" class="sh"/><polygon points="880,45 980,135 880,225 780,135" class="f-coin"/><rect x="241" y="336" width="340" height="150" class="sh"/><rect x="235" y="330" width="340" height="150" class="f-heart"/><rect x="746" y="336" width="250" height="150" class="sh"/><rect x="740" y="330" width="250" height="150" class="f-grass"/></g><foreignObject x="10" y="60" width="190" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn a"><b class="tip" tabindex="0"><span class="ta" data-i18n="fl1_h">Vi sætter din computer op</span><span class="tb" data-i18n="fl1_tip"><em>Din webadresse</em><em>Plads til siden online</em><em>AI-assistent (Claude)</em><em>Sikker backup</em><em>Teknik bag kulisserne</em><em>Mails og beskeder</em><em>osv.</em></span></b></div></foreignObject><foreignObject x="270" y="60" width="270" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl2_h">Fortæl AI, hvad du vil have</b><span data-i18n="fl2_p">Med dine egne ord. Se din hjemmeside tage form, og ret alt, hvad du vil.</span></div></foreignObject><foreignObject x="810" y="95" width="140" height="80"><div xmlns="http://www.w3.org/1999/xhtml" class="dn q col"><b data-i18n="fl_q">Tilfreds?</b></div></foreignObject><foreignObject x="250" y="335" width="310" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn col"><b data-i18n="fl4_h">5 ekstra liv</b><span data-i18n="fl4_s"><i><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span></i> 5 supportsessioner, brug dem når som helst, mens du arbejder på siden.</span></div></foreignObject><foreignObject x="755" y="335" width="220" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn col"><b data-i18n="fl5_h">Drømmehjemmesiden er live! <span class="rk">🚀</span></b></div></foreignObject><foreignObject x="520" y="-46" width="160" height="40"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl3_c">Ret den til</span></div></foreignObject><foreignObject x="895" y="262" width="90" height="36"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl_yes">Ja!</span></div></foreignObject></svg><svg class="dg fm" viewBox="0 -10 450 800" role="img" aria-label="Flow" xmlns="http://www.w3.org/2000/svg"><defs><marker id="ahfm" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="3.2" markerHeight="3.2" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z" class="ahd"/></marker></defs><g class="ar" marker-end="url(#ahfm)"><path d="M125 148 V182"/><path d="M125 378 V422"/><path d="M236 515 H395 V365 H246"/><path d="M125 608 V646"/></g><g class="ar dash" marker-end="url(#ahfm)"><path d="M274 265 H246"/></g><g stroke-linejoin="miter"><rect x="16" y="6" width="230" height="140" class="sh"/><rect x="10" y="0" width="230" height="140" class="f-paper"/><rect x="16" y="196" width="230" height="180" class="sh"/><rect x="10" y="190" width="230" height="180" class="f-paper"/><polygon points="131,436 236,521 131,606 26,521" class="sh"/><polygon points="125,430 230,515 125,600 20,515" class="f-coin"/><rect x="286" y="196" width="160" height="150" class="sh"/><rect x="280" y="190" width="160" height="150" class="f-heart"/><rect x="16" y="661" width="230" height="120" class="sh"/><rect x="10" y="655" width="230" height="120" class="f-grass"/></g><foreignObject x="10" y="0" width="230" height="140"><div xmlns="http://www.w3.org/1999/xhtml" class="dn a"><b class="tip" tabindex="0"><span class="ta" data-i18n="fl1_h">Vi sætter din egen computer op</span><span class="tb" data-i18n="fl1_tip"><em>Din webadresse</em><em>Plads til siden online</em><em>AI-assistent (Claude)</em><em>Sikker backup</em><em>Teknik bag kulisserne</em><em>Mails og beskeder</em><em>osv.</em></span></b></div></foreignObject><foreignObject x="10" y="190" width="230" height="180"><div xmlns="http://www.w3.org/1999/xhtml" class="dn "><b data-i18n="fl2_h">Fortæl AI, hvad du vil have</b><span data-i18n="fl2_p">Med dine egne ord. Se din hjemmeside tage form, og ret alt, hvad du vil.</span></div></foreignObject><foreignObject x="55" y="480" width="140" height="70"><div xmlns="http://www.w3.org/1999/xhtml" class="dn q col"><b data-i18n="fl_q">Tilfreds?</b></div></foreignObject><foreignObject x="280" y="190" width="160" height="150"><div xmlns="http://www.w3.org/1999/xhtml" class="dn sm col"><b data-i18n="fl4_h">5 ekstra liv</b><span data-i18n="fl4_s"><i><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span></i> 5 supportsessioner, brug dem når som helst, mens du arbejder på siden.</span></div></foreignObject><foreignObject x="20" y="660" width="210" height="110"><div xmlns="http://www.w3.org/1999/xhtml" class="dn col"><b data-i18n="fl5_h">Drømmehjemmesiden er live! <span class="rk">🚀</span></b></div></foreignObject><foreignObject x="260" y="530" width="150" height="40"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl3_c">Ret den til</span></div></foreignObject><foreignObject x="145" y="608" width="80" height="36"><div xmlns="http://www.w3.org/1999/xhtml" class="dn lab"><span data-i18n="fl_yes">Ja!</span></div></foreignObject></svg></div>
+      <h2 data-i18n="how_h2">Sådan virker det</h2>
+      <ol class="grid steps">
+        <li class="panel step"><span class="num">1</span><h3 data-i18n="s1_h">Vi sætter din computer op</h3><p data-i18n="s1_p">Din egen webadresse, et sted til din side online, en AI-assistent og sikker backup. Alt i dit navn.</p></li>
+        <li class="panel step"><span class="num">2</span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Med dine egne ord. Du ser din hjemmeside tage form og kan rette alt, så ofte du vil.</p></li>
+        <li class="panel step"><span class="num">3</span><h3 data-i18n="s3_h">Din hjemmeside er live</h3><p data-i18n="s3_p">Sidder du fast, eller har du en ny idé? Brug dine 5 ekstra liv: 5 supportsessioner, når som helst.</p></li>
+      </ol>
+      <div class="video" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
     </div>
   </section>
 
   <!-- PACKAGES -->
   <section class="block alt" id="pris">
     <div class="wrap">
-      <h2 class="pixel" data-i18n="pk_h2">Vælg din pakke</h2>
+      <h2  data-i18n="pk_h2">Vælg din pakke</h2>
       <div class="grid pricing">
 
         <div class="panel card featured">
-          <span class="tag pixel hot" data-i18n="pk1_tag">SPECIALTILBUD</span>
-          <h3 class="pixel" data-i18n="pk1_h">Nøglefærdig hjemmeside</h3>
-          <p class="price-old pixel" data-i18n="pk1_old">7.000 kr.</p>
-          <p class="price pixel" data-i18n="pk1_price">3.500 kr.</p>
+          <span class="tag hot" data-i18n="pk1_tag">Specialtilbud</span>
+          <h3  data-i18n="pk1_h">Nøglefærdig hjemmeside</h3>
+          <p class="price-old" data-i18n="pk1_old">7.000 kr.</p>
+          <p class="price" data-i18n="pk1_price">3.500 kr.</p>
           <p class="offer" data-i18n="pk1_offer">Til og med 31. dec. 2026</p>
           <ul class="checks">
             <li data-i18n="pk1_l1">Vi sætter det hele op for dig</li>
@@ -344,25 +244,25 @@
             </li>
             <li data-i18n="pk1_l4">Garanti: en komplet, fungerende hjemmeside på din egen webadresse</li>
           </ul>
-          <a class="btn wa small" data-wa="site" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk1_btn">VÆLG HJEMMESIDEN</span></a>
+          <a class="btn wa small" data-wa="site" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk1_btn">Vælg hjemmesiden</span></a>
           <p class="hint" data-i18n="pk1_hint"><span class="todo">UDKAST: hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
         </div>
 
         <div class="panel card">
-          <span class="tag pixel" data-i18n="pk2_tag">MOBILAPP</span>
-          <h3 class="pixel" data-i18n="pk2_h">Byg din mobilapp</h3>
-          <p class="price pixel" data-i18n="pk2_price">fra 5.000 kr.</p>
+          <span class="tag" data-i18n="pk2_tag">Mobilapp</span>
+          <h3  data-i18n="pk2_h">Byg din mobilapp</h3>
+          <p class="price" data-i18n="pk2_price">fra 5.000 kr.</p>
           <p data-i18n="pk2_p">Din egen app, klar til App Store og Google Play.</p>
           <p class="hint" data-i18n="pk2_note">Prisen afhænger af omfanget, fx om der skal bygges funktioner bag kulisserne. Apple- og Google-konto betaler du selv. <span class="todo">UDKAST: tjek priser og omfang</span></span></p>
-          <a class="btn wa small" data-wa="app" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk2_btn">VÆLG MOBILAPPEN</span></a>
+          <a class="btn wa small" data-wa="app" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk2_btn">Vælg mobilappen</span></a>
         </div>
 
         <div class="panel card">
-          <span class="tag pixel" data-i18n="pk3_tag">1 TIME</span>
-          <h3 class="pixel" data-i18n="pk3_h">Enkelt session</h3>
-          <p class="price pixel" data-i18n="pk3_price">500 kr.</p>
+          <span class="tag" data-i18n="pk3_tag">1 time</span>
+          <h3  data-i18n="pk3_h">Enkelt session</h3>
+          <p class="price" data-i18n="pk3_price">500 kr.</p>
           <p data-i18n="pk3_p">Sidder du fast, eller vil du videre? Book en time.</p>
-          <a class="btn wa small" data-wa="session" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk3_btn">BOOK EN TIME</span></a>
+          <a class="btn wa small" data-wa="session" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk3_btn">Book en time</span></a>
         </div>
       </div>
       <div class="panel costs">
@@ -375,7 +275,7 @@
   <section class="block alt" style="padding-top:0">
     <div class="wrap">
       <div class="panel clients-block">
-      <h2 class="pixel cl-h" data-i18n="cl_h2">Hvad kunder siger</h2>
+      <h2 class="cl-h" data-i18n="cl_h2">Hvad kunder siger</h2>
       <div class="grid clients">
         <article class="client t2t">
           <div class="bar"><i></i><i></i><i></i>&nbsp;trailstothriving.dk</div>
@@ -410,7 +310,7 @@
         <img src="photo.jpg" alt="Valentin" onerror="this.remove()" onload="this.parentNode.classList.remove('empty')">
       </div>
       <div>
-        <h2 class="pixel" data-i18n="about_h2">Om mig</h2>
+        <h2  data-i18n="about_h2">Om mig</h2>
         <p data-i18n="about_p1">Hej, jeg hedder Valentin. Jeg har 20+ års erfaring med at bygge løsninger til startups og store virksomheder.</p>
         <p data-i18n="about_p2">Med AI er det i dag så nemt at få din drømmehjemmeside, og jeg er her for at hjælpe dig. Skriv til mig, hvis du har spørgsmål, jeg svarer gerne!</p>
         <p><a class="li" href="https://www.linkedin.com/in/valentin-kovalski/" target="_blank" rel="noopener" data-i18n="about_li">Se mig på LinkedIn</a></p>
@@ -421,7 +321,7 @@
   <!-- FAQ -->
   <section class="block alt">
     <div class="wrap">
-      <h2 class="pixel" data-i18n="faq_h2">Spørgsmål</h2>
+      <h2  data-i18n="faq_h2">Spørgsmål</h2>
       <div class="grid faq">
         <details><summary data-i18n="q1">Skal jeg kunne kode?</summary><p data-i18n="a1">Nej. Du skriver eller siger, hvad du vil have, og AI bygger det.</p></details>
         <details><summary data-i18n="q2">Hvem ejer siden?</summary><p data-i18n="a2">Dig. Alle konti står i dit navn, og jeg har ingen adgang bagefter.</p></details>
@@ -434,17 +334,15 @@
   <!-- CONTACT -->
   <section class="block contact" id="kontakt">
     <div class="wrap">
-      <p><a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">STIL ET SPØRGSMÅL PÅ WHATSAPP</span></a></p>
+      <p><a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">Stil et spørgsmål på WhatsApp</span></a></p>
       <p><span data-i18n="ct_or">eller skriv til</span> <a class="mail" href="mailto:valentinkovalski@gmail.com?subject=ExtraLiv">valentinkovalski@gmail.com</a></p>
     </div>
   </section>
 </main>
 
-<div class="ground" aria-hidden="true"></div>
 <footer>
   <div class="wrap">
     <p>ExtraLiv · Valentin Kovalski</p>
-    <p data-i18n="f2">Alt på siden er tegnet fra bunden. Ikke tilknyttet nogen spilvirksomhed.</p>
   </div>
 </footer>
 
@@ -459,28 +357,28 @@
     };
 
     var EN = {
-      coins: `Website 3,500 DKK`, sale_tag: `BLACK FRIDAY −50%`,
+      offer_line: `Special offer until December 31: website 3,500 DKK (normally 7,000 DKK)`,
       hero_h1: `Get your own website.<br>Just by talking to your own computer.`,
       hero_lead: `We set everything up on your computer. You describe your dream website to an AI assistant and watch it take shape. Stuck, or got a new idea? Use 5 extra lives (support sessions) any time.`,
-      btn_start: `PRESS START`, btn_wa_short: `ASK ON WHATSAPP`, btn_wa: `ASK A QUESTION ON WHATSAPP`,
-      mascot_aria: `Pixel-art plumber with a hard hat and a wrench`, wa_aria: `Ask a question on WhatsApp`,
-      fl1_h: `We set up your computer`, fl1_tip: `<em>Your web address</em><em>A home for your site online</em><em>AI assistant (Claude)</em><em>Safe backups</em><em>Tech behind the scenes</em><em>Emails and alerts</em><em>etc.</em>`,
-      fl2_h: `Tell the AI what you want`, fl2_p: `In your own words. Watch your website take shape, then change anything you like.`,
-      fl3_c: `Tweak it`, fl_q: `Love it?`, fl_yes: `Yes!`,
-      fl4_h: `5 extra lives`, fl4_s: `<i><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span></i> 5 support sessions, use them any time while working on the site.`,
-      fl5_h: `Your dream website is live! <span class="rk">🚀</span>`,
+      btn_start: `See prices`, btn_wa_short: `Ask on WhatsApp`, btn_wa: `Ask a question on WhatsApp`,
+      wa_aria: `Ask a question on WhatsApp`,
+      how_h2: `How it works`,
+      s1_h: `We set up your computer`, s1_p: `Your own web address, a home for your site online, an AI assistant and safe backups. All in your name.`,
+      s2_h: `Tell the AI what you want`, s2_p: `In your own words. You watch your website take shape and can change anything, as often as you like.`,
+      s3_h: `Your website is live`, s3_p: `Stuck, or got a new idea? Use your 5 extra lives: 5 support sessions, any time.`,
+      video_aria: `Video`, video_t: `Video: see how it works`, video_s: `Coming soon`,
       pk_h2: `Choose your package`,
-      pk1_tag: `SPECIAL OFFER`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
+      pk1_tag: `Special offer`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
       pk1_l1: `We set everything up for you`,
       pk1_l2: `Talk to your own AI assistant and see changes instantly`,
       pk1_l3: `5 extra lives: 5 sessions of 45 min.`,
       pk1_l4: `Guarantee: a complete, working website on your own web address`,
-      pk1_btn: `CHOOSE THE WEBSITE`,
+      pk1_btn: `Choose the website`,
       pk1_hint: `<span class="todo">DRAFT: what “complete website” covers (pages, features) is not decided</span>`,
       hearts_aria: `Your extra lives`, heart1_aria: `Extra life 1`, heart2_aria: `Extra life 2`, heart3_aria: `Extra life 3`, heart4_aria: `Extra life 4`, heart5_aria: `Extra life 5`,
-      pk2_tag: `MOBILE APP`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
-      pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `CHOOSE THE MOBILE APP`,
-      pk3_tag: `1 HOUR`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `BOOK AN HOUR`,
+      pk2_tag: `Mobile app`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
+      pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `Choose the mobile app`,
+      pk3_tag: `1 hour`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `Book an hour`,
       cost_note: `Afterwards you only pay <b>about 100 DKK a month</b> for your own AI subscription (Claude) while you work on the site, and <b>about 100 DKK a year</b> for your own web address. Nothing to me, no lock-in.`,
       cl_h2: `What clients say`,
       t2t_eye: `Guided hikes and retreats`,
@@ -499,7 +397,6 @@
       q3: `What if something breaks?`, a3: `Every version of your site is saved, so you can always go back a step. And you have your extra lives.`,
       q4: `What about GDPR?`, a4: `You own your site’s data. I help with a privacy policy and cookie notice and pick EU servers where possible.`,
       ct_or: `or write to`,
-      f2: `Everything on this page is drawn from scratch. Not affiliated with any game company.`
     };
     var META = {
       da: { title: 'ExtraLiv – Din egen hjemmeside, bare ved at tale med din egen computer', desc: 'Vi sætter det hele op på din computer, så du selv kan bygge din egen hjemmeside ved at tale med en AI-assistent. Fra 3.500 kr. (specialtilbud).' },
