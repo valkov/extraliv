@@ -63,11 +63,10 @@
   .coins { white-space: nowrap; font-size: 11px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
   .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
   @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
-  .lang { display: flex; gap: 0; border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233, 0 0 0 3px #fff; background: #fff; }
-  .lang button { font: inherit; font-size: 12px; color: #1c2233; background: #fff; border: 0; padding: 9px 12px; cursor: pointer; }
-  .lang button + button { border-left: 3px solid #1c2233; }
-  .lang button[aria-pressed="true"] { background: var(--coin); box-shadow: inset 0 -4px 0 var(--coin-dark); }
-  .lang button[aria-pressed="false"]:hover { background: #fff3a0; }
+  .lang { display: flex; gap: 2px; font-size: 11px; }
+  .lang button { font: inherit; font-size: 11px; color: rgba(255,255,255,.7); background: transparent; border: 0; padding: 6px 7px; cursor: pointer; text-shadow: 1px 1px 0 rgba(28,34,51,.6); }
+  .lang button[aria-pressed="true"] { color: #fff; text-decoration: underline; text-underline-offset: 4px; }
+  .lang button[aria-pressed="false"]:hover { color: #fff; }
 
   /* ---- hero ---- */
   .hero { position: relative; padding: 8px 0 44px; overflow: hidden; }
@@ -185,7 +184,7 @@
     .photo { width: 100px; height: 100px; }
     .coins { font-size: 8px; padding: 5px 6px; gap: 5px; white-space: nowrap; }
     .logo { font-size: 10px; }
-    .lang button { font-size: 10px; padding: 7px 8px; }
+    .lang button { font-size: 10px; padding: 6px 5px; }
     header.top .wrap { gap: 6px; }
   }
   @media (max-width: 520px) {
@@ -285,9 +284,9 @@
         <div class="panel card">
           <span class="tag pixel" data-i18n="pk2_tag">MOBILAPP</span>
           <h3 class="pixel" data-i18n="pk2_h">Byg din mobilapp</h3>
-          <p class="price pixel" data-i18n="pk2_price">5.000 kr.</p>
+          <p class="price pixel" data-i18n="pk2_price">fra 5.000 kr.</p>
           <p data-i18n="pk2_p">Din egen app, klar til App Store og Google Play.</p>
-          <p class="hint" data-i18n="pk2_note">Apple- og Google-konto betaler du selv. <span class="todo">UDKAST: tjek priser og omfang</span></p>
+          <p class="hint" data-i18n="pk2_note">Prisen afhænger af omfanget, fx om der skal bygges en backend. Apple- og Google-konto betaler du selv. <span class="todo">UDKAST: tjek priser og omfang</span></p>
           <a class="btn wa small" data-wa="app" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk2_btn">VÆLG MOBILAPPEN</span></a>
         </div>
 
@@ -406,8 +405,8 @@
       pk1_btn: `CHOOSE THE WEBSITE`,
       pk1_hint: `<span class="todo">DRAFT: what “complete website” covers (pages, features) is not decided</span>`,
       hearts_aria: `Your extra lives`, heart1_aria: `Extra life 1`, heart2_aria: `Extra life 2`, heart3_aria: `Extra life 3`,
-      pk2_tag: `MOBILE APP`, pk2_h: `Build your mobile app`, pk2_price: `5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
-      pk2_note: `You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `CHOOSE THE MOBILE APP`,
+      pk2_tag: `MOBILE APP`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
+      pk2_note: `The price depends on the scope, for example whether a backend must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `CHOOSE THE MOBILE APP`,
       pk3_tag: `1 HOUR`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `BOOK AN HOUR`,
       cost_note: `Afterwards you only pay about 15 USD a month for Claude and about 100 DKK a year for the domain. Nothing to me, no lock-in.`,
       cl_h2: `What clients say`,
