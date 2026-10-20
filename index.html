@@ -63,9 +63,11 @@
   .coins { white-space: nowrap; font-size: 11px; color: #1c2233; background: var(--coin); border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233; padding: 7px 10px; display: flex; align-items: center; gap: 8px; transform: rotate(-2deg); animation: pulse 1.6s steps(2) infinite; text-decoration: none; }
   .coins .tag-sale { background: var(--heart); color: #fff; padding: 4px 6px; text-shadow: 1px 1px 0 #1c2233; }
   @keyframes pulse { 50% { transform: rotate(-2deg) scale(1.06); } }
-  .lang { display: flex; gap: 6px; }
-  .lang button { font: inherit; font-size: 11px; color: #1c2233; background: #fffdf5; border: 3px solid #1c2233; padding: 7px 9px; cursor: pointer; box-shadow: 0 3px 0 #1c2233; }
-  .lang button[aria-pressed="true"] { background: var(--coin); }
+  .lang { display: flex; gap: 0; border: 3px solid #1c2233; box-shadow: 0 3px 0 #1c2233, 0 0 0 3px #fff; background: #fff; }
+  .lang button { font: inherit; font-size: 12px; color: #1c2233; background: #fff; border: 0; padding: 9px 12px; cursor: pointer; }
+  .lang button + button { border-left: 3px solid #1c2233; }
+  .lang button[aria-pressed="true"] { background: var(--coin); box-shadow: inset 0 -4px 0 var(--coin-dark); }
+  .lang button[aria-pressed="false"]:hover { background: #fff3a0; }
 
   /* ---- hero ---- */
   .hero { position: relative; padding: 8px 0 44px; overflow: hidden; }
@@ -183,7 +185,7 @@
     .photo { width: 100px; height: 100px; }
     .coins { font-size: 8px; padding: 5px 6px; gap: 5px; white-space: nowrap; }
     .logo { font-size: 10px; }
-    .lang button { font-size: 9px; padding: 6px 7px; }
+    .lang button { font-size: 10px; padding: 7px 8px; }
     header.top .wrap { gap: 6px; }
   }
   @media (max-width: 520px) {
