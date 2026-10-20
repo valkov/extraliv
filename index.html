@@ -88,12 +88,28 @@
   section.block.alt h2 { color: #fff; text-shadow: 3px 3px 0 #1c2233; }
   .grid { display: grid; gap: 18px; }
 
-  /* ---- steps ---- */
-  .steps { grid-template-columns: repeat(3, 1fr); }
-  .step { display: flex; gap: 12px; align-items: center; padding: 12px 14px; }
-  .step .tag { font-size: 10px; background: var(--ink); color: var(--paper); padding: 6px 7px; flex: none; }
-  .step b { display: block; font-family: "Press Start 2P", monospace; font-size: 12px; margin-bottom: 4px; }
-  .step span.t { font-size: 15px; line-height: 1.3; display: block; }
+  /* ---- flow diagram ---- */
+  .flow { display: flex; align-items: stretch; gap: 0; }
+  .node { flex: 1 1 0; min-width: 0; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+  .node .num { align-self: flex-start; font-size: 10px; background: var(--ink); color: var(--paper); padding: 6px 7px; }
+  .node h3 { font-size: 12px; }
+  .node p { margin: 0; font-size: 14px; line-height: 1.35; }
+  .chips { display: flex; flex-wrap: wrap; gap: 5px; }
+  .chip { font-size: 12px; font-weight: 800; padding: 2px 7px; border: 2px solid var(--ink); background: var(--coin); color: #1c2233; }
+  .arr { flex: none; width: 34px; align-self: center; text-align: center; font-size: 22px; color: #fff; text-shadow: 2px 2px 0 #1c2233; font-family: "Nunito", system-ui, sans-serif; font-weight: 800; line-height: 34px; }
+  .loop { display: flex; flex-direction: column; gap: 4px; align-items: stretch; }
+  .loop .lb { border: 2px solid var(--ink); padding: 5px 8px; font-size: 13px; font-weight: 800; text-align: center; }
+  .loop .dn { text-align: center; font-size: 14px; line-height: 1; }
+  .loop .back { border: 2px dashed var(--heart); color: var(--heart); font-size: 12px; font-weight: 800; padding: 4px 6px; text-align: center; }
+  .lives { font-size: 18px; color: var(--heart); letter-spacing: 2px; line-height: 1; }
+  .node.end { background: var(--coin); color: #1c2233; border-color: #1c2233; box-shadow: 6px 6px 0 #1c2233; }
+  .node.end .num { background: #1c2233; color: var(--coin); }
+  @media (max-width: 899px) {
+    .flow { flex-direction: column; }
+    .arr { width: auto; height: 34px; }
+    .arr::before { content: "\2193"; }
+    .arr { font-size: 0; } .arr::before { font-size: 24px; }
+  }
 
   /* ---- packages ---- */
   .pricing { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
@@ -180,7 +196,7 @@
     .pricing { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 760px) {
-    .hero .wrap, .steps, .clients, .faq { grid-template-columns: 1fr; }
+    .hero .wrap, .clients, .faq { grid-template-columns: 1fr; }
     .mascot { max-width: 130px; }
     .cloud { display: none; }
     .about { grid-template-columns: 100px 1fr; }
@@ -242,10 +258,21 @@
   <!-- STEPS -->
   <section class="block">
     <div class="wrap">
-      <div class="grid steps">
-        <div class="panel step"><span class="tag pixel" data-i18n="lv1_tag">BANE 1</span><div><b data-i18n="lv1_h">Opsætning</b><span class="t" data-i18n="lv1_p">Jeg sætter din computer op.</span></div></div>
-        <div class="panel step"><span class="tag pixel" data-i18n="lv2_tag">BANE 2</span><div><b data-i18n="lv2_h">Byg</b><span class="t" data-i18n="lv2_p">Du taler med AI og ser resultatet.</span></div></div>
-        <div class="panel step"><span class="tag pixel" data-i18n="lv3_tag">BANE 3</span><div><b data-i18n="lv3_h">Publish</b><span class="t" data-i18n="lv3_p">Sig “publish”, og siden er live.</span></div></div>
+      <div class="flow">
+        <div class="panel node"><span class="num pixel">1</span><h3 class="pixel" data-i18n="fl1_h">Jeg sætter op</h3><div class="chips" data-i18n="fl1_chips"><span class="chip">Domæne</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Mails</span><span class="chip">CMS</span><span class="chip">Backend</span></div></div>
+        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="panel node"><span class="num pixel">2</span><h3 class="pixel" data-i18n="fl2_h">Du lærer</h3><p data-i18n="fl2_p">Jeg lærer dig at bruge lokal AI til at bygge og udgive din side.</p></div>
+        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="panel node"><span class="num pixel">3</span><h3 class="pixel" data-i18n="fl3_h">Iterér</h3>
+          <div class="loop" aria-label="loop">
+            <div class="lb" data-i18n="fl3_a">Eksperimentér</div><div class="dn" aria-hidden="true">&darr;</div>
+            <div class="lb" data-i18n="fl3_b">Se resultatet med det samme</div>
+            <div class="back" data-i18n="fl3_c">&#8630; tilbage, til du er glad</div>
+          </div></div>
+        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="panel node"><span class="num pixel">4</span><h3 class="pixel" data-i18n="fl4_h">5 ekstra liv</h3><div class="lives" aria-hidden="true">&#9829;&#9829;&#9829;&#9829;&#9829;</div><p data-i18n="fl4_p">5 ekstra supportsessioner, du kan bruge når som helst, til at give vilde idéer liv sammen med mig.</p></div>
+        <div class="arr" aria-hidden="true">&rarr;</div>
+        <div class="panel node end"><span class="num pixel">5</span><h3 class="pixel" data-i18n="fl5_h">Færdig</h3><p data-i18n="fl5_p">Siden kører lokalt på din egen computer.</p></div>
       </div>
     </div>
   </section>
@@ -396,9 +423,11 @@
       hero_lead: `I set up everything on your computer. You vibe code your dream website.`,
       btn_start: `PRESS START`, btn_wa_short: `ASK ON WHATSAPP`, btn_wa: `ASK A QUESTION ON WHATSAPP`,
       mascot_aria: `Pixel-art plumber with a hard hat and a wrench`, wa_aria: `Ask a question on WhatsApp`,
-      lv1_tag: `LEVEL 1`, lv1_h: `Setup`, lv1_p: `I set up your computer.`,
-      lv2_tag: `LEVEL 2`, lv2_h: `Build`, lv2_p: `You talk to AI and see the result.`,
-      lv3_tag: `LEVEL 3`, lv3_h: `Publish`, lv3_p: `Say “publish” and the site is live.`,
+      fl1_h: `I set up`, fl1_chips: `<span class="chip">Domain</span><span class="chip">Claude</span><span class="chip">GitHub</span><span class="chip">Hosting</span><span class="chip">Emails</span><span class="chip">CMS</span><span class="chip">Backend</span>`,
+      fl2_h: `You learn`, fl2_p: `I teach you to use local AI to build the website and publish it.`,
+      fl3_h: `Iterate`, fl3_a: `Experiment`, fl3_b: `See the result immediately`, fl3_c: `&#8630; back, until you are happy`,
+      fl4_h: `5 extra lives`, fl4_p: `5 extra support sessions you can use any time to bring crazy ideas to life together.`,
+      fl5_h: `Done`, fl5_p: `The site runs locally on your own computer.`,
       pk_h2: `Choose your package`,
       pk0_tag: `FREE`, pk0_h: `Free consultation`, pk0_price: `0 DKK`, pk0_p: `Tell me your idea over the phone. No strings attached.`, pk0_btn: `MESSAGE ON WHATSAPP`,
       pk1_tag: `SPECIAL OFFER`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK`, pk1_offer: `Until Dec 31, 2026`,
