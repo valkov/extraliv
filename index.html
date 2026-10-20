@@ -384,6 +384,21 @@
   .step .s2x { margin-top: 8px; }
   .lives-anim { margin-top: 8px; }
   .lives-anim .hh { width: 20px; height: 18px; }
+
+  /* ---- site previews: real screenshots in a browser frame ---- */
+  .site-fig { margin: 0; display: flex; flex-direction: column; gap: 14px; }
+  .bw { display: block; text-decoration: none; color: var(--ink); background: #fff; border: 2px solid var(--navy); border-radius: 16px; overflow: hidden; box-shadow: 0 6px 0 var(--navy); transition: transform .2s, box-shadow .2s; }
+  .bw:hover { transform: translateY(-3px); box-shadow: 0 9px 0 var(--navy); }
+  .bw .bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #f1ece3; border-bottom: 2px solid var(--navy); }
+  .bw .bar i { width: 10px; height: 10px; border-radius: 50%; background: #d9cfbd; flex: none; }
+  .bw .bar i:nth-child(1) { background: #f0a3a3; } .bw .bar i:nth-child(2) { background: #f2d58a; } .bw .bar i:nth-child(3) { background: #a8d5b0; }
+  .bw .url { margin-left: 8px; flex: 1; min-width: 0; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 2px 14px; font-weight: 800; font-size: 15px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .bw .visit { flex: none; font-size: 14px; font-weight: 800; background: var(--coin); border: 2px solid var(--navy); border-radius: 999px; padding: 0 12px; }
+  .bw img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .4s; }
+  .bw:hover img { transform: scale(1.03); }
+  .site-fig figcaption { font-size: 18px; color: var(--ink); text-align: center; }
+  .sites { gap: 30px; }
+  @media (max-width: 520px) { .bw .visit { display: none; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -529,16 +544,16 @@
     <svg class="cloud d2" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
     <div class="wrap">
       <h2 class="reveal" data-i18n="cl_h2">Sider lavet på denne måde</h2>
-      <p class="sub reveal" data-i18n="cl_sub">Tryk på et ikon og se siden.</p>
+      <p class="sub reveal" data-i18n="cl_sub">Tryk på en side for at åbne den.</p>
       <div class="grid sites">
-        <div class="panel site-card reveal">
-          <a class="site" href="https://trailstothriving.dk" target="_blank" rel="noopener" style="--c1:#3f8a57;--c2:#1b472e"><span class="sicon" aria-hidden="true">🌿</span><span class="stext"><b>Trails to Thriving</b><span class="dom">trailstothriving.dk</span><span class="seye" data-i18n="t2t_eye">Naturvandringer og retreats</span></span><span class="go" aria-hidden="true">&rarr;</span></a>
-          <blockquote data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Jeg fortalte bare AI’en, hvad jeg ville have, og et par sessioner senere var den live. Nemt, og faktisk sjovt. Og siden er helt min egen.”</blockquote>
-        </div>
-        <div class="panel site-card reveal">
-          <a class="site" href="https://re-balance.dk" target="_blank" rel="noopener" style="--c1:#e0834f;--c2:#b3592f"><span class="sicon" aria-hidden="true">⚖️</span><span class="stext"><b>Re-Balance</b><span class="dom">re-balance.dk</span><span class="seye" data-i18n="rb_eye">Terapi i København</span></span><span class="go" aria-hidden="true">&rarr;</span></a>
-          <blockquote data-i18n="rb_quote">“Det føltes som at tale med en kollega, ikke som at kæmpe med et værktøj. Meget sjovere end Wix eller Lovable, hvor jeg altid endte med at give op. Her blev det hele mit.”</blockquote>
-        </div>
+        <figure class="site-fig reveal">
+          <a class="bw" href="https://trailstothriving.dk" target="_blank" rel="noopener" aria-label="trailstothriving.dk"><span class="bar"><i></i><i></i><i></i><span class="url">trailstothriving.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/trailstothriving.jpg" alt="trailstothriving.dk" width="800" height="500" loading="lazy"></a>
+          <figcaption data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Nu er den live, og helt min egen.”</figcaption>
+        </figure>
+        <figure class="site-fig reveal">
+          <a class="bw" href="https://re-balance.dk" target="_blank" rel="noopener" aria-label="re-balance.dk"><span class="bar"><i></i><i></i><i></i><span class="url">re-balance.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/rebalance.jpg" alt="re-balance.dk" width="800" height="500" loading="lazy"></a>
+          <figcaption data-i18n="rb_quote">“Meget sjovere end Wix eller Lovable. Her blev det hele mit.”</figcaption>
+        </figure>
       </div>
       <p class="draft" data-i18n="cl_draft"><span class="todo">UDKAST: ejerne skal godkende deres citat, før siden deles. Behold Wix/Lovable-sammenligningen kun hvis den er sand.</span></p>
     </div>
@@ -632,11 +647,11 @@
       pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `Choose the mobile app`,
       pk3_tag: `1 hour`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `Book an hour`,
       cost_note: `Afterwards you only pay <b>about 100 DKK a month</b> for your own AI subscription (Claude) while you work on the site, and <b>about 100 DKK a year</b> for your own web address. Nothing to me, no lock-in.`,
-      cl_h2: `Sites made this way`, cl_sub: `Tap an icon to see the site.`,
+      cl_h2: `Sites made this way`, cl_sub: `Tap a site to open it.`,
       t2t_eye: `Guided hikes and retreats`,
-      t2t_quote: `“I had never built a website before. I just told the AI what I wanted, and a few sessions later it was live. Easy, and honestly fun. And the site is completely mine.”`,
+      t2t_quote: `“I had never built a website before. Now it is live, and completely mine.”`,
       rb_eye: `Therapy in Copenhagen`,
-      rb_quote: `“It felt like talking to a colleague, not fighting a tool. Much more fun than Wix or Lovable, where I always ended up giving up. Here everything became mine.”`,
+      rb_quote: `“Much more fun than Wix or Lovable. Here everything became mine.”`,
       visit: `Visit the site`,
       cl_draft: `<span class="todo">DRAFT: the owners must approve their quote before the page is shared. Keep the Wix/Lovable comparison only if it is true.</span>`,
       about_h2: `About me`,
