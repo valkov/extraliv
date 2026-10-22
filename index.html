@@ -175,7 +175,13 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn { transition: none; } }
 
   /* ---- hero layout + illustration ---- */
-  .hero .wrap { max-width: 1080px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: center; }
+  .hero .wrap { max-width: 1180px; display: grid; grid-template-columns: 1fr 1.1fr; gap: 36px; align-items: center; }
+  .hero-video { border: 3px solid var(--navy); box-shadow: 0 8px 0 var(--navy); border-radius: 18px; overflow: hidden; background: #243b5a; aspect-ratio: 16 / 9; }
+  .hero-video { position: relative; } .hero-video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .sound-on { position: absolute; left: 50%; bottom: 22%; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 10px; font: inherit; font-size: 18px; font-weight: 800; color: var(--navy); background: #ffc400; border: 3px solid var(--navy); border-radius: 999px; box-shadow: 0 4px 0 var(--navy); padding: 10px 20px; cursor: pointer; }
+  .sound-on svg { width: 22px; height: 18px; shape-rendering: crispEdges; }
+  .sound-on:hover { transform: translateX(-50%) translateY(-2px); }
+  .sound-on[hidden] { display: none; }
   .eyebrow { display: inline-block; margin: 0 0 14px; font-weight: 800; font-size: 16px; color: var(--accent-dark); background: var(--accent-soft); border-radius: 999px; padding: 5px 14px; }
   .il { width: 100%; height: auto; overflow: visible; }
   .bub { height: 100%; display: flex; align-items: center; padding: 8px 18px; font-family: "Nunito", system-ui, sans-serif; font-size: 15px; font-weight: 700; line-height: 1.25; }
@@ -285,6 +291,7 @@
   .video { border: 2px solid var(--navy); box-shadow: 0 6px 0 var(--navy); background: #243b5a; }
   footer { background: var(--navy); }
   @media (max-width: 760px) { .cloud { width: 90px !important; } .cloud.c2 { top: 120px; } .sun { width: 70px; height: 70px; right: 6%; } .hero { padding-bottom: 120px; } .hills { height: 90px; } }
+  @media (min-width: 961px) { .hero .wrap { max-width: 1360px; grid-template-columns: .85fr 1.15fr; gap: 48px; } .hero h1 { font-size: clamp(34px, 3.3vw, 46px); } .hero p.lead { font-size: 19px; } }
   @media (prefers-reduced-motion: reduce) { .cloud, .sun { animation: none !important; } }
 
   /* ---- black friday banner (rounded) + subtle birds ---- */
@@ -516,22 +523,12 @@
           <a class="btn big" href="#pris" data-i18n="btn_start">Jeg vil have det!</a>
         </div>
       </div>
-      <svg class="il" viewBox="0 0 440 360" role="img" aria-label="En person beder AI om en hjemmeside og ser den dukke op" data-i18n-aria="il_aria" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="240" cy="170" r="150" fill="#e3f1ed"/>
-  <rect x="110" y="30" width="310" height="230" rx="16" fill="#fff" stroke="#e3ddd2" stroke-width="2"/>
-  <path d="M110 46a16 16 0 0 1 16-16h278a16 16 0 0 1 16 16v14H110z" fill="#f1ece3"/>
-  <circle cx="130" cy="45" r="4.5" fill="#f0b4b4"/><circle cx="145" cy="45" r="4.5" fill="#f2dca0"/><circle cx="160" cy="45" r="4.5" fill="#b4d9bc"/>
-  <rect x="185" y="38" width="170" height="14" rx="7" fill="#fff"/>
-  <text x="270" y="48.5" text-anchor="middle" font-size="9" font-weight="700" fill="#55606d" font-family="Nunito, sans-serif">yourname.dk</text>
-  <g class="i3"><rect x="128" y="78" width="130" height="14" rx="7" fill="#1f2a37"/></g>
-  <g class="i4"><rect x="128" y="100" width="170" height="8" rx="4" fill="#c9cfdb"/><rect x="128" y="114" width="140" height="8" rx="4" fill="#c9cfdb"/></g>
-  <g class="i5"><rect x="128" y="134" width="96" height="28" rx="14" fill="#1f7a68"/><rect x="146" y="145" width="60" height="6" rx="3" fill="#fff" opacity=".85"/></g>
-  <g class="i6"><rect x="272" y="76" width="130" height="92" rx="12" fill="#e3f1ed"/><circle cx="352" cy="102" r="13" fill="#f2cd37"/><path d="M272 150c20-26 42-30 60-12 16-18 44-14 70 8v22a12 12 0 0 1-12 12H284a12 12 0 0 1-12-12z" fill="#8fc9b5"/></g>
-  <g class="i7"><rect x="128" y="182" width="82" height="60" rx="10" fill="#f1ece3"/><rect x="220" y="182" width="82" height="60" rx="10" fill="#f1ece3"/><rect x="312" y="182" width="90" height="60" rx="10" fill="#f1ece3"/>
-    <path class="hp" d="M169 206c-4-6-12-2-9 5 2 4 9 9 9 9s7-5 9-9c3-7-5-11-9-5z" fill="#e0434f" opacity=".85"/></g>
-  <g class="i1"><rect x="6" y="236" width="200" height="66" rx="20" fill="#1f7a68"/><foreignObject x="6" y="236" width="200" height="66"><div xmlns="http://www.w3.org/1999/xhtml" class="bub you" data-i18n="il_you">Jeg vil gerne have en hjemmeside til mine yogatimer</div></foreignObject></g>
-  <g class="i2"><rect x="60" y="300" width="260" height="52" rx="20" fill="#fff" stroke="#e3ddd2" stroke-width="2"/><foreignObject x="60" y="300" width="260" height="52"><div xmlns="http://www.w3.org/1999/xhtml" class="bub ai" data-i18n="il_ai">Værsgo! Vil du ændre noget?</div></foreignObject></g>
-</svg>
+      <div class="hero-video">
+        <video id="heroVideo" autoplay muted loop controls playsinline preload="auto" poster="video/extralife-story-poster.jpg" aria-label="Video: se hvordan det virker" data-i18n-aria="video_t">
+          <source src="video/extralife-story.mp4" type="video/mp4">
+        </video>
+        <button class="sound-on" id="soundOn" type="button"><svg viewBox="0 0 12 10" aria-hidden="true"><path fill="currentColor" d="M0 3h2l3-3h1v10H5L2 7H0z"/><path fill="currentColor" d="M8 3h1v4H8zM10 1h1v8h-1z"/></svg><span data-i18n="sound_on">Slå lyd til</span></button>
+      </div>
     </div>
     <svg class="hills" viewBox="0 0 1440 120" preserveAspectRatio="none" aria-hidden="true"><path fill="#8bd98a" d="M0 64C220 14 470 104 720 62S1210 20 1440 70V120H0Z"/><path fill="#5fc46a" d="M0 92C280 54 540 118 820 88S1300 56 1440 88V120H0Z"/></svg>
   </section>
@@ -559,7 +556,6 @@
         <li class="panel step reveal"><span class="ico" aria-hidden="true"><svg class="gi chat" viewBox="0 0 64 64" fill="none" stroke="#243b5a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><path d="M10 8H38A6 6 0 0 1 44 14V26A6 6 0 0 1 38 32H24L14 40V32H10A6 6 0 0 1 4 26V14A6 6 0 0 1 10 8Z" fill="#d9ecff"/><path d="M12 17H30M12 23H24" stroke-width="2.5"/><path d="M26 28H54A6 6 0 0 1 60 34V44A6 6 0 0 1 54 50H50V58L40 50H26A6 6 0 0 1 20 44V34A6 6 0 0 1 26 28Z" fill="#ffc400"/><circle class="td" cx="31" cy="39" r="2" fill="#243b5a" stroke="none"/><circle class="td" cx="40" cy="39" r="2" fill="#243b5a" stroke="none"/><circle class="td" cx="49" cy="39" r="2" fill="#243b5a" stroke="none"/></svg></span><h3 data-i18n="s2_h">Fortæl AI, hvad du vil have</h3><p data-i18n="s2_p">Sig, hvad du vil have, og ret, så ofte du vil.</p><p class="s2x" data-i18n="s2_x">Sidder du fast, har du dine 5 ekstra liv.</p><div class="lives-anim" aria-hidden="true"><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span><span class="hh"><svg viewBox="0 0 11 10" aria-hidden="true"><path class="ghost" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/><path class="solid" d="M1 0h3v1h1v1h1V1h1V0h3v1h1v3h-1v1h-1v1h-1v1h-1v1H6v1H5V9H4V8H3V7H2V6H1V5H0V1h1z"/></svg></span></div></li>
         <li class="panel step reveal"><span class="ico" aria-hidden="true"><svg class="gi rocket" viewBox="0 0 64 64" fill="none" stroke="#243b5a" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"><g class="rk"><path class="flame" d="M27 45H37L32 60Z" fill="#ffc400"/><path d="M24 34 13 47 25 44Z" fill="#ff6b7a"/><path d="M40 34 51 47 39 44Z" fill="#ff6b7a"/><path d="M32 4C43 13 45 29 40 45H24C19 29 21 13 32 4Z" fill="#fff"/><path d="M32 4C36 8 39 13 40 19H24C25 13 28 8 32 4Z" fill="#ff6b7a"/><circle cx="32" cy="29" r="5.5" fill="#7cc8ff"/></g></svg></span><h3 data-i18n="s3_h">Din hjemmeside er live</h3></li>
       </ol>
-      <div class="video reveal" role="img" aria-label="Video" data-i18n-aria="video_aria"><span class="play" aria-hidden="true">&#9654;</span><p data-i18n="video_t">Video: se hvordan det virker</p><p class="soon" data-i18n="video_s">Kommer snart</p></div>
     </div>
   </section>
 
@@ -738,7 +734,7 @@
       s1_h: `We set up your computer`, s1_p: `Your web address, your AI assistant and all the tech. All in your name.`,
       s2_h: `Tell the AI what you want`, s2_p: `Say what you want and change it as often as you like.`, s2_x: `Stuck? You have your 5 extra lives.`,
       s3_h: `Your website is live`,
-      video_aria: `Video`, video_t: `Video: see how it works`, video_s: `Coming soon`,
+      video_aria: `Video`, sound_on: `Turn sound on`, video_t: `Video: see how it works`, video_s: `Coming soon`,
       pk_h2: `Choose your package`,
       pk1_tag: `Special offer`, pk1_h: `Turnkey website`, pk1_old: `7,000 DKK`, pk1_price: `3,500 DKK*`, pk1_offer: `Until Dec 31, 2026`,
       pk1_l1: `We set everything up for you`,
@@ -881,6 +877,31 @@
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
     }, { threshold: 0.12 });
     els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+<script>
+  (function () {
+    var v = document.getElementById('heroVideo');
+    if (!v) return;
+    var btn = document.getElementById('soundOn');
+    if (btn) {
+      btn.addEventListener('click', function () { v.muted = false; v.currentTime = 0; v.play().catch(function () {}); btn.hidden = true; });
+      v.addEventListener('volumechange', function () { if (!v.muted) btn.hidden = true; });
+    }
+    // respect "reduce motion": no autoplay, keep the poster and controls
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { v.removeAttribute('autoplay'); v.pause(); return; }
+    // pause while scrolled out of view, resume when it comes back (unless the visitor paused it)
+    var userPaused = false;
+    v.addEventListener('pause', function () { if (!v._auto) userPaused = true; v._auto = false; });
+    v.addEventListener('play', function () { userPaused = false; });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.isIntersecting) { if (!userPaused) v.play().catch(function () {}); }
+          else if (!v.paused) { v._auto = true; v.pause(); }
+        });
+      }, { threshold: 0.25 }).observe(v);
+    }
   })();
 </script>
 </body>
