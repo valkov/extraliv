@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;600&family=Montserrat:wght@300;600&family=Mulish:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #faf8f4;
@@ -498,6 +498,89 @@
     .buddy, .bubble, .buddy-fig { transition: none; }
     .buddy:not(.in) .buddy-fig, .buddy.talking .buddy-fig, .buddy.in .buddy-fig .fig, .buddy-fig .eyes, .buddy.talking .buddy-fig .arm, .buddy.talking .buddy-fig .mouth, .bubble.cta .bubble-cta { animation: none; }
   }
+
+  /* ================= calm paper-and-ink theme (same look as the video) =================
+     Overrides the friendly/cartoon layer above. To go back, delete this block. */
+  :root { --bg: #fbf9f5; --soft: #f4f1ea; --ink: #1e2533; --muted: #5a6475; --navy: #1e2533; --line: #e2ded6; --blue: #2f5bb5; --blue-soft: #eaf0fb; --accent: #2f5bb5; --accent-dark: #244a96; --accent-soft: #eaf0fb; --warm: #f6f3ec; --coin: #1e2533; --coin-dark: #1e2533; --rust: #d9573b; }
+  body { font-family: "Instrument Sans", system-ui, sans-serif; background-color: var(--bg); background-image: radial-gradient(#eee9df 1.5px, transparent 1.5px); background-size: 28px 28px; }
+  h1, h2, h3 { letter-spacing: -.02em; font-weight: 700; }
+  .ac { color: var(--blue); }
+  .mono, .eyebrow, .card .tag, .coins, .go, .chips li { font-family: "IBM Plex Mono", ui-monospace, monospace; }
+
+  /* no decor */
+  .sun, .bird, .hills, .cloud.d1, .cloud.d2, .cloud.d3 { display: none !important; }
+  header.top, .sale-top { background: #e1f1ff; }
+  .hero { background: linear-gradient(#e1f1ff 0%, #eef7ff 55%, var(--bg) 100%); padding: 28px 0 72px; }
+  .cloud { filter: drop-shadow(0 8px 14px rgba(47,91,181,.10)); opacity: .95; }
+  .cloud.c1 { width: 150px; } .cloud.c2 { width: 210px; } .cloud.c3 { width: 120px; }
+  .hero h1, .hero .lead { text-shadow: none; }
+  .hero p.lead { color: var(--muted); }
+  section.block.warm, section.block.sky { background: transparent; }
+  section.block.alt { background: var(--soft); }
+  section.block.contact { background: var(--blue-soft); }
+  footer { background: var(--ink); }
+
+  /* sale banner: a quiet label instead of a pulsing pill */
+  .coins { background: #fff; color: var(--ink); border: 1px solid var(--ink); border-radius: 8px; box-shadow: none; transform: none; animation: none; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .06em; padding: 5px 12px 5px 6px; }
+  .coins .tag-sale { background: var(--rust); color: #fff; border-radius: 5px; padding: 2px 8px; }
+
+  /* cards and panels: thin borders, soft shadows */
+  .panel { border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(30,37,51,.08); }
+  .step, .who-card { box-shadow: 0 12px 32px rgba(30,37,51,.08); }
+  .num { background: var(--blue); color: #fff; border: 0; box-shadow: none; }
+  .ico { background: var(--blue-soft); border: 1px solid #d3def3; box-shadow: none; }
+  .step:nth-child(1) .ico, .step:nth-child(2) .ico, .step:nth-child(3) .ico { background: var(--blue-soft); }
+  .step:not(:last-child)::after { background: #fff; border: 1px solid var(--line); color: var(--blue); width: 30px; height: 30px; }
+
+  /* buttons */
+  .btn { background: var(--ink); color: #fff; border: 0; border-radius: 10px; box-shadow: none; font-weight: 600; }
+  .btn:hover { background: var(--blue); transform: none; box-shadow: none; }
+  .btn.wa { background: #12924b; color: #fff; }
+  .btn.wa:hover { background: #0d7a3e; }
+
+  /* labels */
+  .eyebrow { background: transparent; border: 0; padding: 0; color: var(--blue); font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; }
+  .offer-line { background: #fff; border: 1px solid var(--line); box-shadow: none; border-radius: 8px; }
+  .chips li { border: 1px solid var(--line); border-radius: 8px; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+  .chip { border: 1px solid var(--line); box-shadow: none; border-radius: 12px; font-weight: 600; }
+  .card .tag { background: var(--blue-soft); border: 0; color: var(--blue); border-radius: 6px; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; padding: 3px 10px; }
+  .card .tag.hot { background: #fbe9e4; color: var(--rust); border: 0; }
+  .card.featured { border: 2px solid var(--blue); box-shadow: 0 16px 40px rgba(47,91,181,.16); }
+  .offer { background: #fbe9e4; color: var(--rust); border-radius: 6px; font-family: "IBM Plex Mono", monospace; font-size: 13px !important; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+  .costs { border-left: 3px solid var(--blue); }
+  ul.checks li::before { color: #1f8f5f; }
+
+  /* media */
+  .hero-video { border: 1px solid var(--line); box-shadow: 0 16px 40px rgba(30,37,51,.14); border-radius: 14px; background: #1e2533; }
+  .sound-on { background: #fff; color: var(--ink); border: 1px solid var(--ink); border-radius: 10px; box-shadow: none; font-weight: 600; }
+  .sound-on:hover { transform: translateX(-50%); background: var(--blue-soft); }
+  .video { border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(30,37,51,.12); }
+  .bw { border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 12px 32px rgba(30,37,51,.10); }
+  .bw:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(30,37,51,.14); }
+  .bw .bar { border-bottom: 1px solid var(--line); background: #f3f1ec; }
+  .bw .visit { background: var(--blue-soft); color: var(--blue); border: 0; border-radius: 6px; font-family: "IBM Plex Mono", monospace; font-weight: 500; }
+  .site .go { background: var(--blue-soft); border: 0; }
+  .sicon { border: 1px solid var(--line); box-shadow: none; }
+
+  /* about, faq, lang */
+  .photo { border: 1px solid var(--line); box-shadow: 0 12px 32px rgba(30,37,51,.12); border-radius: 16px; }
+  .about a.li { border: 1px solid var(--ink); box-shadow: none; border-radius: 10px; color: var(--ink); background: #fff; font-weight: 600; }
+  .about a.li:hover { background: var(--blue-soft); }
+  details { border: 1px solid var(--line); box-shadow: none; border-radius: 12px; }
+  .lang button[aria-pressed="true"] { background: #fff; box-shadow: inset 0 0 0 1px var(--ink); }
+  a:focus-visible, button:focus-visible { outline: 3px solid var(--blue); }
+
+  /* the buddy keeps the pixel character, but the bubble gets the calm look */
+  .bubble { border: 1px solid var(--ink); box-shadow: 0 10px 24px rgba(30,37,51,.12); border-radius: 16px; font-weight: 600; }
+  .bubble::before { border-color: var(--ink); }
+  .bubble-cta { border-radius: 8px; }
+  .buddy, .buddy-fig { width: 56px; }
+  .bubble { bottom: 34px; right: calc(100% + 8px); font-size: 15px; line-height: 1.3; padding: 9px 30px 9px 13px; border-radius: 12px; max-width: min(240px, calc(100vw - 120px)); }
+  .bubble::before { width: 10px; height: 10px; right: -6px; bottom: 12px; }
+  .buddy-close { width: 22px; height: 22px; top: 3px; right: 4px; font-size: 18px; }
+  .bubble-cta { padding: 7px 10px; gap: 6px; font-size: 15px; }
+  .bubble-cta svg { width: 18px; height: 18px; }
+  @media (max-width: 760px) { .hero { padding-bottom: 40px; } .buddy, .buddy-fig { width: 40px; } .bubble { bottom: 24px; font-size: 14px; max-width: calc(100vw - 90px); } .cloud { width: 90px !important; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -528,7 +611,7 @@
     <svg class="bird k4" viewBox="0 0 24 12" aria-hidden="true"><path class="wing" d="M1 8Q6 0 12 8Q18 0 23 8" fill="none" stroke="#243b5a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="wrap">
       <div class="hero-text">
-        <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br>Bare ved at tale med din egen computer.</h1>
+        <h1 data-i18n="hero_h1">Få din egen hjemmeside.<br><span class="ac">Bare ved at tale med din egen computer.</span></h1>
         <p class="lead" data-i18n="hero_lead">Vi sætter det hele op på din computer. Du fortæller en AI-assistent, hvordan din drømmehjemmeside skal se ud, og ser den vokse frem.</p>
         <div class="hero-actions">
           <a class="btn big" href="#pris" data-i18n="btn_start">Jeg vil have det!</a>
@@ -729,7 +812,7 @@
 
     var EN = {
       coins: `Website 3,500 DKK`, sale_tag: `BLACK FRIDAY −50%`,
-      hero_h1: `Get your own website.<br>Just by talking to your own computer.`,
+      hero_h1: `Get your own website.<br><span class="ac">Just by talking to your own computer.</span>`,
       hero_lead: `We set everything up on your computer. You describe your dream website to an AI assistant and watch it take shape.`,
       btn_start: `I want it!`, btn_wa: `Ask a question on WhatsApp`,
       wa_aria: `Ask a question on WhatsApp`,
