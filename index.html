@@ -413,7 +413,7 @@
   .bw .visit { flex: none; font-size: 14px; font-weight: 800; background: var(--coin); border: 2px solid var(--navy); border-radius: 999px; padding: 0 12px; }
   .bw img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; object-position: top; transition: transform .4s; }
   .bw:hover img { transform: scale(1.03); }
-  .site-fig figcaption { font-size: 18px; color: var(--ink); text-align: center; }
+  .site-fig figcaption { font-size: 15px; line-height: 1.55; color: var(--ink); text-align: left; padding: 0 6px; }
   .sites { gap: 30px; }
   @media (max-width: 520px) { .bw .visit { display: none; } }
 
@@ -680,7 +680,6 @@
             <li data-i18n="pk1_l4">Garanti: en komplet, fungerende hjemmeside på din egen webadresse**</li>
           </ul>
           <a class="btn wa small" data-wa="site" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk1_btn">Vælg hjemmesiden</span></a>
-          <p class="hint" data-i18n="pk1_hint"><span class="todo">UDKAST: hvad “komplet hjemmeside” dækker (sider, funktioner) er ikke afgjort</span></p>
         </div>
 
         <div class="panel card">
@@ -688,7 +687,7 @@
           <h3  data-i18n="pk2_h">Byg din mobilapp</h3>
           <p class="price" data-i18n="pk2_price">fra 5.000 kr.</p>
           <p data-i18n="pk2_p">Din egen app, klar til App Store og Google Play.</p>
-          <p class="hint" data-i18n="pk2_note">Prisen afhænger af omfanget, fx om der skal bygges funktioner bag kulisserne. Apple- og Google-konto betaler du selv. <span class="todo">UDKAST: tjek priser og omfang</span></span></p>
+          <p class="hint" data-i18n="pk2_note">Prisen afhænger af omfanget, fx om der skal bygges funktioner bag kulisserne. Apple- og Google-konto betaler du selv.</p>
           <a class="btn wa small" data-wa="app" href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="pk2_btn">Vælg mobilappen</span></a>
         </div>
 
@@ -715,12 +714,12 @@
       <h2 class="reveal" data-i18n="cl_h2">Sider lavet på denne måde</h2>
       <div class="grid sites">
         <figure class="site-fig reveal">
-          <a class="bw" href="https://trailstothriving.dk" target="_blank" rel="noopener" aria-label="trailstothriving.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/ttt-logo.png" alt="" width="20" height="20">trailstothriving.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/trailstothriving.jpg" alt="trailstothriving.dk" width="800" height="500" loading="lazy"></a>
-          <figcaption data-i18n="t2t_quote">“Jeg havde aldrig bygget en hjemmeside før. Nu er den live, og helt min egen.”</figcaption>
+          <a class="bw" href="https://re-balance.dk" target="_blank" rel="noopener" aria-label="re-balance.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/rb-favicon.svg" alt="" width="20" height="20">re-balance.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/rebalance.jpg" alt="re-balance.dk" width="800" height="500" loading="lazy"></a>
+          <figcaption data-i18n="rb_quote">“I mange år ville jeg gerne have min egen hjemmeside, men det føltes overvældende og dyrt at arbejde med større firmaer.<br><br>Det, jeg sætter mest pris på, er at have fuld adgang til og ejerskab over min hjemmeside. Selv flere uger efter lanceringen har jeg selv kunnet blive ved med at tilføje og ændre ting – uden at vente på andre eller bekymre mig om ekstra omkostninger.<br><br>Jeg er virkelig, virkelig glad for resultatet. Fem stjerner og en hjertelig tak til Valentin!”</figcaption>
         </figure>
         <figure class="site-fig reveal">
-          <a class="bw" href="https://re-balance.dk" target="_blank" rel="noopener" aria-label="re-balance.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/rb-favicon.svg" alt="" width="20" height="20">re-balance.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/rebalance.jpg" alt="re-balance.dk" width="800" height="500" loading="lazy"></a>
-          <figcaption data-i18n="rb_quote">“Meget sjovere end Wix eller Lovable. Her blev det hele mit.”</figcaption>
+          <a class="bw" href="https://trailstothriving.dk" target="_blank" rel="noopener" aria-label="trailstothriving.dk"><span class="bar"><i></i><i></i><i></i><span class="url"><img class="fav" src="sites/ttt-logo.png" alt="" width="20" height="20">trailstothriving.dk</span><span class="visit" data-i18n="visit">Besøg siden</span></span><img src="sites/trailstothriving.jpg" alt="trailstothriving.dk" width="800" height="500" loading="lazy"></a>
+          <figcaption data-i18n="t2t_quote">“Jeg troede aldrig, jeg ville få en hjemmeside som denne! Den er præcis, som jeg ønskede den til mine vandreture og retreats, og jeg kan selv ændre ting når som helst, uden ventetid og uden ekstra regninger. Jeg elsker min nye hjemmeside!”</figcaption>
         </figure>
       </div>
     </div>
@@ -837,18 +836,17 @@
       pk1_l3: `5 extra lives: 5 sessions of 45 min.`,
       pk1_l4: `Guarantee: a complete, working website on your own web address**`,
       pk1_btn: `Choose the website`,
-      pk1_hint: `<span class="todo">DRAFT: what “complete website” covers (pages, features) is not decided</span>`,
       hearts_aria: `Your extra lives`, heart1_aria: `Extra life 1`, heart2_aria: `Extra life 2`, heart3_aria: `Extra life 3`, heart4_aria: `Extra life 4`, heart5_aria: `Extra life 5`,
       pk2_tag: `Mobile app`, pk2_h: `Build your mobile app`, pk2_price: `from 5,000 DKK`, pk2_p: `Your own app, ready for the App Store and Google Play.`,
-      pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself. <span class="todo">DRAFT: check prices and scope</span>`, pk2_btn: `Choose the mobile app`,
+      pk2_note: `The price depends on the scope, for example whether features behind the scenes must be built. You pay for the Apple and Google accounts yourself.`, pk2_btn: `Choose the mobile app`,
       pk3_tag: `1 hour`, pk3_h: `Single session`, pk3_price: `500 DKK`, pk3_p: `Stuck, or ready for the next idea? Book an hour.`, pk3_btn: `Book an hour`,
       cost_note2: `** Need extra services, like a calendar, a booking system or card payments? All of that can be added. Depending on the features you want, these components are bought from third parties, not from me, and cost a little extra.`,
       cost_note: `* Standard price after setup: afterwards you only pay about 100 DKK a month for your own AI subscription (Claude) while you work on the site, and about 100 DKK a year for your own web address. Nothing to me, no lock-in.`,
       cl_h2: `Sites made this way`,
       t2t_eye: `Guided hikes and retreats`,
-      t2t_quote: `“I had never built a website before. Now it is live, and completely mine.”`,
+      t2t_quote: `“I never thought I’d have a website like this! It’s exactly what I wanted for my hikes and retreats, and I can change things myself anytime, no waiting and no extra bills. I love my new website!”`,
       rb_eye: `Therapy in Copenhagen`,
-      rb_quote: `“Much more fun than Wix or Lovable. Here everything became mine.”`,
+      rb_quote: `“For years, I wanted to create my own website, but working with larger companies felt overwhelming and expensive.<br><br>What I appreciate most is having full access to and ownership of my website. Even weeks after launching, I’ve been able to keep adding and changing things myself—without waiting for someone else or worrying about extra costs.<br><br>I’m really, really happy with the result. Five stars, and a heartfelt thank you to Valentin!”`,
       visit: `Visit the site`,
       about_h2: `About me`,
       about_p1: `Hi, I am Valentin. I have 20+ years of experience building solutions for startups and large enterprises.`,
