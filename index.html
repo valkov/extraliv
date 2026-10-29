@@ -72,11 +72,6 @@
   .hero p.lead { font-size: clamp(19px, 2.4vw, 22px); color: var(--muted); margin: 0 0 24px; max-width: 680px; }
   .offer-line { display: inline-block; font-weight: 800; font-size: 17px; background: var(--warm); border: 1px solid #f0dfae; border-radius: 999px; padding: 6px 16px; margin: 0 0 26px; }
   .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-  .trust { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-direction: column; gap: 6px; font-size: 16px; font-weight: 600; color: var(--ink); }
-  .trust li::before { content: "✓"; color: #12924b; font-weight: 800; margin-right: 6px; }
-  .contact p.ct-note { color: var(--muted); font-size: 16px; }
-  footer .alt-ct { margin: 4px 0 0; font-size: 14px; color: rgba(255,255,255,.72); }
-  footer .alt-ct a.tel { color: #fff; }
   a.tel { color: inherit; font-weight: 700; white-space: nowrap; }
 
   /* ---- sections ---- */
@@ -591,6 +586,18 @@
   .coins { max-width: 100%; flex-wrap: wrap; justify-content: center; white-space: normal; row-gap: 4px; }
   .coins > span { white-space: nowrap; }
   @media (max-width: 420px) { .coins { font-size: 11.5px; letter-spacing: .03em; gap: 6px; } }
+  /* hero note + footer */
+  .hero-note { color: var(--muted); font-size: 16px; margin: 12px 0 0; }
+  .site-foot { background: linear-gradient(var(--soft) 0%, #eef7ff 55%, #e1f1ff 100%); padding: 48px 0 28px; color: var(--ink); text-align: left; }
+  .ct-grid { display: flex; justify-content: center; gap: 18px; }
+  .ct-item { display: grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: #fff; border: 1px solid #d3def3; text-decoration: none; transition: border-color .15s, transform .15s, box-shadow .15s; }
+  .ct-item:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(47,91,181,.15); }
+  .ct-ico { display: grid; place-items: center; }
+  .ct-ico svg { width: 26px; height: 26px; fill: none; stroke: var(--blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .ct-ico.wa svg { stroke: #12924b; }
+  .ct-txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .ft-sign { text-align: center; color: var(--muted); font-size: 14px; margin: 22px 0 0; }
+  @media (max-width: 520px) { .site-foot { padding-top: 36px; } }
 </style>
 <script>document.documentElement.className += " js";</script>
 </head>
@@ -626,11 +633,7 @@
         <div class="hero-actions">
           <a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">Stil et spørgsmål på WhatsApp</span></a>
         </div>
-        <ul class="trust">
-          <li data-i18n="tr1">Gratis at spørge</li>
-          <li data-i18n="tr2">Helt uforpligtende</li>
-          <li data-i18n="tr3">Ingen salgstale</li>
-        </ul>
+        <p class="hero-note" data-i18n="ct_note">Uforpligtende, bare en snak om din idé.</p>
       </div>
       <div class="hero-video">
         <video id="heroVideo" autoplay muted loop controls playsinline preload="auto" poster="video/extralife-story-poster.jpg" aria-label="Video: se hvordan det virker" data-i18n-aria="video_t">
@@ -771,23 +774,20 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="block contact sky" id="kontakt">
-    <svg class="cloud d1" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
-    <svg class="cloud d3" viewBox="0 0 120 64" aria-hidden="true"><g fill="#fff"><circle cx="35" cy="40" r="20"/><circle cx="62" cy="30" r="27"/><circle cx="90" cy="40" r="20"/><rect x="25" y="40" width="75" height="20" rx="10"/></g></svg>
-        <div class="wrap">
-      <p><a class="btn wa big" data-wa href="#kontakt" target="_blank" rel="noopener"><svg viewBox="0 0 12 12" aria-hidden="true"><path fill="#fff" d="M2 1h8v1h1v6h-1v1H5v1H4v1H3V9H2V8H1V2h1z"/><rect x="4" y="3" width="4" height="1" fill="#25d366"/><rect x="4" y="5" width="3" height="1" fill="#25d366"/></svg><span data-i18n="btn_wa">Stil et spørgsmål på WhatsApp</span></a></p>
-      <p class="ct-note" data-i18n="ct_note">Uforpligtende. Ingen salgstale, bare en snak om din idé.</p>
-      <p><span data-i18n="ct_or">eller skriv til</span> <a class="mail" href="mailto:valentinkovalski@gmail.com?subject=ExtraLiv">valentinkovalski@gmail.com</a></p>
-    </div>
-  </section>
 </main>
 
-<footer>
-  <div class="wrap">
-    <p><span data-i18n="brand">ExtraLiv</span> · Valentin Kovalski</p>
-    <p class="alt-ct"><span data-i18n="ft1">Ingen WhatsApp? Send en sms til</span> <a class="tel" href="sms:+4550183360">+45 50 18 33 60</a> <span data-i18n="ft2">eller en e-mail til</span> <a class="tel" href="mailto:valentinkovalski@gmail.com?subject=ExtraLiv">valentinkovalski@gmail.com</a></p>
-  </div>
-</footer>
+  <footer class="site-foot" id="kontakt">
+    <div class="wrap">
+      <div class="ct-grid">
+        <a class="ct-item" title="+45 50 18 33 60" href="tel:+4550183360"><span class="ct-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 3.5h3l1.5 4-2 1.3a11 11 0 0 0 6.1 6.1l1.3-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg></span><span class="ct-txt"><b data-i18n="ft_phone">Telefon / sms</b><span>+45 50 18 33 60</span></span></a>
+        <a class="ct-item" title="WhatsApp" data-wa href="#kontakt" target="_blank" rel="noopener"><span class="ct-ico wa" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5Z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 1a5 5 0 0 1-3-3l1-1-1-2Z"/></svg></span><span class="ct-txt"><b>WhatsApp</b><span data-i18n="ft_wa">Skriv til mig</span></span></a>
+        <a class="ct-item" title="valentinkovalski@gmail.com" href="mailto:valentinkovalski@gmail.com?subject=ExtraLiv"><span class="ct-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></span><span class="ct-txt"><b data-i18n="ft_mail">E-mail</b><span>valentinkovalski@gmail.com</span></span></a>
+        <a class="ct-item" title="Facebook" href="https://www.facebook.com/profile.php?id=61595800840732" target="_blank" rel="noopener"><span class="ct-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 21v-7.5h2.5l.5-3h-3V8.8c0-.9.4-1.5 1.6-1.5H17V4.7a19 19 0 0 0-2.3-.2c-2.4 0-3.7 1.4-3.7 3.9v2.1H8.5v3H11V21"/></svg></span><span class="ct-txt"><b>Facebook</b><span data-i18n="ft_fb">Følg ExtraLiv</span></span></a>
+      </div>
+      <p class="ft-sign"><span data-i18n="brand">ExtraLiv</span> · Valentin Kovalski · 2026</p>
+    </div>
+  </footer>
+
 
 <div class="buddy" id="buddy">
   <a class="buddy-fig" id="buddyFig" data-wa href="#kontakt" target="_blank" rel="noopener" aria-label="Skriv til mig på WhatsApp" data-i18n-aria="buddy_wa" title="WhatsApp">
@@ -876,10 +876,8 @@
       q2: `Who owns the site?`, a2: `You do. All accounts are in your name, and I have no access afterwards.`,
       q3: `What if something breaks?`, a3: `You can't break anything. Every version of your site is saved, so you can always go back a step. And you have your extra lives.`,
       q4: `What about GDPR?`, a4: `You own your site’s data. I help with a privacy policy and cookie notice and pick EU servers where possible.`,
-      ct_or: `or write to`,
-      ct_note: `No obligation. No sales pitch, just a chat about your idea.`,
-      tr1: `Free to ask`, tr2: `No obligation`, tr3: `No sales pitch`,
-      ft1: `No WhatsApp? Send a text to`, ft2: `or an email to`,
+      ct_note: `No obligation, just a chat about your idea.`,
+      ft_phone: `Phone / text`, ft_wa: `Message me`, ft_mail: `Email`, ft_fb: `Follow ExtraLife`,
     };
     var META = {
       da: { title: 'ExtraLiv – Din egen hjemmeside, bare ved at tale med din egen computer', desc: 'Vi sætter det hele op på din computer, så du selv kan bygge din egen hjemmeside ved at tale med en AI-assistent. Fra 3.500 kr. (specialtilbud).' },
