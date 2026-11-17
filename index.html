@@ -807,7 +807,7 @@
   <section class="block">
     <div class="wrap about">
       <div class="photo empty" id="photo">
-        <img src="photo.jpg?v=2" alt="Valentin" onerror="this.remove()" onload="this.parentNode.classList.remove('empty')">
+        <img src="photo.jpg?v=2" alt="Valentin Kovalski" onerror="this.remove()" onload="this.parentNode.classList.remove('empty')">
       </div>
       <div>
         <h2  data-i18n="about_h2">Om mig</h2>
@@ -970,7 +970,7 @@
       var q = (location.search.match(/[?&]lang=(da|en)/) || [])[1];
       if (q) return q;
       try { var s = localStorage.getItem('lang'); if (s === 'da' || s === 'en') return s; } catch (e) {}
-      return /^da\b/i.test(navigator.language || '') ? 'da' : 'en';
+      return 'da';
     }
     document.querySelectorAll('.lang button').forEach(function (b) { b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); }); });
     setLang(initial(), false);
